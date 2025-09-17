@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>British National Circuit Series - General Classification</title>
+    <title>British National Circuit Series - General Classification Standings</title>
     <style>
         * {
             margin: 0;
@@ -26,8 +26,7 @@
         }
         
         .header {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             margin-bottom: 30px;
             box-shadow: 0 10px 30px rgba(44, 95, 95, 0.1);
@@ -36,150 +35,64 @@
             overflow: hidden;
         }
         
-        .header-image {
-            width: 20%;
-            height: auto;
-            display: block;
-            border-radius: 12px;
-            object-fit: contain;
-            margin: 0 auto;
-        }
-        
-        .header-upload-area {
-            background: linear-gradient(135deg, #f4f1e8 0%, #e8dcc0 100%);
-            border: 3px dashed #2c5f5f;
-            border-radius: 12px;
-            padding: 40px 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            width: 20%;
-            margin: 0 auto;
-            min-width: 300px;
-        }
-        
-        #headerImageContainer {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .header-upload-area:hover {
-            background: linear-gradient(135deg, #e8dcc0 0%, #d4c8a8 100%);
-            border-color: #c0392b;
-        }
-        
-        .header-upload-label {
-            display: inline-block;
-            padding: 15px 30px;
-            background: #2c5f5f;
-            color: #f4f1e8;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-        }
-        
-        .header-upload-label:hover {
-            background: #1e4040;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(44, 95, 95, 0.4);
-        }
-        
         .header-content {
             display: flex;
             align-items: center;
-            gap: 30px;
-            padding: 30px;
+            gap: 0;
+            padding: 0;
+            min-height: 250px;
+        }
+        
+        .header-image {
+            flex: 0 0 40%;
+            background-image: url('header.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f4f1e8;
+            border-radius: 15px 0 0 15px;
+            min-height: 250px;
+        }
+        
+        .header-text {
+            flex: 1;
+            padding: 40px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .header h1 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: #2c5f5f;
-            margin-bottom: 10px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            line-height: 1.2;
         }
         
-        .header p {
-            font-size: 1.1rem;
-            color: #c0392b;
-            margin-bottom: 20px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .file-input-section {
+        .loading-message {
             background: rgba(44, 95, 95, 0.1);
+            border: 2px solid rgba(44, 95, 95, 0.2);
+            color: #2c5f5f;
             padding: 20px;
             border-radius: 10px;
-            margin-bottom: 20px;
-            border: 2px solid rgba(44, 95, 95, 0.2);
-        }
-        
-        .file-input-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .file-input-wrapper {
-            position: relative;
-            overflow: hidden;
-            display: inline-block;
-        }
-        
-        .file-input {
-            position: absolute;
-            left: -9999px;
-            opacity: 0;
-        }
-        
-        .file-input-label {
-            display: inline-block;
-            padding: 12px 25px;
-            background: #2c5f5f;
-            color: #f4f1e8;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .file-input-label:hover {
-            background: #1e4040;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(44, 95, 95, 0.4);
-        }
-        
-        .status-message {
             text-align: center;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            font-weight: 600;
-            display: none;
+            font-size: 16px;
+            margin-bottom: 20px;
         }
         
-        .status-success {
-            background: rgba(46, 125, 50, 0.2);
-            color: #2e7d32;
-            border: 2px solid rgba(46, 125, 50, 0.3);
-        }
-        
-        .status-error {
-            background: rgba(192, 57, 43, 0.2);
-            color: #c0392b;
+        .error-message {
+            background: rgba(192, 57, 43, 0.1);
             border: 2px solid rgba(192, 57, 43, 0.3);
+            color: #c0392b;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 20px;
+            display: none;
         }
         
         .rank-tabs {
@@ -235,6 +148,18 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .results-summary {
+            background: linear-gradient(135deg, #c0392b, #a93226);
+            color: #f4f1e8;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .filters-container {
@@ -305,16 +230,18 @@
         th {
             background: linear-gradient(135deg, #2c5f5f 0%, #1e4040 100%);
             color: #f4f1e8;
-            padding: 20px 15px;
-            text-align: left;
+            padding: 15px 12px;
+            text-align: center;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
             cursor: pointer;
             position: relative;
             user-select: none;
             font-family: 'Georgia', serif;
+            line-height: 1.2;
+            vertical-align: middle;
         }
         
         th:hover {
@@ -324,7 +251,7 @@
         th.sortable::after {
             content: " ↕";
             opacity: 0.5;
-            font-size: 12px;
+            font-size: 11px;
             color: #c0392b;
         }
         
@@ -340,11 +267,17 @@
             color: #c0392b;
         }
         
+        /* Multi-line headers */
+        .header-multiline {
+            white-space: pre-line;
+        }
+        
         td {
-            padding: 15px;
+            padding: 12px;
             border-bottom: 1px solid #e8dcc0;
             font-size: 14px;
             font-family: 'Georgia', serif;
+            text-align: center;
         }
         
         tr:nth-child(even) {
@@ -403,19 +336,21 @@
         .name-cell {
             font-weight: 600;
             color: #2c5f5f;
+            text-align: left;
         }
         
         .delta-cell {
             font-family: 'Courier New', monospace;
             font-weight: 500;
             color: #c0392b;
+            text-align: right;
         }
         
         .missed-rounds {
             background: linear-gradient(135deg, #c0392b, #a93226);
             color: white;
-            padding: 4px 10px;
-            border-radius: 15px;
+            padding: 4px 8px;
+            border-radius: 12px;
             font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
@@ -444,36 +379,28 @@
             font-size: 18px;
         }
         
-        .instructions {
-            background: rgba(44, 95, 95, 0.1);
-            border: 2px solid rgba(44, 95, 95, 0.2);
-            color: #2c5f5f;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-        
-        .results-summary {
-            background: linear-gradient(135deg, #c0392b, #a93226);
-            color: #f4f1e8;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            text-align: center;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
         @media (max-width: 768px) {
             .container { padding: 10px; }
+            .header-content { 
+                flex-direction: column; 
+                text-align: center;
+                padding: 20px;
+                gap: 20px;
+            }
+            .header-image { 
+                flex: none; 
+                width: 100%;
+                min-height: 150px;
+                border-radius: 15px 15px 0 0;
+            }
+            .header-text { 
+                text-align: center;
+                padding: 20px;
+            }
             .header h1 { font-size: 1.8rem; }
-            .header p { font-size: 1rem; }
             .search-input { width: 250px; }
             .filter-select { width: 120px; }
-            th, td { padding: 10px 8px; font-size: 12px; }
+            th, td { padding: 8px 6px; font-size: 12px; }
             .tab-button { padding: 12px 20px; font-size: 14px; }
             .filters-container { gap: 10px; }
             .filter-group { margin-bottom: 10px; }
@@ -484,132 +411,84 @@
     <div class="container">
         <div class="header">
             <div class="header-content">
-                <!-- Header image area -->
-                <div id="headerImageContainer">
-                    <img id="headerImage" class="header-image" style="display: none;" />
-                    <div id="headerUploadArea" class="header-upload-area">
-                        <input type="file" id="headerImageInput" accept="image/*" style="display: none;" />
-                        <label for="headerImageInput" class="header-upload-label">
-                            📸 Upload Header
-                        </label>
-                        <p style="margin-top: 8px; opacity: 0.8; font-size: 12px;">Click to add your image</p>
-                    </div>
-                </div>
-
-                <!-- Header text area -->
+                <div class="header-image"></div>
                 <div class="header-text">
-                    <h1>General Classification Results</h1>
-                    
-                    <div class="file-input-section">
-                        <div class="file-input-container">
-                            <div class="file-input-wrapper">
-                                <input type="file" id="csvFiles" class="file-input" multiple accept=".csv" />
-                                <label for="csvFiles" class="file-input-label">📁 Load CSV Files</label>
-                            </div>
-                        </div>
-                        <div class="status-message" id="statusMessage"></div>
-                    </div>
-                    
-                    <div class="instructions">
-                        <strong>How to use:</strong> 
-                        <br>1. Upload your header image (left)
-                        <br>2. Load your CSV files above
-                        <br>3. Filter and explore results below
-                    </div>
+                    <h1>General<br>Classification<br>Standings</h1>
                 </div>
             </div>
+        </div>
+
+        <div class="loading-message" id="loadingMessage">
+            ⏳ Loading race results...
+        </div>
+
+        <div class="error-message" id="errorMessage">
+            ❌ Error loading race results. Please check that CSV files are available.
         </div>
 
         <div class="rank-tabs" id="rankTabs" style="display: none;"></div>
 
         <div id="tabContents"></div>
-
-        <div class="empty-state" id="emptyState">
-            <h3>👆 Load your CSV files to view the general classification results</h3>
-            <p>Select multiple CSV files generated by your race results processor</p>
-        </div>
     </div>
 
     <script>
         let loadedData = {};
         let currentSort = {};
 
-        document.getElementById('csvFiles').addEventListener('change', handleFileLoad);
-        document.getElementById('headerImageInput').addEventListener('change', handleHeaderImageLoad);
+        // List of CSV files to load (update this list with your actual CSV files)
+        const csvFiles = [
+            'GC_Diamond.csv',
+            'GC_Platinum.csv', 
+            'GC_Gold.csv',
+            'GC_Silver.csv',
+            'GC_Bronze.csv',
+            'GC_Carbon.csv'
+        ];
 
-        async function handleHeaderImageLoad(event) {
-            const file = event.target.files[0];
-            if (!file) return;
+        // Load CSV files on page load
+        document.addEventListener('DOMContentLoaded', loadAllCSVFiles);
 
-            try {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const headerContainer = document.getElementById('headerImageContainer');
-                    const uploadArea = document.getElementById('headerUploadArea');
-                    
-                    // Set the background image
-                    headerContainer.style.backgroundImage = `url(${e.target.result})`;
-                    
-                    // Hide the upload area completely
-                    uploadArea.classList.add('hidden');
-                    
-                    console.log('Image loaded and background set'); // Debug
-                };
-                reader.readAsDataURL(file);
-            } catch (error) {
-                console.error('Error loading header image:', error);
-            }
-        }
-
-        async function handleFileLoad(event) {
-            const files = event.target.files;
-            if (files.length === 0) return;
-
-            const statusMessage = document.getElementById('statusMessage');
-            statusMessage.className = 'status-message';
-            statusMessage.style.display = 'block';
-            statusMessage.textContent = 'Loading files...';
-
+        async function loadAllCSVFiles() {
+            const loadingMessage = document.getElementById('loadingMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
             try {
                 loadedData = {};
+                let loadedCount = 0;
                 
-                for (let file of files) {
-                    const text = await readFileAsText(file);
-                    const data = parseCSV(text);
-                    
-                    if (data.length > 0) {
-                        // Extract rank from filename (e.g., GC_Diamond.csv -> Diamond)
-                        const rankMatch = file.name.match(/GC_(.+)\.csv/i);
-                        const rank = rankMatch ? rankMatch[1].replace('_', ' ') : file.name.replace('.csv', '');
-                        
-                        loadedData[rank] = data;
+                for (let filename of csvFiles) {
+                    try {
+                        const response = await fetch(filename);
+                        if (response.ok) {
+                            const text = await response.text();
+                            const data = parseCSV(text);
+                            
+                            if (data.length > 0) {
+                                // Extract rank from filename (e.g., GC_Diamond.csv -> Diamond)
+                                const rankMatch = filename.match(/GC_(.+)\.csv/i);
+                                const rank = rankMatch ? rankMatch[1].replace('_', ' ') : filename.replace('.csv', '');
+                                
+                                loadedData[rank] = data;
+                                loadedCount++;
+                            }
+                        }
+                    } catch (fileError) {
+                        console.warn(`Could not load ${filename}:`, fileError);
                     }
                 }
 
-                if (Object.keys(loadedData).length > 0) {
+                if (loadedCount > 0) {
                     displayResults();
-                    statusMessage.className = 'status-message status-success';
-                    statusMessage.textContent = `✅ Successfully loaded ${Object.keys(loadedData).length} classification(s)`;
-                    setTimeout(() => {
-                        statusMessage.style.display = 'none';
-                    }, 3000);
+                    loadingMessage.style.display = 'none';
                 } else {
-                    throw new Error('No valid data found in files');
+                    throw new Error('No CSV files could be loaded');
                 }
 
             } catch (error) {
-                statusMessage.className = 'status-message status-error';
-                statusMessage.textContent = `❌ Error loading files: ${error.message}`;
+                console.error('Error loading CSV files:', error);
+                loadingMessage.style.display = 'none';
+                errorMessage.style.display = 'block';
             }
-        }
-
-        function readFileAsText(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = e => resolve(e.target.result);
-                reader.onerror = e => reject(new Error('Failed to read file'));
-                reader.readAsText(file);
-            });
         }
 
         function parseCSV(text) {
@@ -656,7 +535,6 @@
         }
 
         function displayResults() {
-            document.getElementById('emptyState').style.display = 'none';
             document.getElementById('rankTabs').style.display = 'flex';
 
             const tabsContainer = document.getElementById('rankTabs');
@@ -766,8 +644,10 @@
 
             visibleHeaders.forEach(header => {
                 const sortable = ['Position', 'TotalDeltaTime', 'RoundsCompleted', 'MissedRounds', 'AverageDeltaTime'].includes(header);
-                tableHTML += `<th class="${sortable ? 'sortable' : ''}" 
-                              ${sortable ? `onclick="sortTable('${rank}', '${header}')"` : ''}>${header}</th>`;
+                const displayHeader = formatHeaderText(header);
+                
+                tableHTML += `<th class="${sortable ? 'sortable' : ''} header-multiline" 
+                              ${sortable ? `onclick="sortTable('${rank}', '${header}')"` : ''}>${displayHeader}</th>`;
             });
 
             tableHTML += `</tr></thead><tbody>`;
@@ -807,6 +687,20 @@
 
             tableHTML += '</tbody></table>';
             return tableHTML;
+        }
+
+        function formatHeaderText(header) {
+            // Convert camelCase to separate words and add line breaks
+            const formatted = header
+                .replace(/([A-Z])/g, ' $1') // Add space before capital letters
+                .replace(/^./, str => str.toUpperCase()) // Capitalize first letter
+                .trim();
+            
+            // Split long headers into multiple lines
+            if (formatted.includes(' ')) {
+                return formatted.replace(/ /g, '\n');
+            }
+            return formatted;
         }
 
         function switchTab(rank) {
