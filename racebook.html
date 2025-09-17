@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>British National Circuit Series - Racebook</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #f4f1e8 0%, #e8dcc0 50%, #f4f1e8 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: #f4f1e8;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(44, 95, 95, 0.1);
+            backdrop-filter: blur(10px);
+            border: 3px solid #2c5f5f;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            padding: 0;
+            min-height: 250px;
+        }
+        
+        .header-image {
+            flex: 0 0 40%;
+            background-image: url('./banner.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f4f1e8;
+            border-radius: 15px 0 0 15px;
+            min-height: 250px;
+            position: relative;
+        }
+        
+        .header-image::after {
+            content: 'Upload banner.png to display header image';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #2c5f5f;
+            font-size: 14px;
+            text-align: center;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        .header-image.loaded::after {
+            display: none;
+        }
+        
+        .header-text {
+            flex: 1;
+            padding: 40px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #f4f1e8;
+            border-radius: 0 15px 15px 0;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c5f5f;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: #c0392b;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(44, 95, 95, 0.1);
+            backdrop-filter: blur(10px);
+            border: 3px solid #2c5f5f;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #2c5f5f;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #c0392b;
+        }
+        
+        .intro-text {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .description-text {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .race-schedule {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .race-week {
+            background: linear-gradient(135deg, #2c5f5f, #1e4040);
+            color: #f4f1e8;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(44, 95, 95, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .race-week:hover {
+            transform: translateY(-5px);
+        }
+        
+        .week-number {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #c0392b;
+        }
+        
+        .week-date {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        .course-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .finale-week {
+            background: linear-gradient(135deg, #c0392b, #a93226);
+            border: 2px solid #f1c40f;
+        }
+        
+        .rules-list {
+            list-style: none;
+            counter-reset: rule-counter;
+        }
+        
+        .rules-list li {
+            counter-increment: rule-counter;
+            margin-bottom: 15px;
+            padding-left: 40px;
+            position: relative;
+            font-size: 1rem;
+        }
+        
+        .rules-list li::before {
+            content: counter(rule-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #2c5f5f;
+            color: #f4f1e8;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .race-times {
+            background: linear-gradient(135deg, #c0392b, #a93226);
+            color: #f4f1e8;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .race-times h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .time-slot {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+        
+        .important-note {
+            background: rgba(44, 95, 95, 0.1);
+            border: 2px solid #2c5f5f;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        
+        .brought-by {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #2c5f5f;
+        }
+        
+        .brought-by-text {
+            font-size: 1.1rem;
+            color: #2c5f5f;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .chaos-logo {
+            color: #c0392b;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            .header-content { 
+                flex-direction: column; 
+                text-align: center;
+                padding: 20px;
+                gap: 20px;
+            }
+            .header-image { 
+                flex: none; 
+                width: 100%;
+                min-height: 150px;
+                border-radius: 15px 15px 0 0;
+            }
+            .header-text { 
+                text-align: center;
+                padding: 20px;
+                background-color: #f4f1e8;
+                border-radius: 0 0 15px 15px;
+            }
+            .header h1 { font-size: 1.8rem; }
+            .subtitle { font-size: 1rem; }
+            .content-section { padding: 20px; }
+            .race-schedule { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="header-image"></div>
+                <div class="header-text">
+                    <h1>British National<br>Circuit Series<br>Racebook</h1>
+                    <div class="subtitle">TrainingPeaks Virtual</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Series Overview</h2>
+            <p class="intro-text">Each week one of the iconic British Cycling Circuit Series courses will be available to race using TrainingPeaks Virtual's new GPXplore functionality.</p>
+            
+            <p class="description-text">Each course GPX is carefully curated to best replicate the real life courses and ensure no course oddities.</p>
+            
+            <p class="description-text">These routes are characterised by tight turns, steep climbs and constant on/off action. The series culminates with the iconic Lincoln Grand Prix and the brutally steep Michaelgate cobbled climb.</p>
+            
+            <p class="description-text"><strong>Choose your own slot:</strong> with races twice per day for a whole week, you can choose when to take part!</p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Race Schedule</h2>
+            <div class="race-schedule">
+                <div class="race-week">
+                    <div class="week-number">Week 1</div>
+                    <div class="week-date">(6th Oct)</div>
+                    <div class="course-name">Otley</div>
+                </div>
+                <div class="race-week">
+                    <div class="week-number">Week 2</div>
+                    <div class="week-date">(13th Oct)</div>
+                    <div class="course-name">Ilkley</div>
+                </div>
+                <div class="race-week">
+                    <div class="week-number">Week 3</div>
+                    <div class="week-date">(20th Oct)</div>
+                    <div class="course-name">Guildford</div>
+                </div>
+                <div class="race-week">
+                    <div class="week-number">Week 4</div>
+                    <div class="week-date">(27th Oct)</div>
+                    <div class="course-name">Sheffield</div>
+                </div>
+                <div class="race-week">
+                    <div class="week-number">Week 5</div>
+                    <div class="week-date">(3rd Nov)</div>
+                    <div class="course-name">Colne</div>
+                </div>
+                <div class="race-week">
+                    <div class="week-number">Week 6</div>
+                    <div class="week-date">(10th Nov)</div>
+                    <div class="course-name">Dawlish</div>
+                </div>
+                <div class="race-week finale-week">
+                    <div class="week-number">Week 7</div>
+                    <div class="week-date">(17th Nov)</div>
+                    <div class="course-name">Lincoln Grand Prix</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Race Times</h2>
+            <div class="race-times">
+                <h3>Daily Race Slots</h3>
+                <div class="time-slot">1:00 PM UK Time (BST/GMT)</div>
+                <div class="time-slot">6:30 PM UK Time (BST/GMT)</div>
+            </div>
+            <div class="important-note">
+                <strong>Important:</strong> Only the first race that you take part in per course counts for the GC. You are welcome to take part multiple times during the week that a specific course is available.
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Ruleset</h2>
+            <ul class="rules-list">
+                <li><strong>Performance verification is turned on.</strong> Smart trainer and heartrate monitor are mandatory. The system decision is final.</li>
+                
+                <li><strong>Pens are determined by your ARR rank</strong></li>
+                
+                <li><strong>Bots will fill pens</strong> (to 30 racers)</li>
+                
+                <li><strong>GC times are decided on the gap from the winner.</strong> The winner scores a penalty of 0 seconds, if 2nd place is 10 seconds back, they will receive a +10s score</li>
+                
+                <li><strong>Races are scheduled every day</strong> 2 slots: 1PM UK time (BST/GMT) and 6:30PM UK time (BST/GMT). Only the first race that you take part in per course counts for the GC. You are welcome to take part multiple times during the week that a specific course is available.</li>
+                
+                <li><strong>In the case that a rider is promoted between ranks</strong> during the course of the series, their score will carry over to the higher rank. For example, if a bronze rider places 2nd in their first race with a time deficit of 5 seconds, and is subsequently promoted to silver, in the second race they will be placed in the silver pen, and their silver GC score is +5.</li>
+            </ul>
+        </div>
+
+        <div class="brought-by">
+            <div class="brought-by-text">Brought you by</div>
+            <div class="chaos-logo">CHAOS RACING</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            checkBannerImage();
+        });
+
+        function checkBannerImage() {
+            const img = new Image();
+            img.onload = function() {
+                document.querySelector('.header-image').classList.add('loaded');
+                console.log('✅ Banner image loaded successfully');
+            };
+            img.onerror = function() {
+                console.log('Banner image not found, using placeholder text');
+            };
+            img.src = './banner.png?' + Date.now();
+        }
+    </script>
+</body>
+</html>
