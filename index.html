@@ -45,7 +45,7 @@
         
         .header-image {
             flex: 0 0 40%;
-            background-image: url('header.png');
+            background-image: url('banner.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -690,6 +690,11 @@
         }
 
         function formatHeaderText(header) {
+            // Special cases for single words that shouldn't be split
+            if (header === 'ARR') {
+                return 'ARR';
+            }
+            
             // Convert camelCase to separate words and add line breaks
             const formatted = header
                 .replace(/([A-Z])/g, ' $1') // Add space before capital letters
