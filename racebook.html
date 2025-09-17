@@ -176,6 +176,69 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .course-name:hover {
+            color: #f1c40f;
+            text-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+        }
+        
+        .modal-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 3px solid #2c5f5f;
+        }
+        
+        .modal-title {
+            color: #f4f1e8;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: #f4f1e8;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: #c0392b;
         }
         
         .finale-week {
@@ -399,37 +462,37 @@
                 <div class="race-week">
                     <div class="week-number">Week 1</div>
                     <div class="week-date">(6th Oct)</div>
-                    <div class="course-name">Otley</div>
+                    <div class="course-name" onclick="openModal('Otley')">Otley</div>
                 </div>
                 <div class="race-week">
                     <div class="week-number">Week 2</div>
                     <div class="week-date">(13th Oct)</div>
-                    <div class="course-name">Ilkley</div>
+                    <div class="course-name" onclick="openModal('Ilkley')">Ilkley</div>
                 </div>
                 <div class="race-week">
                     <div class="week-number">Week 3</div>
                     <div class="week-date">(20th Oct)</div>
-                    <div class="course-name">Guildford</div>
+                    <div class="course-name" onclick="openModal('Guildford')">Guildford</div>
                 </div>
                 <div class="race-week">
                     <div class="week-number">Week 4</div>
                     <div class="week-date">(27th Oct)</div>
-                    <div class="course-name">Sheffield</div>
+                    <div class="course-name" onclick="openModal('Sheffield')">Sheffield</div>
                 </div>
                 <div class="race-week">
                     <div class="week-number">Week 5</div>
                     <div class="week-date">(3rd Nov)</div>
-                    <div class="course-name">Colne</div>
+                    <div class="course-name" onclick="openModal('Colne')">Colne</div>
                 </div>
                 <div class="race-week">
                     <div class="week-number">Week 6</div>
                     <div class="week-date">(10th Nov)</div>
-                    <div class="course-name">Dawlish</div>
+                    <div class="course-name" onclick="openModal('Dawlish')">Dawlish</div>
                 </div>
                 <div class="race-week finale-week">
                     <div class="week-number">Week 7</div>
                     <div class="week-date">(17th Nov)</div>
-                    <div class="course-name">Lincoln Grand Prix</div>
+                    <div class="course-name" onclick="openModal('Lincoln')">Lincoln Grand Prix</div>
                 </div>
             </div>
         </div>
@@ -469,9 +532,33 @@
         </div>
     </div>
 
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-title" id="modalTitle"></div>
+            <img id="modalImage" class="modal-image" src="" alt="">
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             checkBannerImage();
+            
+            // Close modal when clicking outside the image
+            window.onclick = function(event) {
+                const modal = document.getElementById('imageModal');
+                if (event.target === modal) {
+                    closeModal();
+                }
+            }
+            
+            // Close modal with escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    closeModal();
+                }
+            });
         });
 
         function checkBannerImage() {
@@ -484,6 +571,39 @@
                 console.log('Banner image not found, using placeholder text');
             };
             img.src = './banner.png?' + Date.now();
+        }
+        
+        function openModal(courseName) {
+            const modal = document.getElementById('imageModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalImage = document.getElementById('modalImage');
+            
+            // Set the title
+            modalTitle.textContent = courseName + ' Circuit';
+            
+            // Create image filename from course name (lowercase with .png extension)
+            let imageName = courseName.toLowerCase();
+            
+            // Handle special case for Lincoln Grand Prix
+            if (courseName === 'Lincoln') {
+                imageName = 'lincoln';
+            }
+            
+            const imagePath = './' + imageName + '.png';
+            
+            // Set image source and alt text
+            modalImage.src = imagePath;
+            modalImage.alt = courseName + ' Circuit Course';
+            
+            // Show modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
         }
     </script>
 </body>
