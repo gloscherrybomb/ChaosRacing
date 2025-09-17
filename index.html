@@ -45,7 +45,7 @@
         
         .header-image {
             flex: 0 0 40%;
-            background-image: url('/banner.png');
+            background-image: url('./banner.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -464,11 +464,15 @@
             const img = new Image();
             img.onload = function() {
                 document.querySelector('.header-image').classList.add('loaded');
+                console.log('✅ Banner image loaded successfully');
             };
             img.onerror = function() {
-                console.warn('Banner image not found. Please upload banner.png to your repository.');
+                console.error('❌ Banner image not found. Please check that banner.png exists in the same directory as index.html');
+                console.log('Expected path: ./banner.png');
+                console.log('Current page URL:', window.location.href);
             };
-            img.src = 'banner.png';
+            // Use relative path that matches the CSS
+            img.src = './banner.png?' + Date.now();
         }
 
         async function loadAllCSVFiles() {
