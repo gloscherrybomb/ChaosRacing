@@ -46,7 +46,7 @@
         .header-image {
             flex: 0 0 40%;
             background-image: url('./banner.png');
-            background-size: cover;
+            background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
             background-color: #f4f1e8;
@@ -315,6 +315,7 @@
             text-align: center;
             width: 60px;
             vertical-align: middle;
+            padding: 12px;
         }
         
         .position-1, .position-2, .position-3 {
@@ -325,7 +326,8 @@
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            margin: 0;
+            margin: 0 auto;
+            vertical-align: middle;
         }
         
         .position-1 { 
