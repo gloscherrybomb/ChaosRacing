@@ -384,11 +384,62 @@
             font-weight: 600;
         }
         
-        .empty-state {
-            text-align: center;
-            padding: 60px;
+        .sponsor-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(44, 95, 95, 0.1);
+            backdrop-filter: blur(10px);
+            border: 3px solid #2c5f5f;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        
+        .sponsor-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .presented-by {
+            font-size: 1.1rem;
             color: #2c5f5f;
-            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .chaos-banner {
+            height: 60px;
+            width: auto;
+        }
+        
+        .sponsor-right {
+            display: flex;
+            align-items: center;
+        }
+        
+        .racebook-link {
+            background: linear-gradient(135deg, #c0392b, #a93226);
+            color: #f4f1e8;
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border: 2px solid #c0392b;
+        }
+        
+        .racebook-link:hover {
+            background: linear-gradient(135deg, #a93226, #c0392b);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(192, 57, 43, 0.3);
         }
         
         @media (max-width: 768px) {
@@ -418,6 +469,22 @@
             .tab-button { padding: 12px 20px; font-size: 14px; }
             .filters-container { gap: 10px; }
             .filter-group { margin-bottom: 10px; }
+            .sponsor-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+                padding: 20px;
+            }
+            .sponsor-left {
+                justify-content: center;
+            }
+            .chaos-banner {
+                height: 50px;
+            }
+            .racebook-link {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -429,6 +496,16 @@
                 <div class="header-text">
                     <h1>General<br>Classification<br>Standings</h1>
                 </div>
+            </div>
+        </div>
+
+        <div class="sponsor-section">
+            <div class="sponsor-left">
+                <span class="presented-by">Presented by</span>
+                <img src="./iVChaosBanner.png" alt="iV Chaos Racing" class="chaos-banner">
+            </div>
+            <div class="sponsor-right">
+                <a href="racebook.html" class="racebook-link">📖 View Racebook</a>
             </div>
         </div>
 
