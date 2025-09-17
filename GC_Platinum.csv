@@ -1,0 +1,9 @@
+Position,Name,Team,Country,Gender,Rank,RoundsCompleted,MissedRounds,TotalDeltaTime,AverageDeltaTime,BestDeltaTime,WorstDeltaTime,UID,ARR,ARRBand,AgeBand
+1,Julia Roberts,Pedal Power,ESP,Male,Platinum,5,1,97.458,19.492,5.735,60.0,TestUser5806,1558,Platinum 3,40-49
+2,Laura Clark,,NZL,Male,Platinum,5,2,143.568,28.714,4.901,60.0,TestUser1194,1560,Platinum 1,40-49
+3,George Clark,Chain Reaction,GER,Male,Platinum,5,2,171.824,34.365,13.076,60.0,TestUser2708,1493,Platinum 2,60+
+4,Victoria Roberts,Speed Demons,FRA,Female,Platinum,5,3,200.477,40.095,6.387,60.0,TestUser7121,1333,Platinum 3,30-39
+5,Nina Anderson,,USA,Male,Platinum,5,3,208.082,41.616,9.812,60.0,TestUser7647,1228,Platinum 2,
+6,Diana Brown,,DEN,Male,Platinum,5,3,211.45,42.29,9.529,60.0,TestUser1639,1278,Platinum 1,
+7,Xena Evans,Wind Warriors,FIN,Female,Platinum,5,3,211.536,42.307,12.32,60.0,TestUser3286,1529,Platinum 1,18-29
+8,Nina Davis,Lightning Bolts,GBR,Female,Platinum,5,4,243.601,48.72,3.601,60.0,TestUser4102,1305,Platinum 2,18-29

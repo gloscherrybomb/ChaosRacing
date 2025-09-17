@@ -1,0 +1,9 @@
+Position,Name,Team,Country,Gender,Rank,RoundsCompleted,MissedRounds,TotalDeltaTime,AverageDeltaTime,BestDeltaTime,WorstDeltaTime,UID,ARR,ARRBand,AgeBand
+1,Emma Jackson,Velocity Squad,CAN,Female,Gold,5,1,111.898,22.38,9.657,60.0,TestUser9095,1197,Gold 2,60+
+2,Tina Anderson,,NZL,Male,Gold,5,2,138.057,27.611,3.371,60.0,TestUser9853,1387,Gold 1,
+3,Yuki Parker,Velocity Squad,DEN,Male,Gold,5,2,148.856,29.771,3.482,60.0,TestUser7223,1368,Gold 3,50-59
+4,Fiona Harris,Chain Reaction,BEL,Male,Gold,5,2,177.309,35.462,17.796,60.0,TestUser3345,1554,Gold 2,30-39
+5,Zoe Harris,Rapid Force,FIN,Female,Gold,5,3,194.203,38.841,3.035,60.0,TestUser4503,1393,Gold 1,18-29
+6,Emma Miller,Lightning Bolts,ESP,Male,Gold,5,3,196.892,39.378,7.876,60.0,TestUser9909,1307,Gold 3,30-39
+7,Edward Lewis,Turbo Team,CAN,Male,Gold,5,3,206.395,41.279,13.196,60.0,TestUser6205,1400,Gold 1,18-29
+8,Bob King,,GER,Female,Gold,5,4,253.611,50.722,13.611,60.0,TestUser9343,1541,Gold 1,50-59
