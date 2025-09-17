@@ -581,12 +581,12 @@
             // Set the title
             modalTitle.textContent = courseName + ' Circuit';
             
-            // Create image filename from course name (lowercase with .png extension)
-            let imageName = courseName.toLowerCase();
+            // Create image filename from course name (capitalize first letter with .png extension)
+            let imageName = courseName;
             
             // Handle special case for Lincoln Grand Prix
             if (courseName === 'Lincoln') {
-                imageName = 'lincoln';
+                imageName = 'Lincoln';
             }
             
             const imagePath = './' + imageName + '.png';
