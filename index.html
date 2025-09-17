@@ -52,6 +52,26 @@
             background-color: #f4f1e8;
             border-radius: 15px 0 0 15px;
             min-height: 250px;
+            position: relative;
+        }
+        
+        /* Add a text overlay when image is missing for debugging */
+        .header-image::after {
+            content: 'Upload banner.png to display header image';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #2c5f5f;
+            font-size: 14px;
+            text-align: center;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        /* Hide the text when image loads */
+        .header-image.loaded::after {
+            display: none;
         }
         
         .header-text {
@@ -294,43 +314,31 @@
             color: #2c5f5f;
             text-align: center;
             width: 60px;
+            vertical-align: middle;
+        }
+        
+        .position-1, .position-2, .position-3 {
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            margin: 0;
         }
         
         .position-1 { 
             color: #f1c40f; 
-            background: rgba(241, 196, 15, 0.1);
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            font-weight: 800;
+            background: rgba(241, 196, 15, 0.2);
         }
         .position-2 { 
             color: #95a5a6; 
-            background: rgba(149, 165, 166, 0.1);
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            font-weight: 800;
+            background: rgba(149, 165, 166, 0.2);
         }
         .position-3 { 
             color: #e67e22; 
-            background: rgba(230, 126, 34, 0.1);
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            font-weight: 800;
+            background: rgba(230, 126, 34, 0.2);
         }
         
         .name-cell {
@@ -446,7 +454,22 @@
         ];
 
         // Load CSV files on page load
-        document.addEventListener('DOMContentLoaded', loadAllCSVFiles);
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllCSVFiles();
+            checkBannerImage();
+        });
+
+        function checkBannerImage() {
+            // Test if banner image exists
+            const img = new Image();
+            img.onload = function() {
+                document.querySelector('.header-image').classList.add('loaded');
+            };
+            img.onerror = function() {
+                console.warn('Banner image not found. Please upload banner.png to your repository.');
+            };
+            img.src = 'banner.png';
+        }
 
         async function loadAllCSVFiles() {
             const loadingMessage = document.getElementById('loadingMessage');
