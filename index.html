@@ -55,25 +55,6 @@
             position: relative;
         }
         
-        /* Add a text overlay when image is missing for debugging */
-        .header-image::after {
-            content: 'Upload banner.png to display header image';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #2c5f5f;
-            font-size: 14px;
-            text-align: center;
-            opacity: 0.7;
-            pointer-events: none;
-        }
-        
-        /* Hide the text when image loads */
-        .header-image.loaded::after {
-            display: none;
-        }
-        
         .header-text {
             flex: 1;
             padding: 40px;
