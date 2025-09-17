@@ -690,9 +690,12 @@
         }
 
         function formatHeaderText(header) {
-            // Special cases for single words that shouldn't be split
+            // Special cases for single words/phrases that shouldn't be split
             if (header === 'ARR') {
                 return 'ARR';
+            }
+            if (header === 'ARRBand') {
+                return 'ARR\nBand';
             }
             
             // Convert camelCase to separate words and add line breaks
