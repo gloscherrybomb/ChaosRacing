@@ -700,13 +700,14 @@
                         </div>
                         <div class="filter-group">
                             <label class="filter-label">Age Group</label>
-                            <select class="filter-select ageband-filter" 
+                            <select class="ageband-filter" 
                                     onchange="filterTable('${rank}', getSearchValue('${rank}'), getGenderFilter('${rank}'), this.value)">
                                 <option value="">All Ages</option>
                                 ${ageBandOptions}
                             </select>
                         </div>
                     </div>
+                    ${createPodium(rank, loadedData[rank])}
                     <div class="table-container">
                         ${createTable(rank, loadedData[rank])}
                     </div>
@@ -725,6 +726,54 @@
             if (rankLower.includes('bronze')) return '🥉';
             if (rankLower.includes('carbon')) return '⚫';
             return '🏆';
+        }
+
+        function createPodium(rank, data) {
+            if (data.length === 0) {
+                return '';
+            }
+
+            // Get top 3 riders
+            const top3 = data.slice(0, 3);
+            
+            if (top3.length === 0) {
+                return '';
+            }
+
+            let podiumHTML = '<div class="podium-container">';
+            
+            // Add podium positions (2nd, 1st, 3rd order for visual layout)
+            for (let i = 0; i < 3 && i < top3.length; i++) {
+                const rider = top3[i];
+                const position = i + 1;
+                const name = rider.Name || 'Unknown';
+                const totalTime = rider.TotalDeltaTime || rider.AverageDeltaTime || '';
+                
+                let positionClass = '';
+                let displayTime = '';
+                
+                if (position === 1) {
+                    positionClass = 'podium-first';
+                    displayTime = totalTime ? (totalTime === '0' ? 'Winner' : `+${parseFloat(totalTime).toFixed(3)}s`) : 'Winner';
+                } else if (position === 2) {
+                    positionClass = 'podium-second';
+                    displayTime = totalTime ? `+${parseFloat(totalTime).toFixed(3)}s` : '';
+                } else if (position === 3) {
+                    positionClass = 'podium-third';
+                    displayTime = totalTime ? `+${parseFloat(totalTime).toFixed(3)}s` : '';
+                }
+                
+                podiumHTML += `
+                    <div class="podium-position ${positionClass}">
+                        <div class="podium-number">${position}</div>
+                        <div class="podium-name">${name}</div>
+                        <div class="podium-time">${displayTime}</div>
+                    </div>
+                `;
+            }
+            
+            podiumHTML += '</div>';
+            return podiumHTML;
         }
 
         function createTable(rank, data) {
