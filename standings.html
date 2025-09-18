@@ -728,62 +728,6 @@
             return '🏆';
         }
 
-        function createPodium(rank, data) {
-            if (data.length === 0) {
-                return '';
-            }
-
-            // Get top 3 riders
-            const top3 = data.slice(0, 3);
-            
-            if (top3.length === 0) {
-                return '';
-            }
-
-            let podiumHTML = '<div style="display: flex !important; justify-content: center !important; align-items: flex-end !important; margin: 30px 0 !important; gap: 15px !important; min-height: 160px !important; width: 100% !important;">';
-            
-            // Add podium positions (2nd, 1st, 3rd order for visual layout)
-            for (let i = 0; i < 3 && i < top3.length; i++) {
-                const rider = top3[i];
-                const position = i + 1;
-                const name = rider.Name || 'Unknown';
-                const team = rider.Team || '';
-                
-                let height = '';
-                let order = '';
-                let bgColor = '';
-                let borderColor = '';
-                
-                if (position === 1) {
-                    height = '110px';
-                    order = '2';
-                    bgColor = 'linear-gradient(135deg, #2c5f5f, #1e4040)';
-                    borderColor = '#f1c40f';
-                } else if (position === 2) {
-                    height = '90px';
-                    order = '1';
-                    bgColor = 'linear-gradient(135deg, #95a5a6, #7f8c8d)';
-                    borderColor = '#bdc3c7';
-                } else if (position === 3) {
-                    height = '70px';
-                    order = '3';
-                    bgColor = 'linear-gradient(135deg, #c0392b, #a93226)';
-                    borderColor = '#e67e22';
-                }
-                
-                podiumHTML += `
-                    <div style="display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; padding: 12px 8px !important; border-radius: 10px !important; color: #f4f1e8 !important; font-weight: 600 !important; text-align: center !important; min-width: 120px !important; max-width: 120px !important; position: relative !important; box-sizing: border-box !important; background: ${bgColor} !important; height: ${height} !important; order: ${order} !important; border: 3px solid ${borderColor} !important; box-shadow: 0 8px 20px rgba(44, 95, 95, 0.3) !important; font-family: 'Georgia', serif !important;">
-                        <div style="font-size: 1.8rem !important; margin-bottom: 6px !important; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important; color: #f4f1e8 !important; font-weight: 800 !important;">${position}</div>
-                        <div style="font-size: 0.8rem !important; font-weight: 600 !important; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important; line-height: 1.1 !important; word-wrap: break-word !important; color: #f4f1e8 !important; margin-bottom: 4px !important; hyphens: auto !important; overflow-wrap: break-word !important;">${name}</div>
-                        <div style="font-size: 0.7rem !important; opacity: 0.9 !important; font-family: 'Georgia', serif !important; color: #f4f1e8 !important; font-weight: 400 !important; font-style: italic !important; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important; line-height: 1.1 !important; word-wrap: break-word !important; hyphens: auto !important; overflow-wrap: break-word !important;">${team || 'Independent'}</div>
-                    </div>
-                `;
-            }
-            
-            podiumHTML += '</div>';
-            return podiumHTML;
-        }
-
         function createTable(rank, data) {
             if (data.length === 0) {
                 return '<div class="empty-state"><h3>No data available</h3></div>';
