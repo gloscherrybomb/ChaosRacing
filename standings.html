@@ -740,7 +740,7 @@
                 return '';
             }
 
-            let podiumHTML = '<div class="podium-container">';
+            let podiumHTML = '<div style="display: flex !important; justify-content: center !important; align-items: flex-end !important; margin: 30px 0 !important; gap: 10px !important; min-height: 180px !important; width: 100% !important;">';
             
             // Add podium positions (2nd, 1st, 3rd order for visual layout)
             for (let i = 0; i < 3 && i < top3.length; i++) {
@@ -749,25 +749,34 @@
                 const name = rider.Name || 'Unknown';
                 const totalTime = rider.TotalDeltaTime || rider.AverageDeltaTime || '';
                 
-                let positionClass = '';
+                let positionStyle = '';
                 let displayTime = '';
+                let height = '';
+                let order = '';
+                let bgColor = '';
                 
                 if (position === 1) {
-                    positionClass = 'podium-first';
+                    height = '120px';
+                    order = '2';
+                    bgColor = 'linear-gradient(135deg, #f1c40f, #f39c12)';
                     displayTime = totalTime ? (totalTime === '0' ? 'Winner' : `+${parseFloat(totalTime).toFixed(3)}s`) : 'Winner';
                 } else if (position === 2) {
-                    positionClass = 'podium-second';
+                    height = '100px';
+                    order = '1';
+                    bgColor = 'linear-gradient(135deg, #95a5a6, #7f8c8d)';
                     displayTime = totalTime ? `+${parseFloat(totalTime).toFixed(3)}s` : '';
                 } else if (position === 3) {
-                    positionClass = 'podium-third';
+                    height = '80px';
+                    order = '3';
+                    bgColor = 'linear-gradient(135deg, #e67e22, #d35400)';
                     displayTime = totalTime ? `+${parseFloat(totalTime).toFixed(3)}s` : '';
                 }
                 
                 podiumHTML += `
-                    <div class="podium-position ${positionClass}">
-                        <div class="podium-number">${position}</div>
-                        <div class="podium-name">${name}</div>
-                        <div class="podium-time">${displayTime}</div>
+                    <div style="display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; padding: 15px 10px !important; border-radius: 10px !important; color: white !important; font-weight: 700 !important; text-align: center !important; min-width: 140px !important; position: relative !important; box-sizing: border-box !important; background: ${bgColor} !important; height: ${height} !important; order: ${order} !important; border: 3px solid rgba(255,255,255,0.3) !important; box-shadow: 0 8px 20px rgba(0,0,0,0.3) !important;">
+                        <div style="font-size: 2rem !important; margin-bottom: 8px !important; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3) !important; color: white !important; font-weight: 800 !important;">${position}</div>
+                        <div style="font-size: 0.9rem !important; font-weight: 600 !important; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) !important; line-height: 1.2 !important; word-wrap: break-word !important; color: white !important; margin-bottom: 5px !important;">${name}</div>
+                        <div style="font-size: 0.8rem !important; opacity: 0.9 !important; font-family: 'Courier New', monospace !important; color: white !important; font-weight: 500 !important;">${displayTime}</div>
                     </div>
                 `;
             }
