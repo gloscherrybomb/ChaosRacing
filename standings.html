@@ -75,6 +75,87 @@
             line-height: 1.2;
         }
         
+        .sponsor-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(44, 95, 95, 0.1);
+            backdrop-filter: blur(10px);
+            border: 3px solid #2c5f5f;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        
+        .sponsor-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .presented-by {
+            font-size: 1.1rem;
+            color: #2c5f5f;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .chaos-banner {
+            height: 60px;
+            width: auto;
+        }
+        
+        .sponsor-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .racebook-link {
+            background: linear-gradient(135deg, #c0392b, #a93226);
+            color: #f4f1e8;
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border: 2px solid #c0392b;
+        }
+        
+        .racebook-link:hover {
+            background: linear-gradient(135deg, #a93226, #c0392b);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(192, 57, 43, 0.3);
+        }
+        
+        .placeholder-notice {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 3px solid #d35400;
+            box-shadow: 0 5px 15px rgba(211, 84, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 5px 15px rgba(211, 84, 0, 0.3); }
+            50% { box-shadow: 0 5px 25px rgba(211, 84, 0, 0.5); }
+            100% { box-shadow: 0 5px 15px rgba(211, 84, 0, 0.3); }
+        }
+        
         .loading-message {
             background: rgba(44, 95, 95, 0.1);
             border: 2px solid rgba(44, 95, 95, 0.2);
@@ -270,7 +351,6 @@
             color: #c0392b;
         }
         
-        /* Multi-line headers */
         .header-multiline {
             white-space: pre-line;
         }
@@ -365,63 +445,11 @@
             font-weight: 600;
         }
         
-        .sponsor-section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(44, 95, 95, 0.1);
-            backdrop-filter: blur(10px);
-            border: 3px solid #2c5f5f;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-        
-        .sponsor-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .presented-by {
-            font-size: 1.1rem;
+        .empty-state {
+            text-align: center;
+            padding: 60px;
             color: #2c5f5f;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .chaos-banner {
-            height: 60px;
-            width: auto;
-        }
-        
-        .sponsor-right {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .racebook-link {
-            background: linear-gradient(135deg, #c0392b, #a93226);
-            color: #f4f1e8;
-            padding: 15px 25px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            border: 2px solid #c0392b;
-        }
-        
-        .racebook-link:hover {
-            background: linear-gradient(135deg, #a93226, #c0392b);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(192, 57, 43, 0.3);
+            font-size: 18px;
         }
         
         @media (max-width: 768px) {
@@ -532,18 +560,14 @@
         });
 
         function checkBannerImage() {
-            // Test if banner image exists
             const img = new Image();
             img.onload = function() {
                 document.querySelector('.header-image').classList.add('loaded');
                 console.log('✅ Banner image loaded successfully');
             };
             img.onerror = function() {
-                console.error('❌ Banner image not found. Please check that banner.png exists in the same directory as index.html');
-                console.log('Expected path: ./banner.png');
-                console.log('Current page URL:', window.location.href);
+                console.log('Banner image not found, using placeholder text');
             };
-            // Use relative path that matches the CSS
             img.src = './banner.png?' + Date.now();
         }
 
@@ -700,14 +724,13 @@
                         </div>
                         <div class="filter-group">
                             <label class="filter-label">Age Group</label>
-                            <select class="ageband-filter" 
+                            <select class="filter-select ageband-filter" 
                                     onchange="filterTable('${rank}', getSearchValue('${rank}'), getGenderFilter('${rank}'), this.value)">
                                 <option value="">All Ages</option>
                                 ${ageBandOptions}
                             </select>
                         </div>
                     </div>
-               
                     <div class="table-container">
                         ${createTable(rank, loadedData[rank])}
                     </div>
@@ -767,7 +790,6 @@
                         } else if (cellContent === '3') {
                             cellContent = '<div class="position-3">3</div>';
                         }
-                        // Don't add position-1/2/3 classes to the cell itself
                     } else if (header === 'Name') {
                         cellClass = 'name-cell';
                     } else if (header === 'Gender') {
