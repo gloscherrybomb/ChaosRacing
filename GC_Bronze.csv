@@ -1,9 +1,3 @@
 Position,Name,Team,Country,Gender,Rank,RoundsCompleted,MissedRounds,TotalDeltaTime,AverageDeltaTime,BestDeltaTime,WorstDeltaTime,UID,ARR,ARRBand,AgeBand
-1,Alice Harris,,NOR,Male,Bronze,5,1,146.525,29.305,14.994,60.0,TestUser6636,1243,Bronze 1,18-29
-2,Victoria Brown,,BEL,Female,Bronze,5,2,167.29,33.458,10.809,60.0,TestUser7504,1245,Bronze 1,
-3,Tina Jackson,Rapid Force,JPN,Male,Bronze,5,3,218.46,43.692,17.444,60.0,TestUser6627,1475,Silver 3,60+
-4,Laura Clark,Wind Warriors,NOR,Male,Bronze,5,4,258.868,51.774,18.868,60.0,TestUser9466,1214,Bronze 2,
-5,Tina Davis,Wind Warriors,KOR,Male,Bronze,5,4,264.645,52.929,24.645,60.0,TestUser8141,1414,Bronze 2,
-6,Edward Miller,Thunder Riders,RSA,Female,Bronze,5,4,267.224,53.445,27.224,60.0,TestUser4190,1319,Bronze 3,40-49
-7,Grace Martinez,Lightning Bolts,NOR,Female,Bronze,5,4,267.91,53.582,27.91,60.0,TestUser6978,1393,Bronze 2,40-49
-8,Tina Young,Wind Warriors,JPN,Female,Bronze,5,4,273.496,54.699,33.496,60.0,TestUser7053,1266,Bronze 2,60+
+
+
