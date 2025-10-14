@@ -1,8 +1,8 @@
 Position,Name,Team,Country,Gender,Rank,RoundsCompleted,MissedRounds,TotalDeltaTime,AverageDeltaTime,BestDeltaTime,WorstDeltaTime,UID,ARR,ARRBand,AgeBand
-1,Andy Hall,Ilkley CC,GBR,Male,Platinum,1,0,0.0,0.0,0.0,0.0,EBD478B7F208C265,1558,Platinum 3,50-54
-2,Neil Atherton,Coalition,GBR,Male,Platinum,1,0,0.0,0.0,0.0,0.0,AD10E8AF5DC93FA9,1510,Platinum 3,50-54
-3,Mark Siega,Race3R,USA,Male,Platinum,1,0,1.015,1.015,1.015,1.015,5DF992475739EF28,1379,Platinum 1,50-54
-4,Renan Petersen-Wagner,Ilkley CC,BRA,Male,Platinum,1,0,51.092,51.092,51.092,51.092,F106556B8DA97C60,1343,Platinum 1,45-49
-5,Peter Austin,TROuble,GBR,Male,Platinum,1,0,68.065,68.065,68.065,68.065,94BF2EA3E5A7CBC2,1442,Platinum 2,55-59
-6,Erik Mitchell,Coalition,USA,Male,Platinum,1,0,160.318,160.318,160.318,160.318,2B0ED493930AC0C9,1435,Platinum 2,40-44
-7,Geoffrey Quintelier,TROuble,BEL,Male,Platinum,1,0,180.0,180.0,180.0,180.0,399E3B34964FE44F,1306,Platinum 1,45-49
+1,Neil Atherton,Coalition,GBR,Male,Platinum,2,0,68.507,34.254,0.0,68.507,AD10E8AF5DC93FA9,1518,Platinum 3,50-54
+2,Andy Hall,Ilkley CC,GBR,Male,Platinum,2,1,180.0,90.0,0.0,180.0,EBD478B7F208C265,1558,Platinum 3,50-54
+3,Mark Siega,Race3R,USA,Male,Platinum,2,1,181.015,90.507,1.015,180.0,5DF992475739EF28,1379,Platinum 1,50-54
+4,Renan Petersen-Wagner,Ilkley CC,BRA,Male,Platinum,2,1,231.092,115.546,51.092,180.0,F106556B8DA97C60,1343,Platinum 1,45-49
+5,Peter Austin,TROuble,GBR,Male,Platinum,2,1,248.065,124.032,68.065,180.0,94BF2EA3E5A7CBC2,1442,Platinum 2,55-59
+6,Geoffrey Quintelier,TROuble,BEL,Male,Platinum,2,1,360.0,180.0,180.0,180.0,399E3B34964FE44F,1306,Platinum 1,45-49
+7,Erik Mitchell,Coalition,USA,Male,Platinum,2,0,621.931,310.966,160.318,461.613,2B0ED493930AC0C9,1421,Platinum 2,40-44
