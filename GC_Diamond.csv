@@ -1,7 +1,7 @@
 Position,Name,Team,Country,Gender,Rank,RoundsCompleted,MissedRounds,TotalDeltaTime,AverageDeltaTime,BestDeltaTime,WorstDeltaTime,UID,ARR,ARRBand,AgeBand
-1,christophe contant ,Pedalers,FRA,Male,Diamond,2,1,180.0,90.0,0.0,180.0,56C62083B46B34F3,1893,Diamond 3,50-54
-2,Paul  Watkins ,Race3R,WAL,Male,Diamond,2,1,180.231,90.115,0.231,180.0,1C187305EC910212,1837,Diamond 3,50-54
-3,Rob Miller,Race3R,USA,Male,Diamond,2,1,182.229,91.115,2.229,180.0,5419CFD111515433,1829,Diamond 3,60-64
-4,Ewan Farrow,Ilkley CC,GBR,Male,Diamond,2,1,212.748,106.374,32.748,180.0,F27134E5BA634615,1622,Diamond 1,40-44
-5,Bradley Dickerson,Ilkley CC,GBR,Male,Diamond,2,1,306.129,153.065,126.129,180.0,611523914552F328,1690,Diamond 1,35-39
-6,Even Øistensen,Race3R,NOR,Male,Diamond,2,1,310.675,155.338,130.675,180.0,A4DD9760300BDC00,1673,Diamond 1,50-54
+1,Paul  Watkins ,Race3R,WAL,Male,Diamond,1,0,0.231,0.231,0.231,0.231,1C187305EC910212,1837,Diamond 3,50-54
+2,Rob Miller,Race3R,USA,Male,Diamond,1,0,2.229,2.229,2.229,2.229,5419CFD111515433,1829,Diamond 3,60-64
+3,Bradley Dickerson,Ilkley CC,GBR,Male,Diamond,1,0,126.129,126.129,126.129,126.129,611523914552F328,1690,Diamond 1,35-39
+4,Even Øistensen,Race3R,NOR,Male,Diamond,1,0,130.675,130.675,130.675,130.675,A4DD9760300BDC00,1673,Diamond 1,50-54
+5,christophe contant ,Pedalers,FRA,Male,Diamond,2,1,180.0,90.0,0.0,180.0,56C62083B46B34F3,1893,Diamond 3,50-54
+6,Ewan Farrow,Ilkley CC,GBR,Male,Diamond,2,1,212.748,106.374,32.748,180.0,F27134E5BA634615,1622,Diamond 1,40-44

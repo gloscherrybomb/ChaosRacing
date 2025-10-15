@@ -1,4 +1,6 @@
 Position,Name,Team,Country,Gender,Rank,RoundsCompleted,MissedRounds,TotalDeltaTime,AverageDeltaTime,BestDeltaTime,WorstDeltaTime,UID,ARR,ARRBand,AgeBand
-1,Lawrence Marsland,,GBR,Male,Bronze,2,1,360.0,180.0,180.0,180.0,8811C31089B1BE40,100,Bronze 1,Senior
-2,Mark Schofield,Ilkley CC,GBR,Male,Bronze,2,0,400.883,200.442,180.0,220.883,779E852D8D22DB0E,100,Bronze 1,45-49
-3,Daniel Holdener,indieVelo Founders Club,SUI,Male,Bronze,2,1,471.653,235.827,180.0,291.653,B8BBC9C64CAB2D89,681,Bronze 3,50-54
+1,Lawrence Marsland,,GBR,Male,Bronze,1,0,180.0,180.0,180.0,180.0,8811C31089B1BE40,100,Bronze 1,Senior
+2,A Smith-Dorking SUF,KOS,GBR,Male,Bronze,2,1,234.633,117.317,54.633,180.0,4AC91F0CD74650DC,300,Bronze 1,45-49
+3,Daniel Holdener,indieVelo Founders Club,SUI,Male,Bronze,1,0,291.653,291.653,291.653,291.653,B8BBC9C64CAB2D89,681,Bronze 3,50-54
+4,Joe Aitch,,GBR,Male,Bronze,2,1,360.0,180.0,180.0,180.0,40DCE8FB5E0635E2,100,Bronze 1,Senior
+5,Mark Schofield,Ilkley CC,GBR,Male,Bronze,2,0,400.883,200.442,180.0,220.883,779E852D8D22DB0E,100,Bronze 1,45-49
