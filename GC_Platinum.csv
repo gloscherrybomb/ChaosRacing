@@ -1,10 +1,11 @@
 Position,Name,Team,Country,Gender,Rank,RoundsCompleted,MissedRounds,TotalDeltaTime,AverageDeltaTime,BestDeltaTime,WorstDeltaTime,UID,ARR,ARRBand,AgeBand
 1,Andy Hall,Ilkley CC,GBR,Male,Platinum,2,0,0.0,0.0,0.0,0.0,EBD478B7F208C265,1565,Platinum 3,50-54
-2,Mark Siega,Race3R,USA,Male,Platinum,1,0,1.015,1.015,1.015,1.015,5DF992475739EF28,1379,Platinum 1,50-54
-3,Renan Petersen-Wagner,Ilkley CC,BRA,Male,Platinum,1,0,51.092,51.092,51.092,51.092,F106556B8DA97C60,1343,Platinum 1,45-49
-4,Neil Atherton,Coalition,GBR,Male,Platinum,2,0,68.507,34.254,0.0,68.507,AD10E8AF5DC93FA9,1518,Platinum 3,50-54
-5,Peter Austin,TROuble,GBR,Male,Platinum,2,0,156.077,78.038,68.065,88.012,94BF2EA3E5A7CBC2,1445,Platinum 2,55-59
-6,Geoffrey Quintelier,TROuble,BEL,Male,Platinum,1,0,180.0,180.0,180.0,180.0,399E3B34964FE44F,1306,Platinum 1,45-49
-7,Erik Mitchell,Coalition,USA,Male,Platinum,2,0,340.318,170.159,160.318,180.0,2B0ED493930AC0C9,1421,Platinum 2,40-44
+2,Neil Atherton,Coalition,GBR,Male,Platinum,2,0,68.507,34.254,0.0,68.507,AD10E8AF5DC93FA9,1518,Platinum 3,50-54
+3,Peter Austin,TROuble,GBR,Male,Platinum,2,0,156.077,78.038,68.065,88.012,94BF2EA3E5A7CBC2,1445,Platinum 2,55-59
+4,Mark Siega,Race3R,USA,Male,Platinum,2,1,181.015,90.507,1.015,180.0,5DF992475739EF28,1379,Platinum 1,50-54
+5,Renan Petersen-Wagner,Ilkley CC,BRA,Male,Platinum,2,1,231.092,115.546,51.092,180.0,F106556B8DA97C60,1343,Platinum 1,45-49
+6,Erik Mitchell,Coalition,USA,Male,Platinum,2,0,340.318,170.159,160.318,180.0,2B0ED493930AC0C9,1421,Platinum 2,40-44
+7,Geoffrey Quintelier,TROuble,BEL,Male,Platinum,2,1,360.0,180.0,180.0,180.0,399E3B34964FE44F,1306,Platinum 1,45-49
 8,Kurt Angus,Allkin Racing,GBR,Male,Platinum,2,1,360.0,180.0,180.0,180.0,AE665891E96CC699,1459,Platinum 2,45-49
 9,Stanley Gabriel,Electricspirit.co,GBR,Male,Platinum,2,1,360.0,180.0,180.0,180.0,764F3565255CFFD0,1367,Platinum 1,35-39
+10,Ryan Giunchi,Riders Givrés du Trainer,FRA,Male,Platinum,3,2,363.793,121.264,3.793,180.0,ACF415CAED7AF27B,1433,Platinum 2,35-39
