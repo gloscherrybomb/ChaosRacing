@@ -57,6 +57,80 @@
             border: 1px solid #2a2a2a; border-radius: 4px; transition: all 0.2s;
         }
         .result-item:hover { border-color: #3a3a3a; background: #1a1a1a; }
+        .result-item.rank-diamond {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            border-color: #3b82f6;
+            color: white;
+        }
+        .result-item.rank-diamond:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #0891b2 100%);
+        }
+        .result-item.rank-platinum {
+            background: linear-gradient(135deg, #94a3b8 0%, #cbd5e1 100%);
+            border-color: #94a3b8;
+            color: #0f0f0f;
+        }
+        .result-item.rank-platinum:hover {
+            background: linear-gradient(135deg, #64748b 0%, #94a3b8 100%);
+        }
+        .result-item.rank-gold {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border-color: #fbbf24;
+            color: #0f0f0f;
+        }
+        .result-item.rank-gold:hover {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+        .result-item.rank-silver {
+            background: linear-gradient(135deg, #9ca3af 0%, #d1d5db 100%);
+            border-color: #9ca3af;
+            color: #0f0f0f;
+        }
+        .result-item.rank-silver:hover {
+            background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%);
+        }
+        .result-item.rank-bronze {
+            background: linear-gradient(135deg, #cd7f32 0%, #b8732d 100%);
+            border-color: #cd7f32;
+            color: white;
+        }
+        .result-item.rank-bronze:hover {
+            background: linear-gradient(135deg, #b8732d 0%, #a86829 100%);
+        }
+        .result-item.rank-carbon {
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+            border-color: #374151;
+            color: #9ca3af;
+        }
+        .result-item.rank-carbon:hover {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+        }
+        .result-item.rank-diamond .result-label,
+        .result-item.rank-diamond .result-value,
+        .result-item.rank-diamond .result-range { color: white; }
+        .result-item.rank-platinum .result-label,
+        .result-item.rank-platinum .result-value { color: #0f0f0f; }
+        .result-item.rank-platinum .result-range { color: #374151; }
+        .result-item.rank-gold .result-label,
+        .result-item.rank-gold .result-value { color: #0f0f0f; }
+        .result-item.rank-gold .result-range { color: #78350f; }
+        .result-item.rank-silver .result-label,
+        .result-item.rank-silver .result-value { color: #0f0f0f; }
+        .result-item.rank-silver .result-range { color: #374151; }
+        .result-item.rank-bronze .result-label,
+        .result-item.rank-bronze .result-value,
+        .result-item.rank-bronze .result-range { color: white; }
+        .result-item.rank-carbon .result-label { color: #d1d5db; }
+        .result-item.rank-carbon .result-value { color: #9ca3af; }
+        .result-item.rank-carbon .result-range { color: #6b7280; }
+        .rank-name {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+            opacity: 0.9;
+        }
         .result-item.arr {
             background: #dc2626; border-color: #dc2626; color: white;
             font-weight: 600; margin-top: 15px;
@@ -151,38 +225,43 @@
         </div>
         <button id="addButton" class="add-button">Add to Table</button>
         <div class="results">
-            <div class="result-item">
+            <div class="result-item" id="endurance-item">
                 <span class="result-label">Endurance</span>
                 <div class="result-group">
                     <span class="result-value" id="endurance">-</span>
+                    <span class="rank-name" id="endurance-rank">-</span>
                     <span class="result-range" id="endurance-range">-</span>
                 </div>
             </div>
-            <div class="result-item">
+            <div class="result-item" id="flat-item">
                 <span class="result-label">Flat</span>
                 <div class="result-group">
                     <span class="result-value" id="flat">-</span>
+                    <span class="rank-name" id="flat-rank">-</span>
                     <span class="result-range" id="flat-range">-</span>
                 </div>
             </div>
-            <div class="result-item">
+            <div class="result-item" id="sprint-item">
                 <span class="result-label">Sprint</span>
                 <div class="result-group">
                     <span class="result-value" id="sprint">-</span>
+                    <span class="rank-name" id="sprint-rank">-</span>
                     <span class="result-range" id="sprint-range">-</span>
                 </div>
             </div>
-            <div class="result-item">
+            <div class="result-item" id="climb-item">
                 <span class="result-label">Climb</span>
                 <div class="result-group">
                     <span class="result-value" id="climb">-</span>
+                    <span class="rank-name" id="climb-rank">-</span>
                     <span class="result-range" id="climb-range">-</span>
                 </div>
             </div>
-            <div class="result-item arr">
+            <div class="result-item arr" id="arr-item">
                 <span class="result-label">ARR (Average)</span>
                 <div class="result-group">
                     <span class="result-value" id="arr">-</span>
+                    <span class="rank-name" id="arr-rank">-</span>
                     <span class="result-range" id="arr-range">-</span>
                 </div>
             </div>
@@ -210,6 +289,10 @@
         <div class="changelog-section">
             <h2>Changelog</h2>
             <div class="changelog-entry">
+                <div class="changelog-version">Version 0.05</div>
+                <div class="changelog-changes">Added rank colors and names (Diamond, Platinum, Gold, Silver, Bronze, Carbon) to match TPV ranking system.</div>
+            </div>
+            <div class="changelog-entry">
                 <div class="changelog-version">Version 0.04</div>
                 <div class="changelog-changes">Adapted output value to fit TPV ranking boundaries.</div>
             </div>
@@ -229,9 +312,27 @@
         const sprintRangeEl = document.getElementById('sprint-range');
         const climbRangeEl = document.getElementById('climb-range');
         const arrRangeEl = document.getElementById('arr-range');
+        const enduranceRankEl = document.getElementById('endurance-rank');
+        const flatRankEl = document.getElementById('flat-rank');
+        const sprintRankEl = document.getElementById('sprint-rank');
+        const climbRankEl = document.getElementById('climb-rank');
+        const arrRankEl = document.getElementById('arr-rank');
+        const enduranceItemEl = document.getElementById('endurance-item');
+        const flatItemEl = document.getElementById('flat-item');
+        const sprintItemEl = document.getElementById('sprint-item');
+        const climbItemEl = document.getElementById('climb-item');
+        const arrItemEl = document.getElementById('arr-item');
         const historyBody = document.getElementById('historyBody');
         let entryId = 0;
         let lastValidEntry = null;
+        function getRank(value) {
+            if (value > 1600) return { name: 'Diamond', class: 'rank-diamond' };
+            if (value >= 1300) return { name: 'Platinum', class: 'rank-platinum' };
+            if (value >= 1000) return { name: 'Gold', class: 'rank-gold' };
+            if (value >= 700) return { name: 'Silver', class: 'rank-silver' };
+            if (value >= 400) return { name: 'Bronze', class: 'rank-bronze' };
+            return { name: 'Carbon', class: 'rank-carbon' };
+        }
         function calculate() {
             const power1min = parseFloat(power1minInput.value);
             const power5min = parseFloat(power5minInput.value);
@@ -247,6 +348,16 @@
                 sprintRangeEl.textContent = '-';
                 climbRangeEl.textContent = '-';
                 arrRangeEl.textContent = '-';
+                enduranceRankEl.textContent = '-';
+                flatRankEl.textContent = '-';
+                sprintRankEl.textContent = '-';
+                climbRankEl.textContent = '-';
+                arrRankEl.textContent = '-';
+                enduranceItemEl.className = 'result-item';
+                flatItemEl.className = 'result-item';
+                sprintItemEl.className = 'result-item';
+                climbItemEl.className = 'result-item';
+                arrItemEl.className = 'result-item arr';
                 lastValidEntry = null;
                 return;
             }
@@ -265,6 +376,21 @@
             sprintRangeEl.textContent = `(${(sprint - 200).toFixed(0)} - ${(sprint + 200).toFixed(0)})`;
             climbRangeEl.textContent = `(${(climb - 200).toFixed(0)} - ${(climb + 200).toFixed(0)})`;
             arrRangeEl.textContent = `(${(arr - 200).toFixed(0)} - ${(arr + 200).toFixed(0)})`;
+            const enduranceRank = getRank(endurance);
+            const flatRank = getRank(flat);
+            const sprintRank = getRank(sprint);
+            const climbRank = getRank(climb);
+            const arrRank = getRank(arr);
+            enduranceRankEl.textContent = enduranceRank.name;
+            flatRankEl.textContent = flatRank.name;
+            sprintRankEl.textContent = sprintRank.name;
+            climbRankEl.textContent = climbRank.name;
+            arrRankEl.textContent = arrRank.name;
+            enduranceItemEl.className = 'result-item ' + enduranceRank.class;
+            flatItemEl.className = 'result-item ' + flatRank.class;
+            sprintItemEl.className = 'result-item ' + sprintRank.class;
+            climbItemEl.className = 'result-item ' + climbRank.class;
+            arrItemEl.className = 'result-item arr ' + arrRank.class;
             lastValidEntry = { power1min, power5min, kg, endurance, flat, sprint, climb, arr };
         }
         function addToTable() {
@@ -272,15 +398,20 @@
             const entry = lastValidEntry;
             const row = document.createElement('tr');
             row.dataset.id = entryId++;
+            const enduranceRank = getRank(entry.endurance);
+            const flatRank = getRank(entry.flat);
+            const sprintRank = getRank(entry.sprint);
+            const climbRank = getRank(entry.climb);
+            const arrRank = getRank(entry.arr);
             row.innerHTML = `
                 <td>${entry.power1min.toFixed(0)} W</td>
                 <td>${entry.power5min.toFixed(0)} W</td>
                 <td>${entry.kg.toFixed(0)} kg</td>
-                <td>${entry.endurance.toFixed(0)}</td>
-                <td>${entry.flat.toFixed(0)}</td>
-                <td>${entry.sprint.toFixed(0)}</td>
-                <td>${entry.climb.toFixed(0)}</td>
-                <td>${entry.arr.toFixed(0)}</td>
+                <td>${entry.endurance.toFixed(0)} <small style="color: #888;">(${enduranceRank.name})</small></td>
+                <td>${entry.flat.toFixed(0)} <small style="color: #888;">(${flatRank.name})</small></td>
+                <td>${entry.sprint.toFixed(0)} <small style="color: #888;">(${sprintRank.name})</small></td>
+                <td>${entry.climb.toFixed(0)} <small style="color: #888;">(${climbRank.name})</small></td>
+                <td>${entry.arr.toFixed(0)} <small style="color: #888;">(${arrRank.name})</small></td>
             `;
             historyBody.insertBefore(row, historyBody.firstChild);
         }
