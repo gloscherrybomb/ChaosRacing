@@ -51,103 +51,64 @@
         .add-button:hover { background: #b91c1c; }
         .add-button:active { transform: translateY(1px); }
         .results { margin-top: 35px; padding-top: 35px; border-top: 1px solid #2a2a2a; }
-        .result-item {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 18px 20px; margin-bottom: 10px; background: #0f0f0f;
-            border: 1px solid #2a2a2a; border-radius: 4px; transition: all 0.2s;
+        .metric-row { margin-bottom: 20px; }
+        .metric-label {
+            color: #aaa; font-size: 13px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;
         }
-        .result-item:hover { border-color: #3a3a3a; background: #1a1a1a; }
-        .result-item.rank-diamond {
-            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
-            border-color: #3b82f6;
-            color: white;
+        .rank-boxes { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 10px; }
+        .rank-box {
+            padding: 18px 15px; border-radius: 4px; border: 1px solid #2a2a2a;
+            text-align: center; transition: all 0.2s; background: #0f0f0f;
         }
-        .result-item.rank-diamond:hover {
-            background: linear-gradient(135deg, #2563eb 0%, #0891b2 100%);
+        .rank-box:hover { border-color: #3a3a3a; transform: translateY(-2px); }
+        .rank-box.min-max-box {
+            padding: 14px 12px;
         }
-        .result-item.rank-platinum {
-            background: linear-gradient(135deg, #94a3b8 0%, #cbd5e1 100%);
-            border-color: #94a3b8;
-            color: #0f0f0f;
+        .rank-box-label {
+            font-size: 10px; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.5px; margin-bottom: 8px; color: #888;
         }
-        .result-item.rank-platinum:hover {
-            background: linear-gradient(135deg, #64748b 0%, #94a3b8 100%);
+        .rank-box.min-max-box .rank-box-label {
+            font-size: 9px;
+            margin-bottom: 6px;
         }
-        .result-item.rank-gold {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-            border-color: #fbbf24;
-            color: #0f0f0f;
+        .rank-box-value { font-size: 24px; font-weight: 700; margin-bottom: 6px; color: #dc2626; }
+        .rank-box.min-max-box .rank-box-value {
+            font-size: 19px;
+            margin-bottom: 4px;
         }
-        .result-item.rank-gold:hover {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .rank-box-name {
+            font-size: 11px; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.5px; color: #aaa;
         }
-        .result-item.rank-silver {
-            background: linear-gradient(135deg, #9ca3af 0%, #d1d5db 100%);
-            border-color: #9ca3af;
-            color: #0f0f0f;
+        .rank-box.min-max-box .rank-box-name {
+            font-size: 9px;
         }
-        .result-item.rank-silver:hover {
-            background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%);
-        }
-        .result-item.rank-bronze {
-            background: linear-gradient(135deg, #cd7f32 0%, #b8732d 100%);
-            border-color: #cd7f32;
-            color: white;
-        }
-        .result-item.rank-bronze:hover {
-            background: linear-gradient(135deg, #b8732d 0%, #a86829 100%);
-        }
-        .result-item.rank-carbon {
-            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
-            border-color: #374151;
-            color: #9ca3af;
-        }
-        .result-item.rank-carbon:hover {
-            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-        }
-        .result-item.rank-diamond .result-label,
-        .result-item.rank-diamond .result-value,
-        .result-item.rank-diamond .result-range { color: white; }
-        .result-item.rank-platinum .result-label,
-        .result-item.rank-platinum .result-value { color: #0f0f0f; }
-        .result-item.rank-platinum .result-range { color: #374151; }
-        .result-item.rank-gold .result-label,
-        .result-item.rank-gold .result-value { color: #0f0f0f; }
-        .result-item.rank-gold .result-range { color: #78350f; }
-        .result-item.rank-silver .result-label,
-        .result-item.rank-silver .result-value { color: #0f0f0f; }
-        .result-item.rank-silver .result-range { color: #374151; }
-        .result-item.rank-bronze .result-label,
-        .result-item.rank-bronze .result-value,
-        .result-item.rank-bronze .result-range { color: white; }
-        .result-item.rank-carbon .result-label { color: #d1d5db; }
-        .result-item.rank-carbon .result-value { color: #9ca3af; }
-        .result-item.rank-carbon .result-range { color: #6b7280; }
-        .rank-name {
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 2px;
-            opacity: 0.9;
-        }
-        .result-item.arr {
-            background: #dc2626; border-color: #dc2626; color: white;
-            font-weight: 600; margin-top: 15px;
-        }
-        .result-item.arr:hover { background: #b91c1c; border-color: #b91c1c; }
-        .result-label {
-            font-weight: 600; color: #ccc; font-size: 14px;
-            text-transform: uppercase; letter-spacing: 0.5px;
-        }
-        .result-item.arr .result-label { color: white; }
-        .result-value {
-            font-size: 24px; font-weight: 700; color: #dc2626; font-variant-numeric: tabular-nums;
-        }
-        .result-item.arr .result-value { color: white; }
-        .result-group { display: flex; flex-direction: column; align-items: flex-end; }
-        .result-range { font-size: 11px; color: #666; margin-top: 4px; font-weight: 400; }
-        .result-item.arr .result-range { color: rgba(255, 255, 255, 0.7); }
+        .rank-box.rank-diamond { background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); border-color: #3b82f6; }
+        .rank-box.rank-diamond .rank-box-label,
+        .rank-box.rank-diamond .rank-box-value,
+        .rank-box.rank-diamond .rank-box-name { color: white; }
+        .rank-box.rank-platinum { background: linear-gradient(135deg, #7dd3fc 0%, #bae6fd 100%); border-color: #7dd3fc; }
+        .rank-box.rank-platinum .rank-box-label { color: #0c4a6e; }
+        .rank-box.rank-platinum .rank-box-value { color: #0c4a6e; }
+        .rank-box.rank-platinum .rank-box-name { color: #075985; }
+        .rank-box.rank-gold { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); border-color: #fbbf24; }
+        .rank-box.rank-gold .rank-box-label { color: #78350f; }
+        .rank-box.rank-gold .rank-box-value { color: #0f0f0f; }
+        .rank-box.rank-gold .rank-box-name { color: #451a03; }
+        .rank-box.rank-silver { background: linear-gradient(135deg, #d4d4d4 0%, #f5f5f5 100%); border-color: #d4d4d4; }
+        .rank-box.rank-silver .rank-box-label { color: #525252; }
+        .rank-box.rank-silver .rank-box-value { color: #171717; }
+        .rank-box.rank-silver .rank-box-name { color: #262626; }
+        .rank-box.rank-bronze { background: linear-gradient(135deg, #cd7f32 0%, #b8732d 100%); border-color: #cd7f32; }
+        .rank-box.rank-bronze .rank-box-label,
+        .rank-box.rank-bronze .rank-box-value,
+        .rank-box.rank-bronze .rank-box-name { color: white; }
+        .rank-box.rank-carbon { background: linear-gradient(135deg, #374151 0%, #1f2937 100%); border-color: #374151; }
+        .rank-box.rank-carbon .rank-box-label { color: #9ca3af; }
+        .rank-box.rank-carbon .rank-box-value { color: #d1d5db; }
+        .rank-box.rank-carbon .rank-box-name { color: #9ca3af; }
         .history-section { margin-top: 40px; padding-top: 40px; border-top: 1px solid #2a2a2a; }
         .history-section h2 {
             color: #ffffff; font-size: 20px; margin-bottom: 20px; text-align: center;
@@ -172,39 +133,20 @@
         #historyBody tr td:nth-child(6),
         #historyBody tr td:nth-child(7),
         #historyBody tr td:nth-child(8) { font-weight: 600; }
-        .changelog-section {
-            margin-top: 40px;
-            padding-top: 40px;
-            border-top: 1px solid #2a2a2a;
-        }
+        .changelog-section { margin-top: 40px; padding-top: 40px; border-top: 1px solid #2a2a2a; }
         .changelog-section h2 {
-            color: #ffffff;
-            font-size: 20px;
-            margin-bottom: 20px;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #ffffff; font-size: 20px; margin-bottom: 20px; text-align: center;
+            text-transform: uppercase; letter-spacing: 1px;
         }
         .changelog-entry {
-            background: #0f0f0f;
-            border: 1px solid #2a2a2a;
-            border-radius: 4px;
-            padding: 15px 20px;
-            margin-bottom: 15px;
+            background: #0f0f0f; border: 1px solid #2a2a2a; border-radius: 4px;
+            padding: 15px 20px; margin-bottom: 15px;
         }
         .changelog-version {
-            color: #dc2626;
-            font-weight: 700;
-            font-size: 14px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            color: #dc2626; font-weight: 700; font-size: 14px; margin-bottom: 8px;
+            text-transform: uppercase; letter-spacing: 0.5px;
         }
-        .changelog-changes {
-            color: #ccc;
-            font-size: 13px;
-            line-height: 1.6;
-        }
+        .changelog-changes { color: #ccc; font-size: 13px; line-height: 1.6; }
     </style>
 </head>
 <body>
@@ -225,44 +167,104 @@
         </div>
         <button id="addButton" class="add-button">Add to Table</button>
         <div class="results">
-            <div class="result-item" id="endurance-item">
-                <span class="result-label">Endurance</span>
-                <div class="result-group">
-                    <span class="result-value" id="endurance">-</span>
-                    <span class="rank-name" id="endurance-rank">-</span>
-                    <span class="result-range" id="endurance-range">-</span>
+            <div class="metric-row">
+                <div class="metric-label">Endurance</div>
+                <div class="rank-boxes">
+                    <div class="rank-box" id="endurance-seed-box">
+                        <div class="rank-box-label">Seed</div>
+                        <div class="rank-box-value" id="endurance-seed">-</div>
+                        <div class="rank-box-name" id="endurance-seed-rank">-</div>
+                    </div>
+                    <div class="rank-box min-max-box" id="endurance-min-box">
+                        <div class="rank-box-label">Min Rank</div>
+                        <div class="rank-box-value" id="endurance-min">-</div>
+                        <div class="rank-box-name" id="endurance-min-rank">-</div>
+                    </div>
+                    <div class="rank-box min-max-box" id="endurance-max-box">
+                        <div class="rank-box-label">Max Rank</div>
+                        <div class="rank-box-value" id="endurance-max">-</div>
+                        <div class="rank-box-name" id="endurance-max-rank">-</div>
+                    </div>
                 </div>
             </div>
-            <div class="result-item" id="flat-item">
-                <span class="result-label">Flat</span>
-                <div class="result-group">
-                    <span class="result-value" id="flat">-</span>
-                    <span class="rank-name" id="flat-rank">-</span>
-                    <span class="result-range" id="flat-range">-</span>
+            <div class="metric-row">
+                <div class="metric-label">Flat</div>
+                <div class="rank-boxes">
+                    <div class="rank-box" id="flat-seed-box">
+                        <div class="rank-box-label">Seed</div>
+                        <div class="rank-box-value" id="flat-seed">-</div>
+                        <div class="rank-box-name" id="flat-seed-rank">-</div>
+                    </div>
+                    <div class="rank-box min-max-box" id="flat-min-box">
+                        <div class="rank-box-label">Min Rank</div>
+                        <div class="rank-box-value" id="flat-min">-</div>
+                        <div class="rank-box-name" id="flat-min-rank">-</div>
+                    </div>
+                    <div class="rank-box min-max-box" id="flat-max-box">
+                        <div class="rank-box-label">Max Rank</div>
+                        <div class="rank-box-value" id="flat-max">-</div>
+                        <div class="rank-box-name" id="flat-max-rank">-</div>
+                    </div>
                 </div>
             </div>
-            <div class="result-item" id="sprint-item">
-                <span class="result-label">Sprint</span>
-                <div class="result-group">
-                    <span class="result-value" id="sprint">-</span>
-                    <span class="rank-name" id="sprint-rank">-</span>
-                    <span class="result-range" id="sprint-range">-</span>
+            <div class="metric-row">
+                <div class="metric-label">Sprint</div>
+                <div class="rank-boxes">
+                    <div class="rank-box" id="sprint-seed-box">
+                        <div class="rank-box-label">Seed</div>
+                        <div class="rank-box-value" id="sprint-seed">-</div>
+                        <div class="rank-box-name" id="sprint-seed-rank">-</div>
+                    </div>
+                    <div class="rank-box min-max-box" id="sprint-min-box">
+                        <div class="rank-box-label">Min Rank</div>
+                        <div class="rank-box-value" id="sprint-min">-</div>
+                        <div class="rank-box-name" id="sprint-min-rank">-</div>
+                    </div>
+                    <div class="rank-box min-max-box" id="sprint-max-box">
+                        <div class="rank-box-label">Max Rank</div>
+                        <div class="rank-box-value" id="sprint-max">-</div>
+                        <div class="rank-box-name" id="sprint-max-rank">-</div>
+                    </div>
                 </div>
             </div>
-            <div class="result-item" id="climb-item">
-                <span class="result-label">Climb</span>
-                <div class="result-group">
-                    <span class="result-value" id="climb">-</span>
-                    <span class="rank-name" id="climb-rank">-</span>
-                    <span class="result-range" id="climb-range">-</span>
+            <div class="metric-row">
+                <div class="metric-label">Climb</div>
+                <div class="rank-boxes">
+                    <div class="rank-box" id="climb-seed-box">
+                        <div class="rank-box-label">Seed</div>
+                        <div class="rank-box-value" id="climb-seed">-</div>
+                        <div class="rank-box-name" id="climb-seed-rank">-</div>
+                    </div>
+                    <div class="rank-box min-max-box" id="climb-min-box">
+                        <div class="rank-box-label">Min Rank</div>
+                        <div class="rank-box-value" id="climb-min">-</div>
+                        <div class="rank-box-name" id="climb-min-rank">-</div>
+                    </div>
+                    <div class="rank-box min-max-box" id="climb-max-box">
+                        <div class="rank-box-label">Max Rank</div>
+                        <div class="rank-box-value" id="climb-max">-</div>
+                        <div class="rank-box-name" id="climb-max-rank">-</div>
+                    </div>
                 </div>
             </div>
-            <div class="result-item arr" id="arr-item">
-                <span class="result-label">ARR (Average)</span>
-                <div class="result-group">
-                    <span class="result-value" id="arr">-</span>
-                    <span class="rank-name" id="arr-rank">-</span>
-                    <span class="result-range" id="arr-range">-</span>
+            <div class="metric-row">
+                <div class="metric-label">ARR (Average)</div>
+                <div class="rank-boxes">
+                    <div class="rank-box" id="arr-seed-box">
+                        <div class="rank-box-label">Seed</div>
+                        <div class="rank-box-value" id="arr-seed">-</div>
+                        <div class="rank-box-name" id="arr-seed-rank">-</div>
+                    </div>
+                    <div class="rank-box min-max-box" id="arr-min-box">
+                        <div class="rank-box-label">Min Rank</div>
+                        <div class="rank-box-value" id="arr-min">-</div>
+                        <div class="rank-box-name" id="arr-min-rank">-</div>
+                    </div>
+                    <div class="rank-box min-max-box" id="arr-max-box">
+                        <div class="rank-box-label">Max Rank</div>
+                        <div class="rank-box-value" id="arr-max">-</div>
+                        <div class="rank-box-name" id="arr-max-rank">-</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -289,8 +291,12 @@
         <div class="changelog-section">
             <h2>Changelog</h2>
             <div class="changelog-entry">
+                <div class="changelog-version">Version 0.06</div>
+                <div class="changelog-changes">Reduced size of Min/Max rank boxes to 80% to emphasize seed value. Updated platinum color to light blue/cyan gradient and silver to pure neutral gray for better distinction.</div>
+            </div>
+            <div class="changelog-entry">
                 <div class="changelog-version">Version 0.05</div>
-                <div class="changelog-changes">Added rank colors and names (Diamond, Platinum, Gold, Silver, Bronze, Carbon) to match TPV ranking system.</div>
+                <div class="changelog-changes">Added rank colors and names (Diamond, Platinum, Gold, Silver, Bronze, Carbon) to match TPV ranking system. Updated results to show Seed, Min Rank, and Max Rank in three-column format with 2000 max cap.</div>
             </div>
             <div class="changelog-entry">
                 <div class="changelog-version">Version 0.04</div>
@@ -302,29 +308,10 @@
         const power1minInput = document.getElementById('power1min');
         const power5minInput = document.getElementById('power5min');
         const weightInput = document.getElementById('weight');
-        const enduranceEl = document.getElementById('endurance');
-        const flatEl = document.getElementById('flat');
-        const sprintEl = document.getElementById('sprint');
-        const climbEl = document.getElementById('climb');
-        const arrEl = document.getElementById('arr');
-        const enduranceRangeEl = document.getElementById('endurance-range');
-        const flatRangeEl = document.getElementById('flat-range');
-        const sprintRangeEl = document.getElementById('sprint-range');
-        const climbRangeEl = document.getElementById('climb-range');
-        const arrRangeEl = document.getElementById('arr-range');
-        const enduranceRankEl = document.getElementById('endurance-rank');
-        const flatRankEl = document.getElementById('flat-rank');
-        const sprintRankEl = document.getElementById('sprint-rank');
-        const climbRankEl = document.getElementById('climb-rank');
-        const arrRankEl = document.getElementById('arr-rank');
-        const enduranceItemEl = document.getElementById('endurance-item');
-        const flatItemEl = document.getElementById('flat-item');
-        const sprintItemEl = document.getElementById('sprint-item');
-        const climbItemEl = document.getElementById('climb-item');
-        const arrItemEl = document.getElementById('arr-item');
         const historyBody = document.getElementById('historyBody');
         let entryId = 0;
         let lastValidEntry = null;
+
         function getRank(value) {
             if (value > 1600) return { name: 'Diamond', class: 'rank-diamond' };
             if (value >= 1300) return { name: 'Platinum', class: 'rank-platinum' };
@@ -333,66 +320,72 @@
             if (value >= 400) return { name: 'Bronze', class: 'rank-bronze' };
             return { name: 'Carbon', class: 'rank-carbon' };
         }
+
+        function updateRankBox(metric, value) {
+            const minValue = Math.max(0, value - 200);
+            const maxValue = Math.min(2000, value + 200);
+
+            const seedRank = getRank(value);
+            const minRank = getRank(minValue);
+            const maxRank = getRank(maxValue);
+
+            document.getElementById(`${metric}-seed`).textContent = value.toFixed(0);
+            document.getElementById(`${metric}-seed-rank`).textContent = seedRank.name;
+            document.getElementById(`${metric}-seed-box`).className = 'rank-box ' + seedRank.class;
+
+            document.getElementById(`${metric}-min`).textContent = minValue.toFixed(0);
+            document.getElementById(`${metric}-min-rank`).textContent = minRank.name;
+            document.getElementById(`${metric}-min-box`).className = 'rank-box min-max-box ' + minRank.class;
+
+            document.getElementById(`${metric}-max`).textContent = maxValue.toFixed(0);
+            document.getElementById(`${metric}-max-rank`).textContent = maxRank.name;
+            document.getElementById(`${metric}-max-box`).className = 'rank-box min-max-box ' + maxRank.class;
+        }
+
+        function resetRankBox(metric) {
+            document.getElementById(`${metric}-seed`).textContent = '-';
+            document.getElementById(`${metric}-seed-rank`).textContent = '-';
+            document.getElementById(`${metric}-seed-box`).className = 'rank-box';
+
+            document.getElementById(`${metric}-min`).textContent = '-';
+            document.getElementById(`${metric}-min-rank`).textContent = '-';
+            document.getElementById(`${metric}-min-box`).className = 'rank-box min-max-box';
+
+            document.getElementById(`${metric}-max`).textContent = '-';
+            document.getElementById(`${metric}-max-rank`).textContent = '-';
+            document.getElementById(`${metric}-max-box`).className = 'rank-box min-max-box';
+        }
+
         function calculate() {
             const power1min = parseFloat(power1minInput.value);
             const power5min = parseFloat(power5minInput.value);
             const kg = parseFloat(weightInput.value);
+
             if (isNaN(power1min) || isNaN(power5min) || isNaN(kg) || kg <= 0) {
-                enduranceEl.textContent = '-';
-                flatEl.textContent = '-';
-                sprintEl.textContent = '-';
-                climbEl.textContent = '-';
-                arrEl.textContent = '-';
-                enduranceRangeEl.textContent = '-';
-                flatRangeEl.textContent = '-';
-                sprintRangeEl.textContent = '-';
-                climbRangeEl.textContent = '-';
-                arrRangeEl.textContent = '-';
-                enduranceRankEl.textContent = '-';
-                flatRankEl.textContent = '-';
-                sprintRankEl.textContent = '-';
-                climbRankEl.textContent = '-';
-                arrRankEl.textContent = '-';
-                enduranceItemEl.className = 'result-item';
-                flatItemEl.className = 'result-item';
-                sprintItemEl.className = 'result-item';
-                climbItemEl.className = 'result-item';
-                arrItemEl.className = 'result-item arr';
+                resetRankBox('endurance');
+                resetRankBox('flat');
+                resetRankBox('sprint');
+                resetRankBox('climb');
+                resetRankBox('arr');
                 lastValidEntry = null;
                 return;
             }
+
             const endurance = (47 * Math.pow(power5min, 2)) / (kg * (42 + 0.4 * kg));
             const flat = (47 * Math.pow(power5min, 2)) / (kg * (56 + 0.2 * kg));
             const sprint = (20.9 * Math.pow(power1min, 2)) / (kg * (42 + 0.4 * kg));
             const climb = (47 * Math.pow(power5min, 2)) / (kg * (28 + 0.6 * kg));
             const arr = (endurance + flat + sprint + climb) / 4;
-            enduranceEl.textContent = endurance.toFixed(0);
-            flatEl.textContent = flat.toFixed(0);
-            sprintEl.textContent = sprint.toFixed(0);
-            climbEl.textContent = climb.toFixed(0);
-            arrEl.textContent = arr.toFixed(0);
-            enduranceRangeEl.textContent = `(${(endurance - 200).toFixed(0)} - ${(endurance + 200).toFixed(0)})`;
-            flatRangeEl.textContent = `(${(flat - 200).toFixed(0)} - ${(flat + 200).toFixed(0)})`;
-            sprintRangeEl.textContent = `(${(sprint - 200).toFixed(0)} - ${(sprint + 200).toFixed(0)})`;
-            climbRangeEl.textContent = `(${(climb - 200).toFixed(0)} - ${(climb + 200).toFixed(0)})`;
-            arrRangeEl.textContent = `(${(arr - 200).toFixed(0)} - ${(arr + 200).toFixed(0)})`;
-            const enduranceRank = getRank(endurance);
-            const flatRank = getRank(flat);
-            const sprintRank = getRank(sprint);
-            const climbRank = getRank(climb);
-            const arrRank = getRank(arr);
-            enduranceRankEl.textContent = enduranceRank.name;
-            flatRankEl.textContent = flatRank.name;
-            sprintRankEl.textContent = sprintRank.name;
-            climbRankEl.textContent = climbRank.name;
-            arrRankEl.textContent = arrRank.name;
-            enduranceItemEl.className = 'result-item ' + enduranceRank.class;
-            flatItemEl.className = 'result-item ' + flatRank.class;
-            sprintItemEl.className = 'result-item ' + sprintRank.class;
-            climbItemEl.className = 'result-item ' + climbRank.class;
-            arrItemEl.className = 'result-item arr ' + arrRank.class;
+
+            updateRankBox('endurance', endurance);
+            updateRankBox('flat', flat);
+            updateRankBox('sprint', sprint);
+            updateRankBox('climb', climb);
+            updateRankBox('arr', arr);
+
             lastValidEntry = { power1min, power5min, kg, endurance, flat, sprint, climb, arr };
         }
+
         function addToTable() {
             if (!lastValidEntry) return;
             const entry = lastValidEntry;
@@ -415,6 +408,7 @@
             `;
             historyBody.insertBefore(row, historyBody.firstChild);
         }
+
         power1minInput.addEventListener('input', calculate);
         power5minInput.addEventListener('input', calculate);
         weightInput.addEventListener('input', calculate);
