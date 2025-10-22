@@ -427,11 +427,11 @@
             const arr = (endurance + timeTrial + sprint + climb) / 4;
 
             // Display results
-            enduranceEl.textContent = endurance.toFixed(2);
-            timeTrialEl.textContent = timeTrial.toFixed(2);
-            sprintEl.textContent = sprint.toFixed(2);
-            climbEl.textContent = climb.toFixed(2);
-            arrEl.textContent = arr.toFixed(2);
+            enduranceEl.textContent = endurance.toFixed(0);
+            timeTrialEl.textContent = timeTrial.toFixed(0);
+            sprintEl.textContent = sprint.toFixed(0);
+            climbEl.textContent = climb.toFixed(0);
+            arrEl.textContent = arr.toFixed(0);
 
             // Display ranges (value - 200 to value + 200)
             enduranceRangeEl.textContent = `(${(endurance - 200).toFixed(0)} - ${(endurance + 200).toFixed(0)})`;
@@ -461,14 +461,14 @@
             row.dataset.id = entryId++;
 
             row.innerHTML = `
-                <td>${entry.power1min.toFixed(1)} W</td>
-                <td>${entry.power5min.toFixed(1)} W</td>
-                <td>${entry.kg.toFixed(1)} kg</td>
-                <td>${entry.endurance.toFixed(2)}</td>
-                <td>${entry.timeTrial.toFixed(2)}</td>
-                <td>${entry.sprint.toFixed(2)}</td>
-                <td>${entry.climb.toFixed(2)}</td>
-                <td>${entry.arr.toFixed(2)}</td>
+                <td>${entry.power1min.toFixed(0)} W</td>
+                <td>${entry.power5min.toFixed(0)} W</td>
+                <td>${entry.kg.toFixed(0)} kg</td>
+                <td>${entry.endurance.toFixed(0)}</td>
+                <td>${entry.timeTrial.toFixed(0)}</td>
+                <td>${entry.sprint.toFixed(0)}</td>
+                <td>${entry.climb.toFixed(0)}</td>
+                <td>${entry.arr.toFixed(0)}</td>
             `;
 
             historyBody.insertBefore(row, historyBody.firstChild);
