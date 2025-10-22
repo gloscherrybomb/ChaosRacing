@@ -5,218 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TPV Seed/Anchor Proposal (WIP)</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            background: #0a0a0a;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            position: relative;
+            background: #0a0a0a; min-height: 100vh; display: flex;
+            justify-content: center; align-items: center; padding: 20px; position: relative;
         }
-
         body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(45deg, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 20% 80%, rgba(220, 38, 38, 0.15) 0%, transparent 50%);
             pointer-events: none;
         }
-
         .container {
-            background: #1a1a1a;
-            border-radius: 8px;
-            border: 1px solid #2a2a2a;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-            padding: 40px;
-            max-width: 900px;
-            width: 100%;
-            position: relative;
-            z-index: 1;
+            background: #1a1a1a; border-radius: 8px; border: 1px solid #2a2a2a;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); padding: 40px;
+            max-width: 900px; width: 100%; position: relative; z-index: 1;
         }
-
         h1 {
-            color: #ffffff;
-            margin-bottom: 8px;
-            font-size: 32px;
-            text-align: center;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            color: #ffffff; margin-bottom: 8px; font-size: 32px; text-align: center;
+            font-weight: 700; letter-spacing: -0.5px;
         }
-
         .subtitle {
-            color: #888;
-            text-align: center;
-            margin-bottom: 35px;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #888; text-align: center; margin-bottom: 35px; font-size: 14px;
+            text-transform: uppercase; letter-spacing: 1px;
         }
-
-        .input-group {
-            margin-bottom: 25px;
-        }
-
+        .input-group { margin-bottom: 25px; }
         label {
-            display: block;
-            color: #aaa;
-            font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            display: block; color: #aaa; font-weight: 600; margin-bottom: 8px;
+            font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;
         }
-
         input {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1px solid #2a2a2a;
-            border-radius: 4px;
-            font-size: 16px;
-            transition: all 0.3s;
-            background: #0f0f0f;
-            color: #fff;
+            width: 100%; padding: 14px 16px; border: 1px solid #2a2a2a;
+            border-radius: 4px; font-size: 16px; transition: all 0.3s;
+            background: #0f0f0f; color: #fff;
         }
-
-        input:focus {
-            outline: none;
-            border-color: #dc2626;
-            background: #1a1a1a;
-        }
-
-        input::placeholder {
-            color: #555;
-        }
-
+        input:focus { outline: none; border-color: #dc2626; background: #1a1a1a; }
+        input::placeholder { color: #555; }
         .add-button {
-            width: 100%;
-            padding: 14px 16px;
-            background: #dc2626;
-            border: none;
-            border-radius: 4px;
-            color: white;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: background 0.3s;
-            margin-bottom: 25px;
+            width: 100%; padding: 14px 16px; background: #dc2626; border: none;
+            border-radius: 4px; color: white; font-size: 14px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer;
+            transition: background 0.3s; margin-bottom: 25px;
         }
-
-        .add-button:hover {
-            background: #b91c1c;
-        }
-
-        .add-button:active {
-            transform: translateY(1px);
-        }
-
-        .results {
-            margin-top: 35px;
-            padding-top: 35px;
-            border-top: 1px solid #2a2a2a;
-        }
-
+        .add-button:hover { background: #b91c1c; }
+        .add-button:active { transform: translateY(1px); }
+        .results { margin-top: 35px; padding-top: 35px; border-top: 1px solid #2a2a2a; }
         .result-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 20px;
-            margin-bottom: 10px;
-            background: #0f0f0f;
-            border: 1px solid #2a2a2a;
-            border-radius: 4px;
-            transition: all 0.2s;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 18px 20px; margin-bottom: 10px; background: #0f0f0f;
+            border: 1px solid #2a2a2a; border-radius: 4px; transition: all 0.2s;
         }
-
-        .result-item:hover {
-            border-color: #3a3a3a;
-            background: #1a1a1a;
-        }
-
+        .result-item:hover { border-color: #3a3a3a; background: #1a1a1a; }
         .result-item.arr {
-            background: #dc2626;
-            border-color: #dc2626;
-            color: white;
-            font-weight: 600;
-            margin-top: 15px;
+            background: #dc2626; border-color: #dc2626; color: white;
+            font-weight: 600; margin-top: 15px;
         }
-
-        .result-item.arr:hover {
-            background: #b91c1c;
-            border-color: #b91c1c;
-        }
-
+        .result-item.arr:hover { background: #b91c1c; border-color: #b91c1c; }
         .result-label {
-            font-weight: 600;
-            color: #ccc;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-weight: 600; color: #ccc; font-size: 14px;
+            text-transform: uppercase; letter-spacing: 0.5px;
         }
-
-        .result-item.arr .result-label {
-            color: white;
-        }
-
+        .result-item.arr .result-label { color: white; }
         .result-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: #dc2626;
-            font-variant-numeric: tabular-nums;
+            font-size: 24px; font-weight: 700; color: #dc2626; font-variant-numeric: tabular-nums;
         }
-
-        .result-item.arr .result-value {
-            color: white;
+        .result-item.arr .result-value { color: white; }
+        .result-group { display: flex; flex-direction: column; align-items: flex-end; }
+        .result-range { font-size: 11px; color: #666; margin-top: 4px; font-weight: 400; }
+        .result-item.arr .result-range { color: rgba(255, 255, 255, 0.7); }
+        .history-section { margin-top: 40px; padding-top: 40px; border-top: 1px solid #2a2a2a; }
+        .history-section h2 {
+            color: #ffffff; font-size: 20px; margin-bottom: 20px; text-align: center;
+            text-transform: uppercase; letter-spacing: 1px;
         }
-
-        .unit {
-            font-size: 12px;
-            color: #666;
-            margin-left: 5px;
+        .table-container { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        thead { background: #0f0f0f; }
+        th {
+            padding: 12px 8px; text-align: left; color: #aaa; font-weight: 600;
+            text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px;
+            border-bottom: 1px solid #2a2a2a;
         }
-
-        .result-item.arr .unit {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .result-group {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-
-        .result-range {
-            font-size: 11px;
-            color: #666;
-            margin-top: 4px;
-            font-weight: 400;
-        }
-
-        .result-item.arr .result-range {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .history-section {
+        td { padding: 12px 8px; color: #ccc; border-bottom: 1px solid #1a1a1a; }
+        tbody tr { transition: background 0.2s; }
+        tbody tr:hover { background: #0f0f0f; }
+        #historyBody tr td:first-child,
+        #historyBody tr td:nth-child(2),
+        #historyBody tr td:nth-child(3) { color: #888; }
+        #historyBody tr td:nth-child(4),
+        #historyBody tr td:nth-child(5),
+        #historyBody tr td:nth-child(6),
+        #historyBody tr td:nth-child(7),
+        #historyBody tr td:nth-child(8) { font-weight: 600; }
+        .changelog-section {
             margin-top: 40px;
             padding-top: 40px;
             border-top: 1px solid #2a2a2a;
         }
-
-        .history-section h2 {
+        .changelog-section h2 {
             color: #ffffff;
             font-size: 20px;
             margin-bottom: 20px;
@@ -224,58 +111,25 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
-        .table-container {
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
-
-        thead {
+        .changelog-entry {
             background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 4px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
         }
-
-        th {
-            padding: 12px 8px;
-            text-align: left;
-            color: #aaa;
-            font-weight: 600;
+        .changelog-version {
+            color: #dc2626;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 8px;
             text-transform: uppercase;
-            font-size: 11px;
             letter-spacing: 0.5px;
-            border-bottom: 1px solid #2a2a2a;
         }
-
-        td {
-            padding: 12px 8px;
+        .changelog-changes {
             color: #ccc;
-            border-bottom: 1px solid #1a1a1a;
-        }
-
-        tbody tr {
-            transition: background 0.2s;
-        }
-
-        tbody tr:hover {
-            background: #0f0f0f;
-        }
-
-        #historyBody tr td:first-child,
-        #historyBody tr td:nth-child(2),
-        #historyBody tr td:nth-child(3) {
-            color: #888;
-        }
-
-        #historyBody tr td:nth-child(4),
-        #historyBody tr td:nth-child(5),
-        #historyBody tr td:nth-child(6),
-        #historyBody tr td:nth-child(7),
-        #historyBody tr td:nth-child(8) {
-            font-weight: 600;
+            font-size: 13px;
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -283,24 +137,19 @@
     <div class="container">
         <h1>TPV Seed/Anchor Proposal (WIP)</h1>
         <p class="subtitle">Enter your power and weight data</p>
-
         <div class="input-group">
             <label for="power1min">1 Minute Power (W)</label>
             <input type="number" id="power1min" placeholder="Enter 1 minute power in watts" step="0.1" min="0">
         </div>
-
         <div class="input-group">
             <label for="power5min">5 Minute Power (W)</label>
             <input type="number" id="power5min" placeholder="Enter 5 minute power in watts" step="0.1" min="0">
         </div>
-
         <div class="input-group">
             <label for="weight">Weight (kg)</label>
             <input type="number" id="weight" placeholder="Enter weight in kilograms" step="0.1" min="0">
         </div>
-
         <button id="addButton" class="add-button">Add to Table</button>
-
         <div class="results">
             <div class="result-item">
                 <span class="result-label">Endurance</span>
@@ -309,15 +158,13 @@
                     <span class="result-range" id="endurance-range">-</span>
                 </div>
             </div>
-
             <div class="result-item">
-                <span class="result-label">Time Trial</span>
+                <span class="result-label">Flat</span>
                 <div class="result-group">
-                    <span class="result-value" id="timeTrial">-</span>
-                    <span class="result-range" id="timeTrial-range">-</span>
+                    <span class="result-value" id="flat">-</span>
+                    <span class="result-range" id="flat-range">-</span>
                 </div>
             </div>
-
             <div class="result-item">
                 <span class="result-label">Sprint</span>
                 <div class="result-group">
@@ -325,7 +172,6 @@
                     <span class="result-range" id="sprint-range">-</span>
                 </div>
             </div>
-
             <div class="result-item">
                 <span class="result-label">Climb</span>
                 <div class="result-group">
@@ -333,7 +179,6 @@
                     <span class="result-range" id="climb-range">-</span>
                 </div>
             </div>
-
             <div class="result-item arr">
                 <span class="result-label">ARR (Average)</span>
                 <div class="result-group">
@@ -342,7 +187,6 @@
                 </div>
             </div>
         </div>
-
         <div class="history-section">
             <h2>Entry History</h2>
             <div class="table-container">
@@ -353,133 +197,96 @@
                             <th>5min Power</th>
                             <th>Weight</th>
                             <th>Endurance</th>
-                            <th>Time Trial</th>
+                            <th>Flat</th>
                             <th>Sprint</th>
                             <th>Climb</th>
                             <th>ARR</th>
                         </tr>
                     </thead>
-                    <tbody id="historyBody">
-                    </tbody>
+                    <tbody id="historyBody"></tbody>
                 </table>
             </div>
         </div>
+        <div class="changelog-section">
+            <h2>Changelog</h2>
+            <div class="changelog-entry">
+                <div class="changelog-version">Version 0.04</div>
+                <div class="changelog-changes">Adapted output value to fit TPV ranking boundaries.</div>
+            </div>
+        </div>
     </div>
-
     <script>
         const power1minInput = document.getElementById('power1min');
         const power5minInput = document.getElementById('power5min');
         const weightInput = document.getElementById('weight');
-
         const enduranceEl = document.getElementById('endurance');
-        const timeTrialEl = document.getElementById('timeTrial');
+        const flatEl = document.getElementById('flat');
         const sprintEl = document.getElementById('sprint');
         const climbEl = document.getElementById('climb');
         const arrEl = document.getElementById('arr');
-
         const enduranceRangeEl = document.getElementById('endurance-range');
-        const timeTrialRangeEl = document.getElementById('timeTrial-range');
+        const flatRangeEl = document.getElementById('flat-range');
         const sprintRangeEl = document.getElementById('sprint-range');
         const climbRangeEl = document.getElementById('climb-range');
         const arrRangeEl = document.getElementById('arr-range');
-
         const historyBody = document.getElementById('historyBody');
         let entryId = 0;
-
         let lastValidEntry = null;
-
         function calculate() {
             const power1min = parseFloat(power1minInput.value);
             const power5min = parseFloat(power5minInput.value);
             const kg = parseFloat(weightInput.value);
-
-            // Check if all inputs are valid
             if (isNaN(power1min) || isNaN(power5min) || isNaN(kg) || kg <= 0) {
                 enduranceEl.textContent = '-';
-                timeTrialEl.textContent = '-';
+                flatEl.textContent = '-';
                 sprintEl.textContent = '-';
                 climbEl.textContent = '-';
                 arrEl.textContent = '-';
-                
                 enduranceRangeEl.textContent = '-';
-                timeTrialRangeEl.textContent = '-';
+                flatRangeEl.textContent = '-';
                 sprintRangeEl.textContent = '-';
                 climbRangeEl.textContent = '-';
                 arrRangeEl.textContent = '-';
-                
                 lastValidEntry = null;
                 return;
             }
-
-            // Calculate Endurance: 70×W² / (kg×(42 + 0.4×kg))
-            const endurance = (70 * Math.pow(power5min, 2)) / (kg * (42 + 0.4 * kg));
-
-            // Calculate Time Trial: 70×W² / (kg × (56 + 0.2×kg))
-            const timeTrial = (70 * Math.pow(power5min, 2)) / (kg * (56 + 0.2 * kg));
-
-            // Calculate Sprint: 31.1×W_1min² / (kg × (42 + 0.4×kg))
-            const sprint = (31.1 * Math.pow(power1min, 2)) / (kg * (42 + 0.4 * kg));
-
-            // Calculate Climb: 70×W² / (kg × (28 + 0.6×kg))
-            const climb = (70 * Math.pow(power5min, 2)) / (kg * (28 + 0.6 * kg));
-
-            // Calculate ARR (Average of the 4 values)
-            const arr = (endurance + timeTrial + sprint + climb) / 4;
-
-            // Display results
+            const endurance = (47 * Math.pow(power5min, 2)) / (kg * (42 + 0.4 * kg));
+            const flat = (47 * Math.pow(power5min, 2)) / (kg * (56 + 0.2 * kg));
+            const sprint = (20.9 * Math.pow(power1min, 2)) / (kg * (42 + 0.4 * kg));
+            const climb = (47 * Math.pow(power5min, 2)) / (kg * (28 + 0.6 * kg));
+            const arr = (endurance + flat + sprint + climb) / 4;
             enduranceEl.textContent = endurance.toFixed(0);
-            timeTrialEl.textContent = timeTrial.toFixed(0);
+            flatEl.textContent = flat.toFixed(0);
             sprintEl.textContent = sprint.toFixed(0);
             climbEl.textContent = climb.toFixed(0);
             arrEl.textContent = arr.toFixed(0);
-
-            // Display ranges (value - 200 to value + 200)
             enduranceRangeEl.textContent = `(${(endurance - 200).toFixed(0)} - ${(endurance + 200).toFixed(0)})`;
-            timeTrialRangeEl.textContent = `(${(timeTrial - 200).toFixed(0)} - ${(timeTrial + 200).toFixed(0)})`;
+            flatRangeEl.textContent = `(${(flat - 200).toFixed(0)} - ${(flat + 200).toFixed(0)})`;
             sprintRangeEl.textContent = `(${(sprint - 200).toFixed(0)} - ${(sprint + 200).toFixed(0)})`;
             climbRangeEl.textContent = `(${(climb - 200).toFixed(0)} - ${(climb + 200).toFixed(0)})`;
             arrRangeEl.textContent = `(${(arr - 200).toFixed(0)} - ${(arr + 200).toFixed(0)})`;
-
-            // Store current entry
-            lastValidEntry = {
-                power1min,
-                power5min,
-                kg,
-                endurance,
-                timeTrial,
-                sprint,
-                climb,
-                arr
-            };
+            lastValidEntry = { power1min, power5min, kg, endurance, flat, sprint, climb, arr };
         }
-
         function addToTable() {
             if (!lastValidEntry) return;
-
             const entry = lastValidEntry;
             const row = document.createElement('tr');
             row.dataset.id = entryId++;
-
             row.innerHTML = `
                 <td>${entry.power1min.toFixed(0)} W</td>
                 <td>${entry.power5min.toFixed(0)} W</td>
                 <td>${entry.kg.toFixed(0)} kg</td>
                 <td>${entry.endurance.toFixed(0)}</td>
-                <td>${entry.timeTrial.toFixed(0)}</td>
+                <td>${entry.flat.toFixed(0)}</td>
                 <td>${entry.sprint.toFixed(0)}</td>
                 <td>${entry.climb.toFixed(0)}</td>
                 <td>${entry.arr.toFixed(0)}</td>
             `;
-
             historyBody.insertBefore(row, historyBody.firstChild);
         }
-
-        // Add event listeners to all inputs
         power1minInput.addEventListener('input', calculate);
         power5minInput.addEventListener('input', calculate);
         weightInput.addEventListener('input', calculate);
-
-        // Add to table only when button is clicked
         const addButton = document.getElementById('addButton');
         addButton.addEventListener('click', addToTable);
     </script>
