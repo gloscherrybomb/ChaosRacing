@@ -122,17 +122,46 @@
             text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px;
             border-bottom: 1px solid #2a2a2a;
         }
+        th.sortable {
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+        }
+        th.sortable:hover {
+            background: #1a1a1a;
+        }
+        .sort-arrow {
+            display: inline-block;
+            margin-left: 5px;
+            opacity: 0.3;
+        }
+        .sort-arrow::after {
+            content: '⇅';
+        }
+        th.sort-asc .sort-arrow {
+            opacity: 1;
+        }
+        th.sort-asc .sort-arrow::after {
+            content: '↑';
+        }
+        th.sort-desc .sort-arrow {
+            opacity: 1;
+        }
+        th.sort-desc .sort-arrow::after {
+            content: '↓';
+        }
         td { padding: 12px 8px; color: #ccc; border-bottom: 1px solid #1a1a1a; }
         tbody tr { transition: background 0.2s; }
         tbody tr:hover { background: #0f0f0f; }
         #historyBody tr td:first-child,
         #historyBody tr td:nth-child(2),
-        #historyBody tr td:nth-child(3) { color: #888; }
-        #historyBody tr td:nth-child(4),
+        #historyBody tr td:nth-child(3),
+        #historyBody tr td:nth-child(4) { color: #888; }
         #historyBody tr td:nth-child(5),
         #historyBody tr td:nth-child(6),
         #historyBody tr td:nth-child(7),
-        #historyBody tr td:nth-child(8) { font-weight: 600; }
+        #historyBody tr td:nth-child(8),
+        #historyBody tr td:nth-child(9) { font-weight: 600; }
         .changelog-section { margin-top: 40px; padding-top: 40px; border-top: 1px solid #2a2a2a; }
         .changelog-section h2 {
             color: #ffffff; font-size: 20px; margin-bottom: 20px; text-align: center;
@@ -153,6 +182,10 @@
     <div class="container">
         <h1>TPV Seed/Anchor Proposal (WIP)</h1>
         <p class="subtitle">Enter your power and weight data</p>
+        <div class="input-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter your name (optional)" maxlength="50">
+        </div>
         <div class="input-group">
             <label for="power1min">1 Minute Power (W)</label>
             <input type="number" id="power1min" placeholder="Enter 1 minute power in watts" step="0.1" min="0">
@@ -274,14 +307,15 @@
                 <table id="historyTable">
                     <thead>
                         <tr>
-                            <th>1min Power</th>
-                            <th>5min Power</th>
-                            <th>Weight</th>
-                            <th>Endurance</th>
-                            <th>Flat</th>
-                            <th>Sprint</th>
-                            <th>Climb</th>
-                            <th>ARR</th>
+                            <th class="sortable" data-column="name">Name <span class="sort-arrow"></span></th>
+                            <th class="sortable" data-column="power1min">1min Power <span class="sort-arrow"></span></th>
+                            <th class="sortable" data-column="power5min">5min Power <span class="sort-arrow"></span></th>
+                            <th class="sortable" data-column="weight">Weight <span class="sort-arrow"></span></th>
+                            <th class="sortable" data-column="endurance">Endurance <span class="sort-arrow"></span></th>
+                            <th class="sortable" data-column="flat">Flat <span class="sort-arrow"></span></th>
+                            <th class="sortable" data-column="sprint">Sprint <span class="sort-arrow"></span></th>
+                            <th class="sortable" data-column="climb">Climb <span class="sort-arrow"></span></th>
+                            <th class="sortable" data-column="arr">ARR <span class="sort-arrow"></span></th>
                         </tr>
                     </thead>
                     <tbody id="historyBody"></tbody>
@@ -290,6 +324,10 @@
         </div>
         <div class="changelog-section">
             <h2>Changelog</h2>
+            <div class="changelog-entry">
+                <div class="changelog-version">Version 0.08</div>
+                <div class="changelog-changes">Added Name input field (optional, defaults to 'Anonymous'). Made table sortable by clicking column headers - click once for descending, twice for ascending.</div>
+            </div>
             <div class="changelog-entry">
                 <div class="changelog-version">Version 0.07</div>
                 <div class="changelog-changes">Added Firebase integration for shared database storage. All users can now see entries added by others in real-time. Requires Firebase configuration to enable.</div>
@@ -320,15 +358,14 @@
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
         import { getFirestore, collection, addDoc, query, orderBy, limit, onSnapshot, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
-        // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCYxjJjJy6UspHwN4-1nv4kJY3v_OiEsUk",
-  authDomain: "tpv-seed-calculator.firebaseapp.com",
-  projectId: "tpv-seed-calculator",
-  storageBucket: "tpv-seed-calculator.firebasestorage.app",
-  messagingSenderId: "745004173385",
-  appId: "1:745004173385:web:52251b672fd3c5a86c5798"
-};
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
 
         // Initialize Firebase
         let db = null;
@@ -345,12 +382,16 @@ const firebaseConfig = {
             firebaseEnabled = false;
         }
 
+        const nameInput = document.getElementById('name');
         const power1minInput = document.getElementById('power1min');
         const power5minInput = document.getElementById('power5min');
         const weightInput = document.getElementById('weight');
         const historyBody = document.getElementById('historyBody');
         let entryId = 0;
         let lastValidEntry = null;
+        let currentSortColumn = null;
+        let currentSortDirection = 'desc';
+        let allEntries = [];
 
         function getRank(value) {
             if (value > 1600) return { name: 'Diamond', class: 'rank-diamond' };
@@ -423,7 +464,17 @@ const firebaseConfig = {
             updateRankBox('climb', climb);
             updateRankBox('arr', arr);
 
-            lastValidEntry = { power1min, power5min, kg, endurance, flat, sprint, climb, arr };
+            lastValidEntry = { 
+                name: nameInput.value.trim() || 'Anonymous',
+                power1min, 
+                power5min, 
+                kg, 
+                endurance, 
+                flat, 
+                sprint, 
+                climb, 
+                arr 
+            };
         }
 
         function createTableRow(entry) {
@@ -433,7 +484,20 @@ const firebaseConfig = {
             const sprintRank = getRank(entry.sprint);
             const climbRank = getRank(entry.climb);
             const arrRank = getRank(entry.arr);
+            
+            // Store data attributes for sorting
+            row.dataset.name = entry.name || 'Anonymous';
+            row.dataset.power1min = entry.power1min;
+            row.dataset.power5min = entry.power5min;
+            row.dataset.weight = entry.kg;
+            row.dataset.endurance = entry.endurance;
+            row.dataset.flat = entry.flat;
+            row.dataset.sprint = entry.sprint;
+            row.dataset.climb = entry.climb;
+            row.dataset.arr = entry.arr;
+            
             row.innerHTML = `
+                <td>${entry.name || 'Anonymous'}</td>
                 <td>${entry.power1min.toFixed(0)} W</td>
                 <td>${entry.power5min.toFixed(0)} W</td>
                 <td>${entry.kg.toFixed(0)} kg</td>
@@ -451,6 +515,7 @@ const firebaseConfig = {
             
             try {
                 await addDoc(collection(db, 'entries'), {
+                    name: entry.name || 'Anonymous',
                     power1min: entry.power1min,
                     power5min: entry.power5min,
                     kg: entry.kg,
@@ -475,15 +540,62 @@ const firebaseConfig = {
             onSnapshot(q, (snapshot) => {
                 // Clear existing entries
                 historyBody.innerHTML = '';
+                allEntries = [];
                 
                 snapshot.forEach((doc) => {
                     const entry = doc.data();
+                    allEntries.push(entry);
                     const row = createTableRow(entry);
                     historyBody.appendChild(row);
                 });
             }, (error) => {
                 console.error('Error loading from Firebase:', error);
             });
+        }
+
+        function sortTable(column) {
+            const rows = Array.from(historyBody.querySelectorAll('tr'));
+            
+            // Toggle sort direction if clicking same column, otherwise default to desc
+            if (currentSortColumn === column) {
+                currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSortDirection = 'desc';
+            }
+            currentSortColumn = column;
+
+            // Update header arrows
+            document.querySelectorAll('th.sortable').forEach(th => {
+                th.classList.remove('sort-asc', 'sort-desc');
+            });
+            const currentHeader = document.querySelector(`th[data-column="${column}"]`);
+            if (currentHeader) {
+                currentHeader.classList.add(currentSortDirection === 'asc' ? 'sort-asc' : 'sort-desc');
+            }
+
+            // Sort rows
+            rows.sort((a, b) => {
+                let aVal = a.dataset[column];
+                let bVal = b.dataset[column];
+
+                // Convert to numbers for numeric columns
+                if (column !== 'name') {
+                    aVal = parseFloat(aVal);
+                    bVal = parseFloat(bVal);
+                } else {
+                    aVal = aVal.toLowerCase();
+                    bVal = bVal.toLowerCase();
+                }
+
+                if (currentSortDirection === 'asc') {
+                    return aVal > bVal ? 1 : aVal < bVal ? -1 : 0;
+                } else {
+                    return aVal < bVal ? 1 : aVal > bVal ? -1 : 0;
+                }
+            });
+
+            // Re-append sorted rows
+            rows.forEach(row => historyBody.appendChild(row));
         }
 
         async function addToTable() {
@@ -498,6 +610,7 @@ const firebaseConfig = {
                 // If Firebase is not enabled, add to table locally
                 const row = createTableRow(entry);
                 historyBody.insertBefore(row, historyBody.firstChild);
+                allEntries.unshift(entry);
             }
         }
 
@@ -506,6 +619,14 @@ const firebaseConfig = {
         weightInput.addEventListener('input', calculate);
         const addButton = document.getElementById('addButton');
         addButton.addEventListener('click', addToTable);
+
+        // Add click handlers to sortable headers
+        document.querySelectorAll('th.sortable').forEach(th => {
+            th.addEventListener('click', () => {
+                const column = th.dataset.column;
+                sortTable(column);
+            });
+        });
     </script>
 </body>
 </html>
