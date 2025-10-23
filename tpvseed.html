@@ -162,6 +162,26 @@
         #historyBody tr td:nth-child(7),
         #historyBody tr td:nth-child(8),
         #historyBody tr td:nth-child(9) { font-weight: 600; }
+        .delete-btn {
+            background: #dc2626;
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+            transition: background 0.2s;
+            text-transform: uppercase;
+        }
+        .delete-btn:hover {
+            background: #b91c1c;
+        }
+        .delete-btn:disabled {
+            background: #4b5563;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
         .changelog-section { margin-top: 40px; padding-top: 40px; border-top: 1px solid #2a2a2a; }
         .changelog-section h2 {
             color: #ffffff; font-size: 20px; margin-bottom: 20px; text-align: center;
@@ -316,6 +336,7 @@
                             <th class="sortable" data-column="sprint">Sprint <span class="sort-arrow"></span></th>
                             <th class="sortable" data-column="climb">Climb <span class="sort-arrow"></span></th>
                             <th class="sortable" data-column="arr">ARR <span class="sort-arrow"></span></th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody id="historyBody"></tbody>
@@ -324,6 +345,10 @@
         </div>
         <div class="changelog-section">
             <h2>Changelog</h2>
+            <div class="changelog-entry">
+                <div class="changelog-version">Version 0.09</div>
+                <div class="changelog-changes">Added delete functionality - users can only delete entries they created from their browser. Uses browser-based tracking (localStorage) to identify entry ownership.</div>
+            </div>
             <div class="changelog-entry">
                 <div class="changelog-version">Version 0.08</div>
                 <div class="changelog-changes">Added Name input field (optional, defaults to 'Anonymous'). Made table sortable by clicking column headers - click once for descending, twice for ascending.</div>
@@ -356,9 +381,9 @@
         // 5. Copy your config object and paste it below
         
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-        import { getFirestore, collection, addDoc, query, orderBy, limit, onSnapshot, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+        import { getFirestore, collection, addDoc, query, orderBy, limit, onSnapshot, serverTimestamp, doc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
-        // Your web app's Firebase configuration
+       // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCYxjJjJy6UspHwN4-1nv4kJY3v_OiEsUk",
   authDomain: "tpv-seed-calculator.firebaseapp.com",
@@ -382,6 +407,18 @@ const firebaseConfig = {
             console.log('Firebase not configured yet. Data will only be stored locally in this session.');
             firebaseEnabled = false;
         }
+
+        // Get or create a unique browser ID
+        function getBrowserId() {
+            let browserId = localStorage.getItem('tpv_browser_id');
+            if (!browserId) {
+                browserId = 'browser_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('tpv_browser_id', browserId);
+            }
+            return browserId;
+        }
+
+        const browserId = getBrowserId();
 
         const nameInput = document.getElementById('name');
         const power1minInput = document.getElementById('power1min');
@@ -474,11 +511,12 @@ const firebaseConfig = {
                 flat, 
                 sprint, 
                 climb, 
-                arr 
+                arr,
+                browserId: browserId
             };
         }
 
-        function createTableRow(entry) {
+        function createTableRow(entry, docId = null) {
             const row = document.createElement('tr');
             const enduranceRank = getRank(entry.endurance);
             const flatRank = getRank(entry.flat);
@@ -496,6 +534,14 @@ const firebaseConfig = {
             row.dataset.sprint = entry.sprint;
             row.dataset.climb = entry.climb;
             row.dataset.arr = entry.arr;
+            row.dataset.browserId = entry.browserId || '';
+            if (docId) row.dataset.docId = docId;
+            
+            // Check if this entry was created by current browser
+            const isOwnEntry = entry.browserId === browserId;
+            const deleteButton = isOwnEntry 
+                ? `<button class="delete-btn" onclick="deleteEntry(this)">Delete</button>`
+                : '';
             
             row.innerHTML = `
                 <td>${entry.name || 'Anonymous'}</td>
@@ -507,6 +553,7 @@ const firebaseConfig = {
                 <td>${entry.sprint.toFixed(0)} <small style="color: #888;">(${sprintRank.name})</small></td>
                 <td>${entry.climb.toFixed(0)} <small style="color: #888;">(${climbRank.name})</small></td>
                 <td>${entry.arr.toFixed(0)} <small style="color: #888;">(${arrRank.name})</small></td>
+                <td>${deleteButton}</td>
             `;
             return row;
         }
@@ -525,6 +572,7 @@ const firebaseConfig = {
                     sprint: entry.sprint,
                     climb: entry.climb,
                     arr: entry.arr,
+                    browserId: entry.browserId,
                     timestamp: serverTimestamp()
                 });
                 console.log('Entry saved to Firebase');
@@ -546,7 +594,7 @@ const firebaseConfig = {
                 snapshot.forEach((doc) => {
                     const entry = doc.data();
                     allEntries.push(entry);
-                    const row = createTableRow(entry);
+                    const row = createTableRow(entry, doc.id);
                     historyBody.appendChild(row);
                 });
             }, (error) => {
@@ -598,6 +646,46 @@ const firebaseConfig = {
             // Re-append sorted rows
             rows.forEach(row => historyBody.appendChild(row));
         }
+
+        // Make deleteEntry global so onclick can access it
+        window.deleteEntry = async function(button) {
+            const row = button.closest('tr');
+            const docId = row.dataset.docId;
+            const entryBrowserId = row.dataset.browserId;
+
+            // Double-check this is the user's entry
+            if (entryBrowserId !== browserId) {
+                alert('You can only delete your own entries.');
+                return;
+            }
+
+            if (!confirm('Are you sure you want to delete this entry?')) {
+                return;
+            }
+
+            try {
+                // If Firebase is enabled and we have a docId, delete from Firebase
+                if (firebaseEnabled && db && docId) {
+                    await deleteDoc(doc(db, 'entries', docId));
+                    console.log('Entry deleted from Firebase');
+                    // The real-time listener will automatically update the table
+                } else {
+                    // If Firebase is not enabled, just remove from local table
+                    row.remove();
+                    // Also remove from allEntries array
+                    const index = allEntries.findIndex(e => 
+                        e.browserId === entryBrowserId && 
+                        e.power1min === parseFloat(row.dataset.power1min)
+                    );
+                    if (index !== -1) {
+                        allEntries.splice(index, 1);
+                    }
+                }
+            } catch (error) {
+                console.error('Error deleting entry:', error);
+                alert('Failed to delete entry. Please try again.');
+            }
+        };
 
         async function addToTable() {
             if (!lastValidEntry) return;
