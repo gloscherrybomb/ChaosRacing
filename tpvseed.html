@@ -241,7 +241,7 @@
                 </div>
             </div>
             <div class="metric-row">
-                <div class="metric-label">Flat</div>
+                <div class="metric-label">Time Trial</div>
                 <div class="rank-boxes">
                     <div class="rank-box" id="flat-seed-box">
                         <div class="rank-box-label">Seed</div>
@@ -329,10 +329,12 @@
                         <tr>
                             <th class="sortable" data-column="name">Name <span class="sort-arrow"></span></th>
                             <th class="sortable" data-column="power1min">1min Power <span class="sort-arrow"></span></th>
+                            <th class="sortable" data-column="power1minWkg">1min W/kg <span class="sort-arrow"></span></th>
                             <th class="sortable" data-column="power5min">5min Power <span class="sort-arrow"></span></th>
+                            <th class="sortable" data-column="power5minWkg">5min W/kg <span class="sort-arrow"></span></th>
                             <th class="sortable" data-column="weight">Weight <span class="sort-arrow"></span></th>
                             <th class="sortable" data-column="endurance">Endurance <span class="sort-arrow"></span></th>
-                            <th class="sortable" data-column="flat">Flat <span class="sort-arrow"></span></th>
+                            <th class="sortable" data-column="flat">Time Trial <span class="sort-arrow"></span></th>
                             <th class="sortable" data-column="sprint">Sprint <span class="sort-arrow"></span></th>
                             <th class="sortable" data-column="climb">Climb <span class="sort-arrow"></span></th>
                             <th class="sortable" data-column="arr">ARR <span class="sort-arrow"></span></th>
@@ -527,7 +529,9 @@ const firebaseConfig = {
             // Store data attributes for sorting
             row.dataset.name = entry.name || 'Anonymous';
             row.dataset.power1min = entry.power1min;
+            row.dataset.power1minWkg = entry.power1min / entry.kg;
             row.dataset.power5min = entry.power5min;
+            row.dataset.power5minWkg = entry.power5min / entry.kg;
             row.dataset.weight = entry.kg;
             row.dataset.endurance = entry.endurance;
             row.dataset.flat = entry.flat;
@@ -546,7 +550,9 @@ const firebaseConfig = {
             row.innerHTML = `
                 <td>${entry.name || 'Anonymous'}</td>
                 <td>${entry.power1min.toFixed(0)} W</td>
+                <td>${(entry.power1min / entry.kg).toFixed(2)}</td>
                 <td>${entry.power5min.toFixed(0)} W</td>
+                <td>${(entry.power5min / entry.kg).toFixed(2)}</td>
                 <td>${entry.kg.toFixed(0)} kg</td>
                 <td>${entry.endurance.toFixed(0)} <small style="color: #888;">(${enduranceRank.name})</small></td>
                 <td>${entry.flat.toFixed(0)} <small style="color: #888;">(${flatRank.name})</small></td>
