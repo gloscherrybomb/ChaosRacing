@@ -291,6 +291,10 @@
         <div class="changelog-section">
             <h2>Changelog</h2>
             <div class="changelog-entry">
+                <div class="changelog-version">Version 0.07</div>
+                <div class="changelog-changes">Added Firebase integration for shared database storage. All users can now see entries added by others in real-time. Requires Firebase configuration to enable.</div>
+            </div>
+            <div class="changelog-entry">
                 <div class="changelog-version">Version 0.06</div>
                 <div class="changelog-changes">Reduced size of Min/Max rank boxes to 80% to emphasize seed value. Updated platinum color to light blue/cyan gradient and silver to pure neutral gray for better distinction.</div>
             </div>
@@ -304,7 +308,43 @@
             </div>
         </div>
     </div>
-    <script>
+    <script type="module">
+        // Firebase Configuration
+        // INSTRUCTIONS: Replace this with your Firebase config from Firebase Console
+        // 1. Go to https://console.firebase.google.com/
+        // 2. Create a new project (or use existing)
+        // 3. Go to Project Settings > General > Your apps
+        // 4. Click "Add app" and choose Web
+        // 5. Copy your config object and paste it below
+        
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore, collection, addDoc, query, orderBy, limit, onSnapshot, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        // Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCYxjJjJy6UspHwN4-1nv4kJY3v_OiEsUk",
+  authDomain: "tpv-seed-calculator.firebaseapp.com",
+  projectId: "tpv-seed-calculator",
+  storageBucket: "tpv-seed-calculator.firebasestorage.app",
+  messagingSenderId: "745004173385",
+  appId: "1:745004173385:web:52251b672fd3c5a86c5798"
+};
+
+        // Initialize Firebase
+        let db = null;
+        let firebaseEnabled = false;
+
+        try {
+            const app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            firebaseEnabled = true;
+            console.log('Firebase initialized successfully');
+            loadEntriesFromFirebase();
+        } catch (error) {
+            console.log('Firebase not configured yet. Data will only be stored locally in this session.');
+            firebaseEnabled = false;
+        }
+
         const power1minInput = document.getElementById('power1min');
         const power5minInput = document.getElementById('power5min');
         const weightInput = document.getElementById('weight');
@@ -386,11 +426,8 @@
             lastValidEntry = { power1min, power5min, kg, endurance, flat, sprint, climb, arr };
         }
 
-        function addToTable() {
-            if (!lastValidEntry) return;
-            const entry = lastValidEntry;
+        function createTableRow(entry) {
             const row = document.createElement('tr');
-            row.dataset.id = entryId++;
             const enduranceRank = getRank(entry.endurance);
             const flatRank = getRank(entry.flat);
             const sprintRank = getRank(entry.sprint);
@@ -406,7 +443,62 @@
                 <td>${entry.climb.toFixed(0)} <small style="color: #888;">(${climbRank.name})</small></td>
                 <td>${entry.arr.toFixed(0)} <small style="color: #888;">(${arrRank.name})</small></td>
             `;
-            historyBody.insertBefore(row, historyBody.firstChild);
+            return row;
+        }
+
+        async function saveToFirebase(entry) {
+            if (!firebaseEnabled || !db) return;
+            
+            try {
+                await addDoc(collection(db, 'entries'), {
+                    power1min: entry.power1min,
+                    power5min: entry.power5min,
+                    kg: entry.kg,
+                    endurance: entry.endurance,
+                    flat: entry.flat,
+                    sprint: entry.sprint,
+                    climb: entry.climb,
+                    arr: entry.arr,
+                    timestamp: serverTimestamp()
+                });
+                console.log('Entry saved to Firebase');
+            } catch (error) {
+                console.error('Error saving to Firebase:', error);
+            }
+        }
+
+        function loadEntriesFromFirebase() {
+            if (!firebaseEnabled || !db) return;
+
+            const q = query(collection(db, 'entries'), orderBy('timestamp', 'desc'), limit(50));
+            
+            onSnapshot(q, (snapshot) => {
+                // Clear existing entries
+                historyBody.innerHTML = '';
+                
+                snapshot.forEach((doc) => {
+                    const entry = doc.data();
+                    const row = createTableRow(entry);
+                    historyBody.appendChild(row);
+                });
+            }, (error) => {
+                console.error('Error loading from Firebase:', error);
+            });
+        }
+
+        async function addToTable() {
+            if (!lastValidEntry) return;
+            
+            const entry = lastValidEntry;
+            
+            // If Firebase is enabled, save to database (real-time listener will update table)
+            if (firebaseEnabled) {
+                await saveToFirebase(entry);
+            } else {
+                // If Firebase is not enabled, add to table locally
+                const row = createTableRow(entry);
+                historyBody.insertBefore(row, historyBody.firstChild);
+            }
         }
 
         power1minInput.addEventListener('input', calculate);
