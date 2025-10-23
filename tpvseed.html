@@ -358,14 +358,15 @@
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
         import { getFirestore, collection, addDoc, query, orderBy, limit, onSnapshot, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
+        // Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCYxjJjJy6UspHwN4-1nv4kJY3v_OiEsUk",
+  authDomain: "tpv-seed-calculator.firebaseapp.com",
+  projectId: "tpv-seed-calculator",
+  storageBucket: "tpv-seed-calculator.firebasestorage.app",
+  messagingSenderId: "745004173385",
+  appId: "1:745004173385:web:52251b672fd3c5a86c5798"
+};
 
         // Initialize Firebase
         let db = null;
