@@ -1,4 +1,4 @@
 Position,Name,Team,Country,Gender,Rank,RoundsCompleted,MissedRounds,TotalDeltaTime,AverageDeltaTime,BestDeltaTime,WorstDeltaTime,UID,ARR,ARRBand,AgeBand
-1,James Eastwood,Chaos,GBR,Male,Gold,2,1,180.0,90.0,0.0,180.0,212354980F57BA1B,1285,Gold 3,40-44
-2,Romario Sardinha,Track Cycling SA,NAM,Male,Gold,2,1,360.0,180.0,180.0,180.0,980B8210B9EC6B96,1209,Gold 3,35-39
-3,David Jones,Palace Dinosaurs,GBR,Male,Gold,2,1,360.0,180.0,180.0,180.0,8173712CA92A95B4,1268,Gold 3,55-59
+1,James Eastwood,Chaos,GBR,Male,Gold,3,2,360.0,120.0,0.0,180.0,212354980F57BA1B,1285,Gold 3,40-44
+2,Romario Sardinha,Track Cycling SA,NAM,Male,Gold,3,2,540.0,180.0,180.0,180.0,980B8210B9EC6B96,1209,Gold 3,35-39
+3,David Jones,Palace Dinosaurs,GBR,Male,Gold,3,2,540.0,180.0,180.0,180.0,8173712CA92A95B4,1268,Gold 3,55-59
