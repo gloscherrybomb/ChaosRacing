@@ -1,7 +1,7 @@
 Position,Name,Team,Country,Gender,Rank,RoundsCompleted,MissedRounds,TotalDeltaTime,AverageDeltaTime,BestDeltaTime,WorstDeltaTime,UID,ARR,ARRBand,AgeBand
-1,Tim Simpkins,Newhall.cc,GBR,Male,Bronze,3,2,360.0,120.0,0.0,180.0,7F25146A98D9033B,300,Bronze 1,45-49
-2,James Ford,Ilkley CC,GBR,Male,Bronze,3,2,394.916,131.639,34.916,180.0,F38E899A67FFF5DD,100,Bronze 1,45-49
-3,A Smith-Dorking SUF,KOS,GBR,Male,Bronze,3,2,414.633,138.211,54.633,180.0,4AC91F0CD74650DC,300,Bronze 1,45-49
+1,Tim Simpkins,Newhall.cc,GBR,Male,Bronze,4,2,362.145,90.536,0.0,180.0,7F25146A98D9033B,300,Bronze 1,45-49
+2,James Ford,Ilkley CC,GBR,Male,Bronze,4,2,397.155,99.289,2.239,180.0,F38E899A67FFF5DD,100,Bronze 1,45-49
+3,A Smith-Dorking SUF,KOS,GBR,Male,Bronze,4,2,414.633,103.658,0.0,180.0,4AC91F0CD74650DC,300,Bronze 1,45-49
 4,Daniel Holdener,indieVelo Founders Club,SUI,Male,Bronze,3,0,474.375,158.125,114.375,180.0,B8BBC9C64CAB2D89,689,Bronze 3,50-54
 5,Erik Klein Ovink,,NED,Male,Bronze,3,2,509.02,169.673,149.02,180.0,74585461DEBC178A,100,Bronze 1,70-74
 6,Lawrence Marsland,,GBR,Male,Bronze,3,2,540.0,180.0,180.0,180.0,8811C31089B1BE40,100,Bronze 1,Senior
