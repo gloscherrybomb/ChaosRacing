@@ -294,16 +294,20 @@
         // Fetch all data
         async function fetchDashboardData() {
             try {
+                // CORS proxy (comment out if not needed)
+                // If you get CORS errors, uncomment the line below
+                const CORS_PROXY = 'https://corsproxy.io/?';
+                
                 // Fetch scoreboard (recent games + next game)
-                const scoreboardResponse = await fetch(`https://api-web.nhle.com/v1/scoreboard/${TEAM_CODE}/now`);
+                const scoreboardResponse = await fetch(CORS_PROXY + `https://api-web.nhle.com/v1/scoreboard/${TEAM_CODE}/now`);
                 const scoreboardData = await scoreboardResponse.json();
                 
                 // Fetch standings
-                const standingsResponse = await fetch('https://api-web.nhle.com/v1/standings/now');
+                const standingsResponse = await fetch(CORS_PROXY + 'https://api-web.nhle.com/v1/standings/now');
                 const standingsData = await standingsResponse.json();
                 
                 // Fetch team stats (for top scorers)
-                const statsResponse = await fetch(`https://api-web.nhle.com/v1/club-stats/${TEAM_CODE}/now`);
+                const statsResponse = await fetch(CORS_PROXY + `https://api-web.nhle.com/v1/club-stats/${TEAM_CODE}/now`);
                 const statsData = await statsResponse.json();
                 
                 return {
