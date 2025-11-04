@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NY Islanders Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #ffffff;
+            color: #000000;
+            width: 800px;
+            height: 480px;
+            padding: 16px;
+            overflow: hidden;
+        }
+        
+        /* 2-bit greyscale palette */
+        .color-black { color: #000000; }
+        .color-dark { color: #555555; }
+        .color-light { color: #AAAAAA; }
+        .color-white { color: #FFFFFF; }
+        
+        .bg-black { background: #000000; }
+        .bg-dark { background: #555555; }
+        .bg-light { background: #AAAAAA; }
+        .bg-white { background: #FFFFFF; }
+        
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid #000000;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .team-logo {
+            width: 80px;
+            height: 80px;
+            background: #000000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        
+        .team-info {
+            flex: 1;
+            margin-left: 16px;
+        }
+        
+        .team-name {
+            font-size: 32px;
+            font-weight: bold;
+            line-height: 1;
+        }
+        
+        .team-record {
+            font-size: 18px;
+            margin-top: 4px;
+            color: #555555;
+        }
+        
+        .last-updated {
+            font-size: 12px;
+            color: #AAAAAA;
+            text-align: right;
+        }
+        
+        /* Main content grid */
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            height: calc(100% - 120px);
+        }
+        
+        .section {
+            border: 2px solid #000000;
+            padding: 10px;
+            overflow: hidden;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #AAAAAA;
+        }
+        
+        /* Recent games */
+        .game {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 13px;
+            padding: 4px 0;
+            border-bottom: 1px solid #AAAAAA;
+        }
+        
+        .game:last-child {
+            border-bottom: none;
+        }
+        
+        .game-teams {
+            flex: 1;
+        }
+        
+        .game-score {
+            font-weight: bold;
+            font-size: 14px;
+            margin: 0 8px;
+        }
+        
+        .game-result {
+            font-weight: bold;
+            padding: 2px 6px;
+            border: 2px solid #000000;
+            font-size: 12px;
+        }
+        
+        .win { background: #000000; color: #ffffff; }
+        .loss { background: #ffffff; color: #000000; }
+        .otl { background: #AAAAAA; color: #000000; }
+        
+        /* Next game */
+        .next-game {
+            text-align: center;
+            padding: 8px;
+            border: 2px solid #000000;
+            background: #AAAAAA;
+        }
+        
+        .next-opponent {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        
+        .next-date {
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+        
+        .next-time {
+            font-size: 12px;
+            color: #000000;
+        }
+        
+        /* Standings */
+        .standings-table {
+            width: 100%;
+            font-size: 11px;
+        }
+        
+        .standings-table th {
+            text-align: left;
+            padding: 3px 2px;
+            border-bottom: 2px solid #000000;
+            font-size: 10px;
+        }
+        
+        .standings-table td {
+            padding: 3px 2px;
+            border-bottom: 1px solid #AAAAAA;
+        }
+        
+        .standings-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .standings-table .highlight {
+            background: #000000;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        
+        /* Stats leaders */
+        .stat-leader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 13px;
+            padding: 4px 0;
+            border-bottom: 1px solid #AAAAAA;
+        }
+        
+        .stat-leader:last-child {
+            border-bottom: none;
+        }
+        
+        .player-name {
+            flex: 1;
+            font-weight: bold;
+        }
+        
+        .player-stat {
+            font-size: 16px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        
+        .stat-label {
+            font-size: 10px;
+            color: #555555;
+            text-align: right;
+            margin-left: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="team-logo">NYI</div>
+        <div class="team-info">
+            <div class="team-name">NEW YORK ISLANDERS</div>
+            <div class="team-record" id="record">0-0-0 • 0 PTS</div>
+        </div>
+        <div class="last-updated" id="lastUpdated">Loading...</div>
+    </div>
+    
+    <div class="content">
+        <!-- Recent Games -->
+        <div class="section">
+            <div class="section-title">RECENT GAMES</div>
+            <div id="recentGames">
+                <div class="game">Loading...</div>
+            </div>
+        </div>
+        
+        <!-- Next Game & Top Scorer -->
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div class="section" style="flex: 0 0 auto;">
+                <div class="section-title">NEXT GAME</div>
+                <div id="nextGame">
+                    <div class="next-game">
+                        <div class="next-opponent">Loading...</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section" style="flex: 1;">
+                <div class="section-title">TOP SCORERS</div>
+                <div id="topScorers">
+                    <div class="stat-leader">Loading...</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Division Standings -->
+        <div class="section" style="grid-column: span 2;">
+            <div class="section-title">METROPOLITAN DIVISION STANDINGS</div>
+            <div id="standings">
+                <table class="standings-table">
+                    <thead>
+                        <tr>
+                            <th>TEAM</th>
+                            <th>GP</th>
+                            <th>W</th>
+                            <th>L</th>
+                            <th>OT</th>
+                            <th>PTS</th>
+                            <th>GF</th>
+                            <th>GA</th>
+                            <th>DIFF</th>
+                        </tr>
+                    </thead>
+                    <tbody id="standingsBody">
+                        <tr><td colspan="9">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const TEAM_CODE = 'NYI';
+        const TEAM_ID = 2; // NY Islanders team ID
+        
+        // Fetch all data
+        async function fetchDashboardData() {
+            try {
+                // Fetch scoreboard (recent games + next game)
+                const scoreboardResponse = await fetch(`https://api-web.nhle.com/v1/scoreboard/${TEAM_CODE}/now`);
+                const scoreboardData = await scoreboardResponse.json();
+                
+                // Fetch standings
+                const standingsResponse = await fetch('https://api-web.nhle.com/v1/standings/now');
+                const standingsData = await standingsResponse.json();
+                
+                // Fetch team stats (for top scorers)
+                const statsResponse = await fetch(`https://api-web.nhle.com/v1/club-stats/${TEAM_CODE}/now`);
+                const statsData = await statsResponse.json();
+                
+                return {
+                    scoreboard: scoreboardData,
+                    standings: standingsData,
+                    stats: statsData
+                };
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                return null;
+            }
+        }
+        
+        // Format date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const options = { month: 'short', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
+        
+        // Format time
+        function formatTime(dateString) {
+            const date = new Date(dateString);
+            const options = { hour: 'numeric', minute: '2-digit', hour12: true };
+            return date.toLocaleTimeString('en-US', options);
+        }
+        
+        // Render recent games
+        function renderRecentGames(games) {
+            const container = document.getElementById('recentGames');
+            
+            if (!games || games.length === 0) {
+                container.innerHTML = '<div class="game">No recent games</div>';
+                return;
+            }
+            
+            const recentGames = games.slice(0, 5); // Show last 5 games
+            
+            container.innerHTML = recentGames.map(game => {
+                const isHome = game.homeTeam.abbrev === TEAM_CODE;
+                const opponent = isHome ? game.awayTeam : game.homeTeam;
+                const islanderScore = isHome ? game.homeTeam.score : game.awayTeam.score;
+                const opponentScore = isHome ? game.awayTeam.score : game.homeTeam.score;
+                
+                let result = '';
+                let resultClass = '';
+                
+                if (game.gameState === 'OFF' || game.gameState === 'FINAL') {
+                    if (islanderScore > opponentScore) {
+                        result = 'W';
+                        resultClass = 'win';
+                    } else if (game.periodDescriptor?.periodType === 'OT' || game.periodDescriptor?.periodType === 'SO') {
+                        result = 'OTL';
+                        resultClass = 'otl';
+                    } else {
+                        result = 'L';
+                        resultClass = 'loss';
+                    }
+                }
+                
+                return `
+                    <div class="game">
+                        <div class="game-teams">${formatDate(game.gameDate)} vs ${opponent.abbrev}</div>
+                        <div class="game-score">${islanderScore}-${opponentScore}</div>
+                        <div class="game-result ${resultClass}">${result}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Render next game
+        function renderNextGame(games) {
+            const container = document.getElementById('nextGame');
+            
+            if (!games || games.length === 0) {
+                container.innerHTML = '<div class="next-game"><div class="next-opponent">No upcoming games</div></div>';
+                return;
+            }
+            
+            const nextGame = games[0];
+            const isHome = nextGame.homeTeam.abbrev === TEAM_CODE;
+            const opponent = isHome ? nextGame.awayTeam : nextGame.homeTeam;
+            const location = isHome ? 'vs' : '@';
+            
+            container.innerHTML = `
+                <div class="next-game">
+                    <div class="next-opponent">${location} ${opponent.abbrev}</div>
+                    <div class="next-date">${formatDate(nextGame.gameDate)}</div>
+                    <div class="next-time">${formatTime(nextGame.startTimeUTC)}</div>
+                </div>
+            `;
+        }
+        
+        // Render standings
+        function renderStandings(standingsData) {
+            const container = document.getElementById('standingsBody');
+            
+            // Find Metropolitan Division
+            const metroDiv = standingsData.standings.find(div => div.divisionName === 'Metropolitan');
+            
+            if (!metroDiv) {
+                container.innerHTML = '<tr><td colspan="9">Standings unavailable</td></tr>';
+                return;
+            }
+            
+            container.innerHTML = metroDiv.teams.map(team => {
+                const highlight = team.teamAbbrev.default === TEAM_CODE ? 'highlight' : '';
+                const diff = team.goalFor - team.goalAgainst;
+                const diffStr = diff > 0 ? `+${diff}` : diff;
+                
+                return `
+                    <tr class="${highlight}">
+                        <td>${team.teamAbbrev.default}</td>
+                        <td>${team.gamesPlayed}</td>
+                        <td>${team.wins}</td>
+                        <td>${team.losses}</td>
+                        <td>${team.otLosses}</td>
+                        <td>${team.points}</td>
+                        <td>${team.goalFor}</td>
+                        <td>${team.goalAgainst}</td>
+                        <td>${diffStr}</td>
+                    </tr>
+                `;
+            }).join('');
+            
+            // Update record in header
+            const islandersTeam = metroDiv.teams.find(t => t.teamAbbrev.default === TEAM_CODE);
+            if (islandersTeam) {
+                document.getElementById('record').textContent = 
+                    `${islandersTeam.wins}-${islandersTeam.losses}-${islandersTeam.otLosses} • ${islandersTeam.points} PTS`;
+            }
+        }
+        
+        // Render top scorers
+        function renderTopScorers(statsData) {
+            const container = document.getElementById('topScorers');
+            
+            if (!statsData || !statsData.skaters) {
+                container.innerHTML = '<div class="stat-leader">No stats available</div>';
+                return;
+            }
+            
+            // Sort by points and take top 3
+            const topScorers = [...statsData.skaters]
+                .sort((a, b) => b.points - a.points)
+                .slice(0, 3);
+            
+            container.innerHTML = topScorers.map(player => {
+                return `
+                    <div class="stat-leader">
+                        <div class="player-name">${player.firstName.default} ${player.lastName.default}</div>
+                        <div class="player-stat">${player.points}<span class="stat-label">PTS</span></div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Main update function
+        async function updateDashboard() {
+            const data = await fetchDashboardData();
+            
+            if (!data) {
+                console.error('Failed to fetch data');
+                return;
+            }
+            
+            // Separate past and future games
+            const now = new Date();
+            const pastGames = [];
+            const futureGames = [];
+            
+            if (data.scoreboard.games) {
+                data.scoreboard.games.forEach(game => {
+                    const gameDate = new Date(game.gameDate);
+                    if (game.gameState === 'FUT' || game.gameState === 'PRE') {
+                        futureGames.push(game);
+                    } else {
+                        pastGames.push(game);
+                    }
+                });
+            }
+            
+            // Sort past games by date (most recent first)
+            pastGames.sort((a, b) => new Date(b.gameDate) - new Date(a.gameDate));
+            
+            // Sort future games by date (soonest first)
+            futureGames.sort((a, b) => new Date(a.gameDate) - new Date(b.gameDate));
+            
+            // Render sections
+            renderRecentGames(pastGames);
+            renderNextGame(futureGames);
+            renderStandings(data.standings);
+            renderTopScorers(data.stats);
+            
+            // Update timestamp
+            document.getElementById('lastUpdated').textContent = 
+                `Updated: ${new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}`;
+        }
+        
+        // Initial load
+        updateDashboard();
+        
+        // Update every 5 minutes
+        setInterval(updateDashboard, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
