@@ -1,5 +1,5 @@
 Position,Name,Team,Country,Gender,Rank,RoundsCompleted,MissedRounds,TotalDeltaTime,AverageDeltaTime,BestDeltaTime,WorstDeltaTime,UID,ARR,ARRBand,AgeBand
-1,Paul  Watkins ,Race3R,WAL,Male,Diamond,4,0,0.231,0.058,0.0,0.231,1C187305EC910212,1846,Diamond 3,50-54
+1,Paul  Watkins ,Race3R,WAL,Male,Diamond,5,0,180.231,36.046,0.0,180.0,1C187305EC910212,1847,Diamond 3,50-54
 2,christophe contant ,Pedalers,FRA,Male,Diamond,4,3,540.0,135.0,0.0,180.0,56C62083B46B34F3,1893,Diamond 3,50-54
 3,Rob Miller,Race3R,USA,Male,Diamond,4,2,542.229,135.557,2.229,180.0,5419CFD111515433,1829,Diamond 3,60-64
 4,Ewan Farrow,Ilkley CC,GBR,Male,Diamond,4,3,572.748,143.187,32.748,180.0,F27134E5BA634615,1622,Diamond 1,40-44
