@@ -1,5 +1,7 @@
 Position,Name,Team,Country,Gender,Rank,RoundsCompleted,MissedRounds,TotalDeltaTime,AverageDeltaTime,BestDeltaTime,WorstDeltaTime,UID,ARR,ARRBand,AgeBand
-1,Tim Simpkins,Newhall.cc,GBR,Male,Gold,5,2,362.145,72.429,0.0,180.0,7F25146A98D9033B,300,Bronze 1,45-49
-2,James Eastwood,Chaos,GBR,Male,Gold,4,3,540.0,135.0,0.0,180.0,212354980F57BA1B,1285,Gold 3,40-44
-3,Romario Sardinha,Track Cycling SA,NAM,Male,Gold,4,3,720.0,180.0,180.0,180.0,980B8210B9EC6B96,1209,Gold 3,35-39
-4,David Jones,Palace Dinosaurs,GBR,Male,Gold,4,3,720.0,180.0,180.0,180.0,8173712CA92A95B4,1268,Gold 3,55-59
+1,Tim Simpkins,Newhall.cc,GBR,Male,Gold,6,2,370.294,61.716,0.0,180.0,7F25146A98D9033B,300,Bronze 1,45-49
+2,Peter Austin,TROuble,GBR,Male,Gold,6,0,396.385,66.064,6.359,96.39,94BF2EA3E5A7CBC2,1262,Gold 3,55-59
+3,James Eastwood,Chaos,GBR,Male,Gold,6,4,730.073,121.679,0.0,180.0,212354980F57BA1B,1285,Gold 3,40-44
+4,Romario Sardinha,Track Cycling SA,NAM,Male,Gold,5,4,900.0,180.0,180.0,180.0,980B8210B9EC6B96,1209,Gold 3,35-39
+5,David Jones,Palace Dinosaurs,GBR,Male,Gold,5,4,900.0,180.0,180.0,180.0,8173712CA92A95B4,1268,Gold 3,55-59
+6,Jamie Bishop,Newhall.cc,GBR,Male,Gold,6,5,900.0,150.0,0.0,180.0,F03D3F7331D34D18,1193,Gold 2,50-54
