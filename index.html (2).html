@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaos Racing - Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2f4a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #ffffff;
+        }
+
+        .header-container {
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .header-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: 0 auto 30px;
+            display: block;
+        }
+
+        .tagline {
+            font-size: 1.4em;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: #00d9ff;
+            text-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+        }
+
+        .portal-container {
+            max-width: 1000px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            animation: slideUp 1s ease-out;
+        }
+
+        .link-card {
+            background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
+            border: 2px solid rgba(0, 217, 255, 0.5);
+            border-radius: 15px;
+            padding: 0;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            min-height: 160px;
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.15), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .link-card:hover::before {
+            left: 100%;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 217, 255, 0.4);
+            border-color: #00d9ff;
+        }
+
+        .card-image {
+            width: 160px;
+            height: 160px;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #0d2438 0%, #1a4a6b 100%);
+            border-right: 2px solid rgba(0, 217, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 3px solid rgba(0, 217, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            flex: 1;
+            padding: 30px 40px;
+            position: relative;
+        }
+
+        .card-content h2 {
+            font-size: 1.9em;
+            margin-bottom: 12px;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .card-content p {
+            font-size: 1.05em;
+            color: #b8d4e6;
+            line-height: 1.6;
+        }
+
+        .link-arrow {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5em;
+            color: #00d9ff;
+            transition: transform 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .link-card:hover .link-arrow {
+            transform: translateY(-50%) translateX(10px);
+            opacity: 1;
+        }
+
+        .tech-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(90deg, rgba(0, 217, 255, 0.03) 0px, transparent 1px, transparent 40px, rgba(0, 217, 255, 0.03) 41px),
+                repeating-linear-gradient(0deg, rgba(0, 217, 255, 0.03) 0px, transparent 1px, transparent 40px, rgba(0, 217, 255, 0.03) 41px);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-image {
+                max-width: 100%;
+            }
+
+            .tagline {
+                font-size: 1.1em;
+            }
+
+            .link-card {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .card-image {
+                width: 100%;
+                height: 140px;
+                border-right: none;
+                border-bottom: 2px solid rgba(0, 217, 255, 0.3);
+            }
+
+            .card-content {
+                padding: 25px 30px;
+            }
+
+            .card-content h2 {
+                font-size: 1.5em;
+            }
+
+            .card-content p {
+                font-size: 0.95em;
+            }
+
+            .link-arrow {
+                right: 20px;
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tech-pattern"></div>
+    
+    <div class="header-container">
+        <img src="iVChaosBanner.png" alt="Chaos Racing" class="header-image">
+        <div class="tagline">Racing on TrainingPeaks Virtual</div>
+    </div>
+
+    <div class="portal-container">
+        <a href="#" class="link-card">
+            <div class="card-image">
+                <!-- Placeholder for event image -->
+            </div>
+            <div class="card-content">
+                <h2>La Primavera - MSR Challenge</h2>
+                <p>Experience the ultimate spring cycling challenge on this iconic course</p>
+                <span class="link-arrow">→</span>
+            </div>
+        </a>
+
+        <a href="#" class="link-card">
+            <div class="card-image">
+                <!-- Placeholder for event image -->
+            </div>
+            <div class="card-content">
+                <h2>British National Circuit Series</h2>
+                <p>Compete in the premier British virtual racing championship</p>
+                <span class="link-arrow">→</span>
+            </div>
+        </a>
+    </div>
+</body>
+</html>
