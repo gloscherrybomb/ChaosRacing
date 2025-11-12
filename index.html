@@ -51,13 +51,14 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 30px;
             animation: slideUp 1s ease-out;
         }
 
         .link-card {
-            background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
-            border: 2px solid rgba(0, 217, 255, 0.5);
+            background-size: cover;
+            background-position: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 15px;
             padding: 0;
             text-decoration: none;
@@ -66,89 +67,88 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+            min-height: 200px;
             display: flex;
             align-items: center;
-            min-height: 160px;
         }
 
         .link-card::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.15), transparent);
-            transition: left 0.5s ease;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+            transition: all 0.3s ease;
+            z-index: 1;
         }
 
         .link-card:hover::before {
-            left: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%);
         }
 
         .link-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 217, 255, 0.4);
-            border-color: #00d9ff;
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
-        .card-image {
-            width: 160px;
-            height: 160px;
-            flex-shrink: 0;
-            background: linear-gradient(135deg, #0d2438 0%, #1a4a6b 100%);
-            border-right: 2px solid rgba(0, 217, 255, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+        /* MSR Challenge Card */
+        .msr-card {
+            background-image: url('msrheader.png');
         }
 
-        .card-image::after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            border: 3px solid rgba(0, 217, 255, 0.3);
-            border-radius: 10px;
+        .msr-card:hover {
+            box-shadow: 0 15px 50px rgba(93, 147, 112, 0.5);
+            border-color: rgba(93, 147, 112, 0.8);
         }
 
-        .card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        /* BNCS Card */
+        .bncs-card {
+            background-image: url('banner.png');
+        }
+
+        .bncs-card:hover {
+            box-shadow: 0 15px 50px rgba(212, 165, 116, 0.5);
+            border-color: rgba(212, 165, 116, 0.8);
         }
 
         .card-content {
             flex: 1;
-            padding: 30px 40px;
+            padding: 40px 50px;
             position: relative;
+            z-index: 2;
         }
 
         .card-content h2 {
-            font-size: 1.9em;
-            margin-bottom: 12px;
+            font-size: 2.2em;
+            margin-bottom: 15px;
             color: #ffffff;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 1px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
         }
 
         .card-content p {
-            font-size: 1.05em;
-            color: #b8d4e6;
+            font-size: 1.15em;
+            color: #ffffff;
             line-height: 1.6;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            max-width: 600px;
         }
 
         .link-arrow {
             position: absolute;
-            right: 30px;
+            right: 40px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 2.5em;
-            color: #00d9ff;
-            transition: transform 0.3s ease;
-            opacity: 0.7;
+            font-size: 3em;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+            z-index: 2;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
         }
 
         .link-card:hover .link-arrow {
@@ -199,32 +199,24 @@
             }
 
             .link-card {
-                flex-direction: column;
-                min-height: auto;
-            }
-
-            .card-image {
-                width: 100%;
-                height: 140px;
-                border-right: none;
-                border-bottom: 2px solid rgba(0, 217, 255, 0.3);
+                min-height: 180px;
             }
 
             .card-content {
-                padding: 25px 30px;
+                padding: 30px 25px;
             }
 
             .card-content h2 {
-                font-size: 1.5em;
+                font-size: 1.6em;
             }
 
             .card-content p {
-                font-size: 0.95em;
+                font-size: 1em;
             }
 
             .link-arrow {
-                right: 20px;
-                font-size: 2em;
+                right: 25px;
+                font-size: 2.2em;
             }
         }
     </style>
@@ -238,26 +230,20 @@
     </div>
 
     <div class="portal-container">
-        <a href="msrchallenge.html" class="link-card">
-            <div class="card-image">
-                 <img src="msrsquare.png" alt="MSR Challenge">
-            </div>
+        <a href="msrchallenge.html" class="link-card msr-card">
             <div class="card-content">
                 <h2>La Primavera - MSR Challenge</h2>
                 <p>1 month. The best 30km in professional cycling. Give it your best shot!</p>
-                <span class="link-arrow">→</span>
             </div>
+            <span class="link-arrow">→</span>
         </a>
 
-        <a href="bncs.html" class="link-card">
-            <div class="card-image">
-                 <img src="bncssquare.png" alt="British National Circuit Series">
-            </div>
+        <a href="bncs.html" class="link-card bncs-card">
             <div class="card-content">
                 <h2>British National Circuit Series</h2>
                 <p>Standings, schedule and racebook</p>
-                <span class="link-arrow">→</span>
             </div>
+            <span class="link-arrow">→</span>
         </a>
     </div>
 </body>
