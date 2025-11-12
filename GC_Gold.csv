@@ -1,7 +1,12 @@
 Position,Name,Team,Country,Gender,Rank,RoundsCompleted,MissedRounds,TotalDeltaTime,AverageDeltaTime,BestDeltaTime,WorstDeltaTime,UID,ARR,ARRBand,AgeBand
-1,Tim Simpkins,Newhall.cc,GBR,Male,Gold,6,2,370.294,61.716,0.0,180.0,7F25146A98D9033B,300,Bronze 1,45-49
+1,Tim Simpkins,Newhall.cc,GBR,Male,Gold,6,2,370.294,61.716,0.0,180.0,7F25146A98D9033B,300,Gold 2,45-49
 2,Peter Austin,TROuble,GBR,Male,Gold,6,0,396.385,66.064,6.359,96.39,94BF2EA3E5A7CBC2,1262,Gold 3,55-59
-3,James Eastwood,Chaos,GBR,Male,Gold,6,4,730.073,121.679,0.0,180.0,212354980F57BA1B,1285,Gold 3,40-44
-4,Romario Sardinha,Track Cycling SA,NAM,Male,Gold,5,4,900.0,180.0,180.0,180.0,980B8210B9EC6B96,1209,Gold 3,35-39
-5,David Jones,Palace Dinosaurs,GBR,Male,Gold,5,4,900.0,180.0,180.0,180.0,8173712CA92A95B4,1268,Gold 3,55-59
-6,Jamie Bishop,Newhall.cc,GBR,Male,Gold,6,5,900.0,150.0,0.0,180.0,F03D3F7331D34D18,1193,Gold 2,50-54
+3,James Ford,Ilkley CC,GBR,Male,Gold,5,3,577.155,115.431,2.239,180.0,F38E899A67FFF5DD,100,Gold 2,45-49
+4,James Eastwood,Chaos,GBR,Male,Gold,6,4,730.073,121.679,0.0,180.0,212354980F57BA1B,1285,Gold 3,40-44
+5,Mark Schofield-Aasim,Ilkley CC,GBR,Male,Gold,5,2,754.743,150.949,34.743,180.0,779E852D8D22DB0E,100,Platinum 1,45-49
+6,Romario Sardinha,Track Cycling SA,NAM,Male,Gold,5,4,900.0,180.0,180.0,180.0,980B8210B9EC6B96,1209,Gold 3,35-39
+7,David Jones,Palace Dinosaurs,GBR,Male,Gold,5,4,900.0,180.0,180.0,180.0,8173712CA92A95B4,1268,Gold 3,55-59
+8,Sam Ayem,indieVelo Founders Club,CAN,Male,Gold,5,4,900.0,180.0,180.0,180.0,1CD83C6BA94E7080,300,Gold 3,35-39
+9,Jamie Bishop,Newhall.cc,GBR,Male,Gold,6,5,900.0,150.0,0.0,180.0,F03D3F7331D34D18,1193,Gold 2,50-54
+10,Thaafier Jaffer,Newhall.cc,RSA,Male,Gold,6,5,909.098,151.516,9.098,180.0,E0A2BBA078CCE21,200,Gold 2,Senior
+11,Brett Fletcher,,GBR,Male,Gold,6,5,1080.0,180.0,180.0,180.0,4A83B43ADC3CCA10,200,Gold 1,50-54
