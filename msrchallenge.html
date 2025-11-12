@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Primavera - MSR Challenge by Chaos Racing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f1e8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header-image {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            display: block;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #009246 0%, #ce2b37 100%);
+            color: white;
+            padding: 18px 45px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 3px solid #fff;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+            filter: brightness(1.1);
+        }
+
+        .nav-button:active {
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .button-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .nav-button {
+                text-align: center;
+            }
+        }
+
+        .content-box {
+            background: white;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .content-box h1 {
+            color: #2d3e50;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-align: center;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+        }
+
+        .content-box .intro {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #444;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-top: 30px;
+            padding: 0;
+        }
+
+        .features-list li {
+            font-size: 17px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 18px;
+            padding-left: 35px;
+            position: relative;
+        }
+
+        .features-list li:before {
+            content: "●";
+            color: #ce2b37;
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        @media (max-width: 768px) {
+            .content-box {
+                padding: 30px 25px;
+            }
+
+            .content-box h1 {
+                font-size: 24px;
+            }
+
+            .content-box .intro {
+                font-size: 16px;
+            }
+
+            .features-list li {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg class="header-image" viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background with radiating lines -->
+            <defs>
+                <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#f5f1e8;stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="greenStripe" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#009246;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#006633;stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="redStripe" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#ce2b37;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#8b0000;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            
+            <!-- Sky background -->
+            <rect width="1200" height="500" fill="url(#skyGradient)"/>
+            
+            <!-- Radiating lines from center -->
+            <g opacity="0.15">
+                <line x1="600" y1="250" x2="0" y2="0" stroke="#fff" stroke-width="3"/>
+                <line x1="600" y1="250" x2="200" y2="0" stroke="#fff" stroke-width="3"/>
+                <line x1="600" y1="250" x2="400" y2="0" stroke="#fff" stroke-width="3"/>
+                <line x1="600" y1="250" x2="600" y2="0" stroke="#fff" stroke-width="3"/>
+                <line x1="600" y1="250" x2="800" y2="0" stroke="#fff" stroke-width="3"/>
+                <line x1="600" y1="250" x2="1000" y2="0" stroke="#fff" stroke-width="3"/>
+                <line x1="600" y1="250" x2="1200" y2="0" stroke="#fff" stroke-width="3"/>
+                <line x1="600" y1="250" x2="0" y2="500" stroke="#fff" stroke-width="3"/>
+                <line x1="600" y1="250" x2="200" y2="500" stroke="#fff" stroke-width="3"/>
+                <line x1="600" y1="250" x2="400" y2="500" stroke="#fff" stroke-width="3"/>
+                <line x1="600" y1="250" x2="800" y2="500" stroke="#fff" stroke-width="3"/>
+                <line x1="600" y1="250" x2="1000" y2="500" stroke="#fff" stroke-width="3"/>
+                <line x1="600" y1="250" x2="1200" y2="500" stroke="#fff" stroke-width="3"/>
+            </g>
+            
+            <!-- Mountain silhouettes -->
+            <polygon points="0,350 200,250 400,300 600,200 800,280 1000,220 1200,300 1200,500 0,500" fill="#4a7c59" opacity="0.6"/>
+            <polygon points="0,400 150,320 350,360 550,280 750,340 950,300 1200,380 1200,500 0,500" fill="#2d5a3d" opacity="0.7"/>
+            
+            <!-- Road with Italian flag stripes -->
+            <path d="M 0,450 Q 300,430 600,440 Q 900,450 1200,435 L 1200,470 Q 900,485 600,475 Q 300,465 0,485 Z" 
+                  fill="url(#greenStripe)"/>
+            <path d="M 0,470 Q 300,455 600,465 Q 900,475 1200,460 L 1200,485 Q 900,500 600,490 Q 300,480 0,500 Z" 
+                  fill="#ffffff"/>
+            <path d="M 0,485 Q 300,470 600,480 Q 900,490 1200,475 L 1200,500 L 0,500 Z" 
+                  fill="url(#redStripe)"/>
+            
+            <!-- Title banner -->
+            <rect x="50" y="60" width="1100" height="120" fill="#2d3e50" opacity="0.85" rx="10"/>
+            
+            <!-- Main title -->
+            <text x="600" y="120" font-family="'Bebas Neue', 'Impact', Arial Black, sans-serif" 
+                  font-size="52" font-weight="bold" fill="#fff" text-anchor="middle" letter-spacing="3">
+                LA PRIMAVERA
+            </text>
+            
+            <!-- Subtitle -->
+            <text x="600" y="160" font-family="'Helvetica Neue', Arial, sans-serif" 
+                  font-size="32" font-weight="300" fill="#f5f1e8" text-anchor="middle" letter-spacing="4">
+                MSR CHALLENGE BY CHAOS RACING
+            </text>
+            
+            <!-- Italian flag accent -->
+            <rect x="450" y="170" width="100" height="8" fill="#009246"/>
+            <rect x="550" y="170" width="100" height="8" fill="#fff"/>
+            <rect x="650" y="170" width="100" height="8" fill="#ce2b37"/>
+        </svg>
+
+        <div class="button-row">
+            <a href="#racebook" class="nav-button">Racebook</a>
+            <a href="#schedule" class="nav-button" onclick="comingSoon(event)">Schedule</a>
+            <a href="#standings" class="nav-button" onclick="comingSoon(event)">Standings</a>
+        </div>
+
+        <div class="content-box">
+            <h1>This December, Chaos Racing presents – La Primavera, MSR Challenge</h1>
+            
+            <p class="intro">The best 30km in professional cycling is now available to race on TrainingPeaks virtual.</p>
+            
+            <p class="intro">The rules are simple. With events scheduled throughout the month, simple take part and post your best possible finishing time on the course.</p>
+            
+            <ul class="features-list">
+                <li>Take part as many times as you wish</li>
+                <li>Events are scheduled in different slots throughout the month, so you should find an event that suits your schedule</li>
+                <li>Pens are matchmade with 50 riders – as you improve, you will face faster bots (and humans) to work with</li>
+                <li>Team up with friends and work together for the faster possible finish</li>
+                <li>Attack on the Cipressa, or hold on and fight on the Poggio? The choice is up to you!</li>
+                <li>Your fastest time is posted to the leaderboard. The leaderboard is filterable by gender, age-group and ARR, so see how you stack up against your peers</li>
+                <li>All events are tier 1 (smart trainer required) with performance verification on</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function comingSoon(event) {
+            event.preventDefault();
+            alert('Coming Soon!');
+        }
+    </script>
+</body>
+</html>
