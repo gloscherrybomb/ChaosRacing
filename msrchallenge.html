@@ -142,6 +142,110 @@
                 font-size: 15px;
             }
         }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .filter-group label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #2d3e50;
+            margin-bottom: 8px;
+        }
+
+        .filter-group select {
+            padding: 10px 15px;
+            border: 2px solid #009246;
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: white;
+            cursor: pointer;
+            min-width: 150px;
+        }
+
+        .filter-group select:hover {
+            border-color: #ce2b37;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 30px;
+        }
+
+        #standingsTable {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+        }
+
+        #standingsTable th {
+            background: linear-gradient(135deg, #009246 0%, #ce2b37 100%);
+            color: white;
+            padding: 15px 10px;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 3px solid #2d3e50;
+            position: sticky;
+            top: 0;
+        }
+
+        #standingsTable th:hover {
+            background: linear-gradient(135deg, #006633 0%, #8b0000 100%);
+        }
+
+        #standingsTable td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #standingsTable tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        #standingsTable tr:hover {
+            background-color: #f5f1e8;
+        }
+
+        .sort-indicator {
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+            }
+
+            .filter-group {
+                align-items: stretch;
+            }
+
+            .filter-group select {
+                width: 100%;
+            }
+
+            #standingsTable {
+                font-size: 13px;
+            }
+
+            #standingsTable th,
+            #standingsTable td {
+                padding: 8px 5px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -201,7 +305,7 @@
         <div class="button-row">
             <a href="#racebook" class="nav-button">Racebook</a>
             <a href="https://tpvirtualhub.com/series/327" class="nav-button" target="_blank">Schedule</a>
-            <a href="#standings" class="nav-button" onclick="comingSoon(event)">Standings</a>
+            <a href="#standings" class="nav-button" onclick="loadStandings(event)">Standings</a>
         </div>
 
         <div class="content-box">
@@ -233,9 +337,222 @@
     </div>
 
     <script>
+        let standingsData = [];
+        let currentSort = { column: null, ascending: true };
+
         function comingSoon(event) {
             event.preventDefault();
             alert('Coming Soon!');
+        }
+
+        async function loadStandings(event) {
+            event.preventDefault();
+            
+            try {
+                const response = await fetch('general_classification.csv');
+                const csvText = await response.text();
+                
+                standingsData = parseCSV(csvText);
+                
+                // Replace content with standings table
+                const contentBox = document.querySelector('.content-box');
+                contentBox.innerHTML = `
+                    <h1>General Classification Standings</h1>
+                    
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="genderFilter">Gender:</label>
+                            <select id="genderFilter" onchange="applyFilters()">
+                                <option value="">All</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="ageFilter">Age Cat:</label>
+                            <select id="ageFilter" onchange="applyFilters()">
+                                <option value="">All</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="arrFilter">ARR Rank:</label>
+                            <select id="arrFilter" onchange="applyFilters()">
+                                <option value="">All</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="standingsTable">
+                            <thead>
+                                <tr id="tableHeaders"></tr>
+                            </thead>
+                            <tbody id="tableBody"></tbody>
+                        </table>
+                    </div>
+                `;
+                
+                populateFilters();
+                displayStandings(standingsData);
+            } catch (error) {
+                alert('Error loading standings data. Please ensure general_classification.csv is in the same directory as this page.');
+                console.error('Error:', error);
+            }
+        }
+
+        function parseCSV(text) {
+            const lines = text.trim().split('\n');
+            const headers = lines[0].split(',').map(h => h.trim());
+            
+            return lines.slice(1).map(line => {
+                const values = line.split(',').map(v => v.trim());
+                const row = {};
+                headers.forEach((header, index) => {
+                    row[header] = values[index];
+                });
+                return row;
+            });
+        }
+
+        function populateFilters() {
+            const genders = [...new Set(standingsData.map(r => r.Gender))].filter(Boolean).sort();
+            const ages = [...new Set(standingsData.map(r => r.AgeBand))].filter(Boolean).sort();
+            const arrs = [...new Set(standingsData.map(r => r.ARRBand))].filter(Boolean).sort();
+            
+            const genderFilter = document.getElementById('genderFilter');
+            genders.forEach(gender => {
+                const option = document.createElement('option');
+                option.value = gender;
+                option.textContent = gender;
+                genderFilter.appendChild(option);
+            });
+            
+            const ageFilter = document.getElementById('ageFilter');
+            ages.forEach(age => {
+                const option = document.createElement('option');
+                option.value = age;
+                option.textContent = age;
+                ageFilter.appendChild(option);
+            });
+            
+            const arrFilter = document.getElementById('arrFilter');
+            arrs.forEach(arr => {
+                const option = document.createElement('option');
+                option.value = arr;
+                option.textContent = arr;
+                arrFilter.appendChild(option);
+            });
+        }
+
+        function applyFilters() {
+            const genderFilter = document.getElementById('genderFilter').value;
+            const ageFilter = document.getElementById('ageFilter').value;
+            const arrFilter = document.getElementById('arrFilter').value;
+            
+            let filtered = standingsData.filter(row => {
+                return (!genderFilter || row.Gender === genderFilter) &&
+                       (!ageFilter || row.AgeBand === ageFilter) &&
+                       (!arrFilter || row.ARRBand === arrFilter);
+            });
+            
+            displayStandings(filtered);
+        }
+
+        function displayStandings(data) {
+            if (data.length === 0) return;
+            
+            const headers = Object.keys(data[0]);
+            const tableHeaders = document.getElementById('tableHeaders');
+            const tableBody = document.getElementById('tableBody');
+            
+            // Create headers with sort functionality
+            tableHeaders.innerHTML = '';
+            headers.forEach(header => {
+                const th = document.createElement('th');
+                let displayName = header;
+                
+                // Rename headers as requested
+                if (header === 'ARRBand') displayName = 'ARR Rank';
+                else if (header === 'EventRating') displayName = 'Course Rating';
+                else if (header === 'AgeBand') displayName = 'Age Cat';
+                
+                th.innerHTML = `${displayName} <span class="sort-indicator"></span>`;
+                th.onclick = () => sortTable(header);
+                th.style.cursor = 'pointer';
+                tableHeaders.appendChild(th);
+            });
+            
+            // Populate table body
+            tableBody.innerHTML = '';
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+                headers.forEach(header => {
+                    const td = document.createElement('td');
+                    td.textContent = row[header];
+                    tr.appendChild(td);
+                });
+                tableBody.appendChild(tr);
+            });
+        }
+
+        function sortTable(column) {
+            const genderFilter = document.getElementById('genderFilter').value;
+            const ageFilter = document.getElementById('ageFilter').value;
+            const arrFilter = document.getElementById('arrFilter').value;
+            
+            let filtered = standingsData.filter(row => {
+                return (!genderFilter || row.Gender === genderFilter) &&
+                       (!ageFilter || row.AgeBand === ageFilter) &&
+                       (!arrFilter || row.ARRBand === arrFilter);
+            });
+            
+            // Toggle sort direction
+            if (currentSort.column === column) {
+                currentSort.ascending = !currentSort.ascending;
+            } else {
+                currentSort.column = column;
+                currentSort.ascending = true;
+            }
+            
+            filtered.sort((a, b) => {
+                let aVal = a[column];
+                let bVal = b[column];
+                
+                // Try to parse as numbers
+                const aNum = parseFloat(aVal);
+                const bNum = parseFloat(bVal);
+                
+                if (!isNaN(aNum) && !isNaN(bNum)) {
+                    return currentSort.ascending ? aNum - bNum : bNum - aNum;
+                }
+                
+                // String comparison
+                if (currentSort.ascending) {
+                    return aVal.localeCompare(bVal);
+                } else {
+                    return bVal.localeCompare(aVal);
+                }
+            });
+            
+            displayStandings(filtered);
+            updateSortIndicators();
+        }
+
+        function updateSortIndicators() {
+            document.querySelectorAll('.sort-indicator').forEach(indicator => {
+                indicator.textContent = '';
+            });
+            
+            const headers = document.querySelectorAll('#tableHeaders th');
+            const headerTexts = Array.from(headers).map(h => h.textContent.replace(' ▲', '').replace(' ▼', '').trim());
+            
+            headers.forEach((th, index) => {
+                let headerName = Object.keys(standingsData[0])[index];
+                if (headerName === currentSort.column) {
+                    const indicator = th.querySelector('.sort-indicator');
+                    indicator.textContent = currentSort.ascending ? ' ▲' : ' ▼';
+                }
+            });
         }
     </script>
 </body>
