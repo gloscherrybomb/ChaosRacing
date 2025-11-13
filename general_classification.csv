@@ -1,0 +1,91 @@
+Position,Name,Team,Country,Time,Gender,ARR,ARRBand,EventRating,AgeBand
+1,Matthew Lee,Warriors,JPN,47:21,Male,1031,Gold 1,993,18-24
+2,David Thomas,Delta,GBR,47:59,Male,1370,Gold 3,1351,65-69
+3,David Johnson,Optech,DEN,48:39,Male,951,Silver 2,963,50-54
+4,Ashley Williams,Newhall.cc,IRL,48:55,Female,1034,Silver 3,1012,40-44
+5,Richard Smith,Titans,BRA,49:04,Male,1093,Silver 3,1139,30-34
+6,Richard Martin,Phoenix,ITA,49:07,Male,1189,Gold 2,1174,55-59
+7,Michelle Davis,Apex,UAE,49:09,Female,954,Silver 2,992,45-49
+8,Charles Flores,,SWE,49:09,Male,1104,Gold 2,1130,50-54
+9,Christopher Johnson,Titans,USA,49:14,Male,926,Silver 2,876,25-29
+10,Sharon Anderson,Zonkify,POL,49:17,Female,843,Silver 1,877,40-44
+11,John Martinez,Legends,SUI,49:21,Male,1274,Gold 3,1315,60-64
+12,George King,Titans,AUT,49:21,Male,955,Silver 2,993,18-24
+13,Patricia Brown,Phoenix,AUT,49:22,Female,254,Bronze 1,291,25-29
+14,Steven Adams,CCCP,CAN,49:22,Male,866,Silver 1,854,18-24
+15,Jamie Bishop,Newhall.cc,GBR,49:23,Male,1193,Gold 2,1193,50-54
+16,Ryan Rivera,Chaos,FRA,49:24,Male,792,Bronze 3,801,25-29
+17,Sarah Garcia,Fiber Shot,NZL,49:25,Female,1346,Gold 3,1366,Senior
+18,Tim Simpkins,Newhall.cc,GBR,49:31,Male,1015,Gold 1,1015,45-49
+19,Thaafier Jaffer,Newhall.cc,RSA,49:32,Male,200,Bronze 1,1143,Senior
+20,James Eastwood,Chaos,GBR,49:33,Male,1197,Gold 2,1197,40-44
+21,Edward Roberts,Titans,MEX,49:35,Male,1023,Silver 3,1051,Senior
+22,Joshua Harris,Thunder,BRA,49:36,Male,1208,Gold 2,1213,40-44
+23,Stephanie Flores,AMO Solutions,JPN,49:40,Female,1226,Gold 2,1244,40-44
+24,Mary Rivera,Legends,DEN,49:45,Female,1240,Gold 2,1242,30-34
+25,Kenneth Anderson,Chaos,AUT,49:46,Male,178,Bronze 1,175,Senior
+26,Amanda Campbell,Delta,FRA,49:52,Female,1326,Gold 3,1353,40-44
+27,Joseph Adams,Phoenix,NOR,49:54,Male,477,Bronze 2,506,65-69
+28,Ryan Lopez,Thunder,DEN,50:01,Male,1016,Silver 3,1065,55-59
+29,Elizabeth Harris,Optech,IRL,50:02,Female,549,Bronze 2,568,50-54
+30,Peter Austin,TROuble,GBR,50:05,Male,1262,Gold 3,1262,55-59
+31,Steven Green,,POR,50:08,Male,1145,Gold 2,1156,35-39
+32,William Gonzalez,Nitro,NOR,50:16,Male,359,Bronze 1,400,45-49
+33,Michelle Rivera,Thunder,MEX,50:17,Female,1240,Gold 2,1203,35-39
+34,Joshua Hill,Thunder,ITA,50:19,Male,1064,Silver 3,1091,Senior
+35,Thomas Miller,Warriors,ESP,50:24,Male,804,Silver 1,777,18-24
+36,Emily Garcia,AMO Solutions,ITA,50:28,Female,1079,Silver 3,1033,50-54
+37,Richard Johnson,Delta,AUS,50:30,Male,907,Silver 2,916,55-59
+38,Linda Taylor,Capital,JPN,50:30,Female,1296,Gold 3,1275,65-69
+39,Elizabeth Robinson,CCCP,CZE,50:34,Female,1205,Gold 2,1219,55-59
+40,Robert Moore,TROuble,ESP,50:38,Male,1271,Gold 3,1256,65-69
+41,Lisa Walker,AMO Solutions,NED,50:42,Female,1107,Gold 2,1124,55-59
+42,Matthew Gonzalez,Delta,BRA,50:42,Male,1386,Gold 3,1392,50-54
+43,Betty Wright,Titans,MEX,50:43,Female,1043,Gold 1,1090,30-34
+44,Elizabeth Mitchell,Zonkify,AUT,50:46,Female,1113,Gold 2,1130,25-29
+45,Charles Lewis,Zonkify,RSA,50:49,Male,1283,Gold 3,1253,18-24
+46,Joshua Allen,Apex,RSA,50:55,Male,1032,Silver 3,1064,35-39
+47,Ronald Nelson,Fujikai,JPN,50:57,Male,1174,Gold 2,1224,30-34
+48,Mary Miller,Chaos,UAE,51:02,Female,688,Bronze 3,673,35-39
+49,Daniel Johnson,Titans,RSA,51:02,Male,680,Bronze 3,649,40-44
+50,Edward Scott,Optech,BEL,51:04,Male,1334,Gold 3,1338,35-39
+51,David Clark,Legends,NOR,51:07,Male,852,Silver 1,846,35-39
+52,Stephanie Garcia,Chaos,ITA,51:12,Female,296,Bronze 1,281,55-59
+53,Joseph Gonzalez,Fujikai,ITA,51:16,Male,1003,Gold 1,1027,30-34
+54,Robert Mitchell,,RSA,51:31,Male,1189,Gold 2,1163,55-59
+55,David Flores,CCCP,NOR,51:34,Male,763,Bronze 3,791,45-49
+56,James Adams,Velocity,SWE,51:40,Male,1276,Gold 3,1291,30-34
+57,Barbara Thompson,,GER,51:43,Female,711,Bronze 3,726,65-69
+58,Ronald Gonzalez,Phoenix,ITA,51:45,Male,190,Bronze 1,143,55-59
+59,Lisa Rivera,Velocity,BRA,51:50,Female,1396,Gold 3,1400,35-39
+60,Michael Martinez,Fiber Shot,JPN,51:50,Male,1056,Silver 3,1106,60-64
+61,David Miller,Storm,POR,51:55,Male,1148,Gold 2,1139,Senior
+62,Joseph Miller,Newhall.cc,USA,52:02,Male,998,Silver 2,954,18-24
+63,Brian Nelson,Delta,RSA,52:05,Male,615,Bronze 3,640,25-29
+64,Karen Johnson,Fiber Shot,ARG,52:10,Female,550,Bronze 2,523,Senior
+65,Sharon Jackson,,DEN,52:14,Female,1223,Gold 2,1219,45-49
+66,George Garcia,Phoenix,POR,52:15,Male,893,Silver 1,859,18-24
+67,Edward Gonzalez,AMO Solutions,ESP,52:21,Male,1017,Silver 3,1021,25-29
+68,Robert Lee,Titans,AUT,52:23,Male,566,Bronze 2,558,30-34
+69,Melissa Jackson,TROuble,NZL,52:26,Female,1365,Gold 3,1400,30-34
+70,Charles Hill,Delta,USA,52:28,Male,1088,Silver 3,1112,30-34
+71,Andrew Garcia,Fujikai,NOR,52:28,Male,818,Silver 1,770,55-59
+72,Paul Williams,,FRA,52:31,Male,1048,Gold 1,1001,60-64
+73,James Rodriguez,Newhall.cc,MEX,52:33,Male,1075,Gold 1,1025,30-34
+74,John Torres,Capital,NOR,52:35,Male,1014,Silver 3,1021,25-29
+75,Andrew Jackson,,POL,52:35,Male,807,Silver 1,780,65-69
+76,Richard Scott,Storm,FIN,52:36,Male,434,Bronze 2,448,18-24
+77,Kenneth Rivera,Titans,UAE,52:46,Male,954,Silver 2,927,18-24
+78,Paul Jones,Velocity,BRA,52:48,Male,1096,Silver 3,1055,55-59
+79,Barbara Taylor,Optech,AUS,52:49,Female,1232,Gold 2,1248,45-49
+80,Matthew Lee,Warriors,IRL,52:51,Male,1175,Gold 2,1216,50-54
+81,Richard Torres,,NZL,52:56,Male,1103,Gold 2,1085,50-54
+82,Edward White,Chaos,IRL,52:58,Male,1077,Silver 3,1106,55-59
+83,Betty Taylor,Thunder,SUI,53:13,Female,822,Silver 1,801,45-49
+84,Donald Martinez,Capital,POR,53:29,Male,212,Bronze 1,236,50-54
+85,John Torres,,FIN,53:39,Male,429,Bronze 2,464,45-49
+86,Kevin Taylor,,GBR,53:47,Male,891,Silver 1,865,60-64
+87,Kenneth Jones,Legends,UAE,54:06,Male,188,Bronze 1,177,35-39
+88,Edward Jones,Capital,UAE,54:09,Male,235,Bronze 1,209,60-64
+89,Amanda Anderson,Titans,BEL,54:28,Female,882,Silver 1,892,55-59
+90,Ryan King,Velocity,BEL,54:37,Male,108,Bronze 1,144,35-39
