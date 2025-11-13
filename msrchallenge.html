@@ -92,6 +92,15 @@
             text-align: center;
         }
 
+        .placeholder-notice {
+            font-size: 16px;
+            color: #ce2b37;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
         .features-list {
             list-style: none;
             margin-top: 30px;
@@ -303,7 +312,7 @@
         </svg>
 
         <div class="button-row">
-            <a href="#racebook" class="nav-button">Racebook</a>
+            <a href="#racebook" class="nav-button" onclick="showRacebook(event)">Racebook</a>
             <a href="https://tpvirtualhub.com/series/327" class="nav-button" target="_blank">Schedule</a>
             <a href="#standings" class="nav-button" onclick="loadStandings(event)">Standings</a>
         </div>
@@ -339,6 +348,19 @@
     <script>
         let standingsData = [];
         let currentSort = { column: null, ascending: true };
+        let originalContent = '';
+
+        // Save original content on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const contentBox = document.querySelector('.content-box');
+            originalContent = contentBox.innerHTML;
+        });
+
+        function showRacebook(event) {
+            event.preventDefault();
+            const contentBox = document.querySelector('.content-box');
+            contentBox.innerHTML = originalContent;
+        }
 
         function comingSoon(event) {
             event.preventDefault();
@@ -358,6 +380,8 @@
                 const contentBox = document.querySelector('.content-box');
                 contentBox.innerHTML = `
                     <h1>General Classification Standings</h1>
+                    
+                    <p class="placeholder-notice">Dummy data - series starts 1st December</p>
                     
                     <div class="filters">
                         <div class="filter-group">
@@ -390,6 +414,14 @@
                             <tbody id="tableBody"></tbody>
                         </table>
                     </div>
+                    
+                    <div style="text-align: center; margin-top: 40px;">
+                        <a href="index.html">
+                            <img src="https://raw.githubusercontent.com/gloscherrybomb/ChaosRacing/main/iVChaosBanner.png" 
+                                 alt="Chaos Racing" 
+                                 style="width: 30%; max-width: 300px; height: auto;">
+                        </a>
+                    </div>
                 `;
                 
                 populateFilters();
@@ -417,7 +449,11 @@
         function populateFilters() {
             const genders = [...new Set(standingsData.map(r => r.Gender))].filter(Boolean).sort();
             const ages = [...new Set(standingsData.map(r => r.AgeBand))].filter(Boolean).sort();
-            const arrs = [...new Set(standingsData.map(r => r.ARRBand))].filter(Boolean).sort();
+            // Extract unique ARR ranks without numbers (Gold, Silver, Bronze)
+            const arrs = [...new Set(standingsData.map(r => {
+                const arr = r.ARRBand || '';
+                return arr.replace(/\s+\d+$/, ''); // Remove trailing numbers
+            }))].filter(Boolean).sort();
             
             const genderFilter = document.getElementById('genderFilter');
             genders.forEach(gender => {
@@ -450,9 +486,10 @@
             const arrFilter = document.getElementById('arrFilter').value;
             
             let filtered = standingsData.filter(row => {
+                const arrMatch = !arrFilter || (row.ARRBand && row.ARRBand.startsWith(arrFilter));
                 return (!genderFilter || row.Gender === genderFilter) &&
                        (!ageFilter || row.AgeBand === ageFilter) &&
-                       (!arrFilter || row.ARRBand === arrFilter);
+                       arrMatch;
             });
             
             displayStandings(filtered);
@@ -488,7 +525,12 @@
                 const tr = document.createElement('tr');
                 headers.forEach(header => {
                     const td = document.createElement('td');
-                    td.textContent = row[header];
+                    // Strip numbers from ARRBand display
+                    if (header === 'ARRBand') {
+                        td.textContent = row[header] ? row[header].replace(/\s+\d+$/, '') : '';
+                    } else {
+                        td.textContent = row[header];
+                    }
                     tr.appendChild(td);
                 });
                 tableBody.appendChild(tr);
@@ -501,9 +543,10 @@
             const arrFilter = document.getElementById('arrFilter').value;
             
             let filtered = standingsData.filter(row => {
+                const arrMatch = !arrFilter || (row.ARRBand && row.ARRBand.startsWith(arrFilter));
                 return (!genderFilter || row.Gender === genderFilter) &&
                        (!ageFilter || row.AgeBand === ageFilter) &&
-                       (!arrFilter || row.ARRBand === arrFilter);
+                       arrMatch;
             });
             
             // Toggle sort direction
