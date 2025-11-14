@@ -1,1 +1,48 @@
+name: Process Race Results
 
+on:
+  repository_dispatch:
+    types: [new_race_result]
+  workflow_dispatch:  # Allow manual triggering
+  push:
+    paths:
+      - 'race_results/*.csv'  # Trigger when CSV files are added
+
+jobs:
+  process-results:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        ref: main  # or 'master' - adjust as needed
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas
+    
+    - name: Process all race results
+      run: |
+        python scripts/process_race_results_github.py
+    
+    - name: Commit and push if changed
+      run: |
+        git config --global user.name 'Race Results Bot'
+        git config --global user.email 'bot@raceresults.com'
+        git pull origin main  # Pull latest changes first
+        git add general_classification/
+        
+        # Check if there are changes to commit
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Update general classification [$(date +'%Y-%m-%d %H:%M:%S')]"
+          git push
+        fi
