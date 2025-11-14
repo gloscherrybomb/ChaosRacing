@@ -7,7 +7,8 @@ on:
   push:
     paths:
       - 'race_results/*.csv'  # Trigger when CSV files are added
-
+permissions:
+  contents: write
 jobs:
   process-results:
     runs-on: ubuntu-latest
