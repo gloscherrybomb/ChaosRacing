@@ -1,5 +1,5 @@
 Position,Name,Team,Country,Gender,Rank,RoundsCompleted,MissedRounds,TotalDeltaTime,AverageDeltaTime,BestDeltaTime,WorstDeltaTime,UID,ARR,ARRBand,AgeBand
-1,Andy Hall,Ilkley CC,GBR,Male,Platinum,5,0,0.0,0.0,0.0,0.0,EBD478B7F208C265,1583,Platinum 3,50-54
+1,Andy Hall,Ilkley CC,GBR,Male,Platinum,6,0,0.0,0.0,0.0,0.0,EBD478B7F208C265,1457,Platinum 2,50-54
 2,Neil Atherton,Coalition,GBR,Male,Platinum,5,1,341.594,68.319,0.0,180.0,AD10E8AF5DC93FA9,1510,Platinum 3,50-54
 3,Mark Siega,Race3R,USA,Male,Platinum,5,2,541.015,108.203,0.0,180.0,5DF992475739EF28,1379,Platinum 1,50-54
 4,Erik Mitchell,Coalition,USA,Male,Platinum,5,2,701.517,140.303,1.199,180.0,2B0ED493930AC0C9,1435,Platinum 2,40-44
@@ -16,3 +16,4 @@ Position,Name,Team,Country,Gender,Rank,RoundsCompleted,MissedRounds,TotalDeltaTi
 15,Paul Capua,,ITA,Male,Platinum,5,4,900.0,180.0,180.0,180.0,1AA54B34233DEFD9,100,Platinum 1,55-59
 16,Ant Jenkins,Race3R,WAL,Male,Platinum,5,4,900.0,180.0,180.0,180.0,68389304AB2E795F,1587,Platinum 3,35-39
 17,Toby Hetherington,Newhall.cc,GBR,Male,Platinum,6,5,1080.0,180.0,180.0,180.0,38B077C7D857ADFE,1421,Platinum 2,35-39
+18,Frank Healy,,GBR,Male,Platinum,6,5,1080.0,180.0,180.0,180.0,300B116DEE8193AD,1453,Platinum 2,55-59
