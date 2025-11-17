@@ -3,10 +3,10 @@ name: Process Race Results
 on:
   repository_dispatch:
     types: [new_race_result]
-  workflow_dispatch:  # Allow manual triggering
+  workflow_dispatch:
   push:
     paths:
-      - 'race_results/*.csv'  # Trigger when CSV files are added
+      - 'race_results/*.csv'
 
 jobs:
   process-results:
@@ -17,6 +17,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         ref: main
+        fetch-depth: 0
     
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -36,12 +37,12 @@ jobs:
       run: |
         git config --global user.name 'Race Results Bot'
         git config --global user.email 'bot@raceresults.com'
-        git pull origin main
         git add general_classification/
         
         if git diff --staged --quiet; then
           echo "No changes to commit"
         else
           git commit -m "Update general classification [$(date +'%Y-%m-%d %H:%M:%S')]"
+          git pull --rebase origin main
           git push
         fi
