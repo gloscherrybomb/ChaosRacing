@@ -405,7 +405,7 @@
             event.preventDefault();
             
             try {
-                const response = await fetch('general_classification.csv');
+                const response = await fetch('general_classification/general_classification.csv');
                 const csvText = await response.text();
                 
                 standingsData = parseCSV(csvText);
@@ -462,7 +462,7 @@
                 populateFilters();
                 displayStandings(standingsData);
             } catch (error) {
-                alert('Error loading standings data. Please ensure general_classification.csv is in the same directory as this page.');
+                alert('Error loading standings data. Please ensure general_classification.csv is in the general_classification subfolder.');
                 console.error('Error:', error);
             }
         }
