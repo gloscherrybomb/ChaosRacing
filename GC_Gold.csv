@@ -1,8 +1,8 @@
 Position,Name,Team,Country,Gender,Rank,RoundsCompleted,MissedRounds,TotalDeltaTime,AverageDeltaTime,BestDeltaTime,WorstDeltaTime,UID,ARR,AgeBand
 1,Tim Simpkins,Newhall.cc,GBR,Male,Gold,6,2,370.294,61.716,0.0,180.0,7F25146A98D9033B,300,45-49
 2,Peter Austin,TROuble,GBR,Male,Gold,7,0,576.385,82.341,6.359,180.0,94BF2EA3E5A7CBC2,1238,55-59
-3,Erik Mitchell,Coalition,USA,Male,Gold,6,2,701.517,116.92,0.0,180.0,2B0ED493930AC0C9,1435,40-44
-4,James Ford,Ilkley CC,GBR,Male,Gold,6,4,757.155,126.192,2.239,180.0,F38E899A67FFF5DD,100,45-49
+3,James Ford,Ilkley CC,GBR,Male,Gold,6,4,757.155,126.192,2.239,180.0,F38E899A67FFF5DD,100,45-49
+4,Erik Mitchell,Coalition,USA,Male,Gold,7,2,836.878,119.554,0.0,180.0,2B0ED493930AC0C9,1435,40-44
 5,James Eastwood,Chaos,GBR,Male,Gold,7,4,887.747,126.821,0.0,180.0,212354980F57BA1B,1285,40-44
 6,Jamie Bishop,Newhall.cc,GBR,Male,Gold,6,5,900.0,150.0,0.0,180.0,F03D3F7331D34D18,1193,50-54
 7,Thaafier Jaffer,Newhall.cc,RSA,Male,Gold,6,5,909.098,151.516,9.098,180.0,E0A2BBA078CCE21,200,Senior
@@ -14,4 +14,6 @@ Position,Name,Team,Country,Gender,Rank,RoundsCompleted,MissedRounds,TotalDeltaTi
 13,David Jones,Palace Dinosaurs,GBR,Male,Gold,6,5,1080.0,180.0,180.0,180.0,8173712CA92A95B4,1268,55-59
 14,Sam Ayem,indieVelo Founders Club,CAN,Male,Gold,6,5,1080.0,180.0,180.0,180.0,1CD83C6BA94E7080,300,35-39
 15,Brett Fletcher,,GBR,Male,Gold,6,5,1080.0,180.0,180.0,180.0,4A83B43ADC3CCA10,200,50-54
-16,Mike Murray,Magspeed Racing,WAL,Male,Gold,7,6,1260.0,180.0,180.0,180.0,B5738027253578EB,1047,55-59
+16,Jacob Eriksen,Draft,DEN,Male,Gold,7,6,1208.342,172.62,128.342,180.0,BE88D8F14250D99D,1110,40-44
+17,Mike Murray,Magspeed Racing,WAL,Male,Gold,7,6,1260.0,180.0,180.0,180.0,B5738027253578EB,1047,55-59
+18,Christoph Schmidt,,GER,Male,Gold,7,6,1260.0,180.0,180.0,180.0,460D42A833B20569,100,35-39
