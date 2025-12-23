@@ -9,34 +9,38 @@ Position,Name,Team,Country,Time,Gender,ARR,ARRBand,EventRating,AgeBand
 8,Ludvig Karlberg,M4shup Collective,SWE,54:02,Male,1647,Diamond 1,1621,35-39
 9,Timothy Taylor,Race3R,GBR,54:06,Male,1403,Platinum 2,1476,Senior
 10,Mark T,,GBR,54:09,Male,1296,Gold 3,1303,40-44
-11,Peter Mercelis,,BEL,55:20,Male,100,Bronze 1,951,40-44
-12,Mark S,Saint Piran,GBR,55:55,Male,1321,Platinum 1,1388,55-59
-13,Peter Austin,TROuble,GBR,56:25,Male,1217,Gold 3,1270,55-59
-14,Mark Siega,Race3R,USA,57:00,Male,1297,Gold 3,1300,50-54
-15,Mathieu DRUJON,Riders Givr?s du Trainer,FRA,57:39,Male,1384,Platinum 1,1430,40-44
-16,Laurens Deneve,Race3R,BEL,57:43,Male,1229,Gold 3,1314,35-39
-17,Arnaud Magniez,Foudre,FRA,57:53,Male,100,Bronze 1,1146,50-54
-18,Thomas Helveg,Pure Power,DEN,58:01,Male,1034,Gold 1,1046,50-54
-19,Merlijn Van Genechten,,BEL,58:58,Male,100,Bronze 1,1030,Junior
-20,paraic Whelan,Westerley CC,IRL,59:58,Male,1275,Gold 3,1332,40-44
-21,Mike Minichiello,,USA,60:25,Male,200,Bronze 1,917,50-54
-22,Pierangelo Calderoni,,ITA,60:28,Male,100,Bronze 1,1044,40-44
-23,Erik Mitchell,Coalition,USA,60:49,Male,1143,Gold 2,1180,40-44
-24,Daniel Todd,,NIR,60:53,Male,200,Bronze 1,1661,Senior
-25,Dillon Preece (296/356),,GBR,60:53,Male,200,Bronze 1,609,Junior
-26,Richard Dowling,,GBR,62:08,Male,300,Bronze 1,1146,50-54
-27,V dude,Electricspirit.co,ITA,62:51,Male,940,Silver 3,961,55-59
-28,Chris Williamson,,SCO,63:52,Male,100,Bronze 1,485,35-39
-29,Roman Egorov,,RUS,64:04,Male,100,Bronze 1,682,Senior
-30,Damien Grauser,PEV Gen?ve,SUI,65:19,Male,100,Bronze 1,549,50-54
-31,Sam Garver,,USA,67:07,Male,100,Bronze 1,548,Senior
-32,Ben Nickerson,Coalition,CAN,67:27,Male,100,Bronze 1,1249,50-54
-33,Daniel Tobler,,SUI,68:55,Male,100,Bronze 1,455,55-59
-34,Daniel Holdener,indieVelo Founders Club,SUI,69:55,Male,638,Bronze 3,608,50-54
-35,Lasse Nokelainen,,FIN,72:44,Male,100,Bronze 1,209,45-49
-36,Dominik Lewi?ski,,POL,74:43,Male,100,Bronze 1,213,U23
-37,Kenneth Smith,Kimmygotlegs,USA,75:30,Male,100,Bronze 1,693,55-59
-38,Kevin Zanella,,ITA,77:38,Male,100,Bronze 1,246,Senior
-39,Puneet Chandhok,,USA,78:07,Male,300,Bronze 1,644,45-49
-40,Benoit Van Autgaerden,Team 60+,BEL,80:04,Male,760,Silver 1,741,60-64
-41,John Rodgers,Tyrone Power Racing,IRL,81:27,Male,624,Bronze 3,630,50-54
+11,Jerome Colisson,Riders Givr?s du Trainer,FRA,54:27,Male,1380,Platinum 1,1379,45-49
+12,A Smith-Dorking SUF,KOS,GBR,54:52,Male,300,Bronze 1,1242,45-49
+13,Peter Mercelis,,BEL,55:20,Male,100,Bronze 1,951,40-44
+14,Joel Vigneau,Riders Givr?s du Trainer,FRA,55:47,Male,1301,Platinum 1,1307,Senior
+15,Mark S,Saint Piran,GBR,55:55,Male,1321,Platinum 1,1388,55-59
+16,Peter Austin,TROuble,GBR,56:25,Male,1217,Gold 3,1270,55-59
+17,Mark Siega,Race3R,USA,57:00,Male,1297,Gold 3,1300,50-54
+18,Mathieu DRUJON,Riders Givr?s du Trainer,FRA,57:39,Male,1384,Platinum 1,1430,40-44
+19,Laurens Deneve,Race3R,BEL,57:43,Male,1229,Gold 3,1314,35-39
+20,Arnaud Magniez,Foudre,FRA,57:53,Male,100,Bronze 1,1146,50-54
+21,Thomas Helveg,Pure Power,DEN,58:01,Male,1034,Gold 1,1046,50-54
+22,Merlijn Van Genechten,,BEL,58:58,Male,100,Bronze 1,1030,Junior
+23,paraic Whelan,Westerley CC,IRL,59:58,Male,1275,Gold 3,1332,40-44
+24,Mike Minichiello,,USA,60:25,Male,200,Bronze 1,917,50-54
+25,Pierangelo Calderoni,,ITA,60:28,Male,100,Bronze 1,1044,40-44
+26,Erik Mitchell,Coalition,USA,60:49,Male,1143,Gold 2,1180,40-44
+27,Daniel Todd,,NIR,60:53,Male,200,Bronze 1,1661,Senior
+28,Dillon Preece (296/356),,GBR,60:53,Male,200,Bronze 1,609,Junior
+29,Richard Dowling,,GBR,62:08,Male,300,Bronze 1,1146,50-54
+30,V dude,Electricspirit.co,ITA,62:51,Male,940,Silver 3,961,55-59
+31,Chris Williamson,,SCO,63:52,Male,100,Bronze 1,485,35-39
+32,Roman Egorov,,RUS,64:04,Male,100,Bronze 1,682,Senior
+33,Antoine Renou,Riders Givr?s du Trainer,FRA,64:52,Male,1288,Gold 3,1218,Senior
+34,Damien Grauser,PEV Gen?ve,SUI,65:19,Male,100,Bronze 1,549,50-54
+35,Sam Garver,,USA,67:07,Male,100,Bronze 1,548,Senior
+36,Ben Nickerson,Coalition,CAN,67:27,Male,100,Bronze 1,1249,50-54
+37,Daniel Tobler,,SUI,68:55,Male,100,Bronze 1,455,55-59
+38,Daniel Holdener,indieVelo Founders Club,SUI,69:55,Male,638,Bronze 3,608,50-54
+39,Lasse Nokelainen,,FIN,72:44,Male,100,Bronze 1,209,45-49
+40,Dominik Lewi?ski,,POL,74:43,Male,100,Bronze 1,213,U23
+41,Kenneth Smith,Kimmygotlegs,USA,75:30,Male,100,Bronze 1,693,55-59
+42,Kevin Zanella,,ITA,77:38,Male,100,Bronze 1,246,Senior
+43,Puneet Chandhok,,USA,78:07,Male,300,Bronze 1,644,45-49
+44,Benoit Van Autgaerden,Team 60+,BEL,80:04,Male,760,Silver 1,741,60-64
+45,John Rodgers,Tyrone Power Racing,IRL,81:27,Male,624,Bronze 3,630,50-54
